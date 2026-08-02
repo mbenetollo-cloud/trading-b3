@@ -311,7 +311,7 @@
         <div class="header">
             <div>
                 <h1>Sistema Trading B3</h1>
-                <div class="subtitle">Indice IBOV | Analise Automatica</div>
+                <div class="subtitle">Indice IBrX100 | Filtros Progressivos</div>
             </div>
             <div class="update-time">Ultima atualizacao: 02/08/2026</div>
         </div>
@@ -323,53 +323,52 @@
                 <div class="value">R$ 10.000</div>
             </div>
             <div class="metric-card">
-                <h3>Ranking</h3>
-                <div class="value">55 acoes</div>
+                <h3>Processadas</h3>
+                <div class="value">68 acoes</div>
+            </div>
+            <div class="metric-card">
+                <h3>Aprovadas</h3>
+                <div class="value">9 acoes</div>
             </div>
             <div class="metric-card">
                 <h3>Score Minimo</h3>
                 <div class="value">50</div>
             </div>
             <div class="metric-card">
-                <h3>Target</h3>
-                <div class="value">20%</div>
-            </div>
-            <div class="metric-card">
-                <h3>Stop</h3>
-                <div class="value">ATR 12 x 1,5</div>
+                <h3>Score Medio</h3>
+                <div class="value">66.7</div>
             </div>
         </div>
         
         <!-- Filtros -->
         <div class="filters">
-            <h3>Filtros:</h3>
-            <span class="filter-item">ROE >= 10%</span>
-            <span class="filter-item">ROIC >= 8%</span>
-            <span class="filter-item">P/L 3-20</span>
-            <span class="filter-item">P/VP <= 3</span>
-            <span class="filter-item">DY >= 2%</span>
-            <span class="filter-item">RSL 14</span>
-            <span class="filter-item">MM 50/200</span>
+            <h3>Filtros Progressivos:</h3>
+            <span class="filter-item">Lucro Negativo</span>
+            <span class="filter-item">Patrimonio Negativo</span>
+            <span class="filter-item">FCF Negativo</span>
+            <span class="filter-item">Fundamental 60%</span>
+            <span class="filter-item">Valuation 40%</span>
+            <span class="filter-item">RSL 26 sem</span>
+            <span class="filter-item">Euforia 25%</span>
         </div>
         
         <!-- Conteudo Principal -->
         <div class="main-content">
             <!-- Tabela de Acoes -->
             <div class="section">
-                <div class="section-title">Ranking de Acoes (Top 10)</div>
+                <div class="section-title">Ranking de Acoes - Filtros Progressivos (Top 9)</div>
                 <table class="stock-table">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Ticker</th>
-                            <th>Score</th>
-                            <th>Fund</th>
-                            <th>Mom</th>
-                            <th>Val</th>
-                            <th>Div</th>
-                            <th>Alocacao</th>
-                            <th>Posicao</th>
-                            <th>Retorno</th>
+                            <th>Score Final</th>
+                            <th>Fundamental</th>
+                            <th>Valuation</th>
+                            <th>Momentum</th>
+                            <th>Liquidez</th>
+                            <th>Euforia</th>
+                            <th>Preco</th>
                         </tr>
                     </thead>
                     <tbody id="ranking-tbody">
@@ -398,19 +397,11 @@
                     <h4>Pesos do Sistema</h4>
                     <div class="info-item">
                         <span class="info-label">Fundamental</span>
-                        <span class="info-value">30%</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Momentum</span>
-                        <span class="info-value">35%</span>
+                        <span class="info-value">60%</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Valuation</span>
-                        <span class="info-value">25%</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Dividendos</span>
-                        <span class="info-value">10%</span>
+                        <span class="info-value">40%</span>
                     </div>
                 </div>
                 
@@ -647,10 +638,10 @@
                 // Limpa tbody
                 tbody.innerHTML = '';
                 
-                // Adiciona top 10 (ou menos)
-                const top10 = scores.slice(0, 10);
+                // Adiciona top 9 (ou menos)
+                const top9 = scores.slice(0, 9);
                 
-                top10.forEach((item, index) => {
+                top9.forEach((item, index) => {
                     const tr = document.createElement('tr');
                     tr.onclick = () => selecionarAcao(item.ticker.replace('.SA', ''));
                     
@@ -663,27 +654,28 @@
                     // Formata ticker (remove .SA)
                     const tickerShort = item.ticker.replace('.SA', '');
                     
+                    // Formata preco
+                    const preco = item.preco_atual ? `R$ ${item.preco_atual.toFixed(2)}` : '-';
+                    
+                    // Status euforia
+                    const euforia = item.euforia === 'True' ? 'SIM' : 'NAO';
+                    
                     tr.innerHTML = `
                         <td>${index + 1}</td>
                         <td class="ticker">${tickerShort}</td>
                         <td class="score ${scoreClass}">${item.score_composto.toFixed(1)}</td>
                         <td>${item.score_fundamental || '-'}</td>
-                        <td>${item.score_momentum || '-'}</td>
                         <td>${item.score_valuation || '-'}</td>
-                        <td>${item.score_dividendos || '-'}</td>
-                        <td class="allocation">R$ 500</td>
-                        <td>-</td>
-                        <td>-</td>
+                        <td>${item.score_momentum || '-'}</td>
+                        <td>${item.score_liquidez || '-'}</td>
+                        <td>${euforia}</td>
+                        <td>${preco}</td>
                     `;
                     
                     tbody.appendChild(tr);
                 });
                 
-                // Atualiza metrica de ranking
-                document.querySelector('.metric-card:nth-child(2) .value').textContent = 
-                    `${scores.length} acoes`;
-                
-                console.log(`Carregados ${scores.length} scores (top 10 exibidos)`);
+                console.log(`Carregados ${scores.length} scores (top 9 exibidos)`);
             } catch (e) {
                 console.log('Erro ao carregar scores:', e);
             }
