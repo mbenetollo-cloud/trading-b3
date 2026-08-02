@@ -1,0 +1,72 @@
+{
+  "PETR4.SA": {
+    "ticker": "PETR4.SA",
+    "roe": 0.25601,
+    "roic": null,
+    "divida_ebitda": 83.269,
+    "pl": 5.340713,
+    "pvp": 1.2570567,
+    "dy": 8.98,
+    "market_cap": 593268506624,
+    "volume_medio": 39892432,
+    "preco_atual": 43.42,
+    "nome": "PETROBRAS   PN  ATZ N2",
+    "setor": "Energy"
+  },
+  "VALE3.SA": {
+    "ticker": "VALE3.SA",
+    "roe": null,
+    "roic": null,
+    "divida_ebitda": null,
+    "pl": 22.702381,
+    "pvp": 1.7011975,
+    "dy": 9.04,
+    "market_cap": 324629561344,
+    "volume_medio": 17334656,
+    "preco_atual": 76.28,
+    "nome": "VALE        ON      NM",
+    "setor": "Basic Materials"
+  },
+  "ITUB4.SA": {
+    "ticker": "ITUB4.SA",
+    "roe": 0.21816,
+    "roic": null,
+    "divida_ebitda": null,
+    "pl": 10.410194,
+    "pvp": 2.254165,
+    "dy": 2.08,
+    "market_cap": 472728076288,
+    "volume_medio": 27072060,
+    "preco_atual": 42.89,
+    "nome": "ITAUUNIBANCOPN      N1",
+    "setor": "Financial Services"
+  },
+  "BBDC4.SA": {
+    "ticker": "BBDC4.SA",
+    "roe": 0.13366,
+    "roic": null,
+    "divida_ebitda": null,
+    "pl": 8.776191,
+    "pvp": 1.0837351,
+    "dy": 1.24,
+    "market_cap": 200383660032,
+    "volume_medio": 29838971,
+    "preco_atual": 18.43,
+    "nome": "BRADESCO    PN      N1",
+    "setor": "Financial Services"
+  },
+  "ABEV3.SA": {
+    "ticker": "ABEV3.SA",
+    "roe": 0.184,
+    "roic": null,
+    "divida_ebitda": 3.317,
+    "pl": 15.524272,
+    "pvp": 2.8240902,
+    "dy": 1.12,
+    "market_cap": 247090184192,
+    "volume_medio": 28203034,
+    "preco_atual": 15.99,
+    "nome": "AMBEV S/A   ON",
+    "setor": "Consumer Defensive"
+  }
+}

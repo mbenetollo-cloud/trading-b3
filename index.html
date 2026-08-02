@@ -506,8 +506,8 @@
         async function buscarDadosReais(ticker) {
             try {
                 // Tenta buscar de um arquivo JSON local (gerado pelo Python)
-                // Caminho relativo: ../data/ (pasta pai)
-                const response = await fetch(`../data/${ticker}.json`);
+                // Caminho relativo: ./data/ (mesma pasta)
+                const response = await fetch(`./data/${ticker}.json`);
                 if (response.ok) {
                     return await response.json();
                 }
