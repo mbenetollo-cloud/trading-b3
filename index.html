@@ -356,7 +356,7 @@
         <div class="main-content">
             <!-- Tabela de Acoes -->
             <div class="section">
-                <div class="section-title">Ranking de Acoes</div>
+                <div class="section-title">Ranking de Acoes (Top 10)</div>
                 <table class="stock-table">
                     <thead>
                         <tr>
@@ -372,67 +372,8 @@
                             <th>Retorno</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="selected" onclick="selecionarAcao('PETR4')">
-                            <td>1</td>
-                            <td class="ticker">PETR4</td>
-                            <td class="score score-excelente">80.0</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td class="allocation">R$ 500</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr onclick="selecionarAcao('VALE3')">
-                            <td>2</td>
-                            <td class="ticker">VALE3</td>
-                            <td class="score score-moderado">43.0</td>
-                            <td>0</td>
-                            <td>57</td>
-                            <td>52</td>
-                            <td>100</td>
-                            <td class="allocation">R$ 500</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr onclick="selecionarAcao('ITUB4')">
-                            <td>3</td>
-                            <td class="ticker">ITUB4</td>
-                            <td class="score score-bom">70.0</td>
-                            <td>33</td>
-                            <td>71</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td class="allocation">R$ 500</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr onclick="selecionarAcao('BBDC4')">
-                            <td>4</td>
-                            <td class="ticker">BBDC4</td>
-                            <td class="score score-bom">65.0</td>
-                            <td>33</td>
-                            <td>57</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td class="allocation">R$ 500</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr onclick="selecionarAcao('ABEV3')">
-                            <td>5</td>
-                            <td class="ticker">ABEV3</td>
-                            <td class="score score-bom">65.0</td>
-                            <td>33</td>
-                            <td>57</td>
-                            <td>100</td>
-                            <td>100</td>
-                            <td class="allocation">R$ 500</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
+                    <tbody id="ranking-tbody">
+                        <!-- Dados carregados do scores.json -->
                     </tbody>
                 </table>
             </div>
@@ -694,8 +635,63 @@
             atualizarGrafico(ticker);
         }
         
+        // Carrega scores do scores.json e popula a tabela
+        async function carregarScores() {
+            try {
+                const response = await fetch('./data/scores.json');
+                if (!response.ok) throw new Error('Scores nao encontrados');
+                
+                const scores = await response.json();
+                const tbody = document.getElementById('ranking-tbody');
+                
+                // Limpa tbody
+                tbody.innerHTML = '';
+                
+                // Adiciona top 10 (ou menos)
+                const top10 = scores.slice(0, 10);
+                
+                top10.forEach((item, index) => {
+                    const tr = document.createElement('tr');
+                    tr.onclick = () => selecionarAcao(item.ticker.replace('.SA', ''));
+                    
+                    // Determina classe do score
+                    let scoreClass = 'score-baixo';
+                    if (item.score_composto >= 70) scoreClass = 'score-excelente';
+                    else if (item.score_composto >= 60) scoreClass = 'score-bom';
+                    else if (item.score_composto >= 50) scoreClass = 'score-moderado';
+                    
+                    // Formata ticker (remove .SA)
+                    const tickerShort = item.ticker.replace('.SA', '');
+                    
+                    tr.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td class="ticker">${tickerShort}</td>
+                        <td class="score ${scoreClass}">${item.score_composto.toFixed(1)}</td>
+                        <td>${item.score_fundamental || '-'}</td>
+                        <td>${item.score_momentum || '-'}</td>
+                        <td>${item.score_valuation || '-'}</td>
+                        <td>${item.score_dividendos || '-'}</td>
+                        <td class="allocation">R$ 500</td>
+                        <td>-</td>
+                        <td>-</td>
+                    `;
+                    
+                    tbody.appendChild(tr);
+                });
+                
+                // Atualiza metrica de ranking
+                document.querySelector('.metric-card:nth-child(2) .value').textContent = 
+                    `${scores.length} acoes`;
+                
+                console.log(`Carregados ${scores.length} scores (top 10 exibidos)`);
+            } catch (e) {
+                console.log('Erro ao carregar scores:', e);
+            }
+        }
+        
         // Inicializa na carga da pagina
         document.addEventListener('DOMContentLoaded', () => {
+            carregarScores();
             inicializarGrafico();
             atualizarGrafico('PETR4');
         });
