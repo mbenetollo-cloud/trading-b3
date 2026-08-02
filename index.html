@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Trading B3</title>
+    <script src="https://unpkg.com/lightweight-charts@4.1.0/dist/lightweight-charts.standalone.production.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            min-height: 100vh;
+            font-size: 12px;
+            line-height: 1.3;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 8px;
+        }
+        
+        /* Header Compacto */
+        .header {
+            background: #161b22;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #30363d;
+        }
+        
+        .header h1 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #58a6ff;
+        }
+        
+        .header .subtitle {
+            font-size: 11px;
+            color: #8b949e;
+        }
+        
+        .header .update-time {
+            font-size: 10px;
+            color: #8b949e;
+        }
+        
+        /* Métricas Compactas */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .metric-card {
+            background: #161b22;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+        
+        .metric-card h3 {
+            color: #8b949e;
+            font-size: 10px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .metric-card .value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #58a6ff;
+        }
+        
+        /* Filtros Compactos */
+        .filters {
+            background: #161b22;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            border: 1px solid #30363d;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .filters h3 {
+            font-size: 10px;
+            color: #8b949e;
+            margin-right: 8px;
+            text-transform: uppercase;
+        }
+        
+        .filter-item {
+            display: inline-block;
+            padding: 3px 8px;
+            background: #21262d;
+            border-radius: 12px;
+            color: #58a6ff;
+            font-size: 10px;
+            font-weight: 500;
+        }
+        
+        /* Tabela Compacta */
+        .section {
+            margin-bottom: 8px;
+        }
+        
+        .section-title {
+            font-size: 12px;
+            color: #c9d1d9;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        
+        .stock-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #161b22;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #30363d;
+        }
+        
+        .stock-table th {
+            background: #21262d;
+            color: #8b949e;
+            padding: 8px 10px;
+            text-align: left;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-bottom: 1px solid #30363d;
+        }
+        
+        .stock-table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #21262d;
+            font-size: 11px;
+        }
+        
+        .stock-table tr:hover {
+            background: #21262d;
+            cursor: pointer;
+        }
+        
+        .stock-table tr.selected {
+            background: #1f6feb33;
+            border-left: 3px solid #58a6ff;
+        }
+        
+        .ticker {
+            font-weight: 600;
+            color: #c9d1d9;
+        }
+        
+        .score {
+            font-weight: 600;
+        }
+        
+        .score-excelente { color: #3fb950; }
+        .score-bom { color: #58a6ff; }
+        .score-moderado { color: #d29922; }
+        .score-fraco { color: #f85149; }
+        
+        .allocation {
+            color: #8b949e;
+        }
+        
+        .retorno {
+            font-weight: 600;
+            font-size: 11px;
+        }
+        
+        .positivo {
+            color: #3fb950;
+        }
+        
+        .negativo {
+            color: #f85149;
+        }
+        
+        /* Gráfico */
+        .chart-section {
+            background: #161b22;
+            border-radius: 6px;
+            padding: 12px;
+            border: 1px solid #30363d;
+        }
+        
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .chart-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #c9d1d9;
+        }
+        
+        .chart-legend {
+            display: flex;
+            gap: 12px;
+            font-size: 10px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #8b949e;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 3px;
+            border-radius: 2px;
+        }
+        
+        #chart-container {
+            width: 100%;
+            height: 450px;
+        }
+        
+        /* Layout Principal */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+        
+        /* Pesos e Risco */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        
+        .info-box {
+            background: #161b22;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+        
+        .info-box h4 {
+            font-size: 10px;
+            color: #8b949e;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 0;
+            font-size: 11px;
+            border-bottom: 1px solid #21262d;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            color: #8b949e;
+        }
+        
+        .info-value {
+            color: #c9d1d9;
+            font-weight: 500;
+        }
+        
+        /* Footer Section */
+        .footer-section {
+            background: #161b22;
+            border-radius: 6px;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #30363d;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 8px;
+            color: #8b949e;
+            font-size: 10px;
+            border-top: 1px solid #30363d;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div>
+                <h1>Sistema Trading B3</h1>
+                <div class="subtitle">Indice IBOV | Analise Automatica</div>
+            </div>
+            <div class="update-time">Ultima atualizacao: 01/08/2026 20:54</div>
+        </div>
+        
+        <!-- Metricas -->
+        <div class="metrics">
+            <div class="metric-card">
+                <h3>Capital</h3>
+                <div class="value">R$ 10.000</div>
+            </div>
+            <div class="metric-card">
+                <h3>Ranking</h3>
+                <div class="value">15 acoes</div>
+            </div>
+            <div class="metric-card">
+                <h3>Selecionadas</h3>
+                <div class="value">5</div>
+            </div>
+            <div class="metric-card">
+                <h3>Alocacao</h3>
+                <div class="value">R$ 2.500</div>
+            </div>
+        </div>
+        
+        <!-- Filtros -->
+        <div class="filters">
+            <h3>Filtros:</h3>
+            <span class="filter-item">ROE >= 10%</span>
+            <span class="filter-item">ROIC >= 8%</span>
+            <span class="filter-item">P/L <= 20</span>
+            <span class="filter-item">P/VP <= 3</span>
+            <span class="filter-item">DY >= 2%</span>
+            <span class="filter-item">RSL 14</span>
+        </div>
+        
+        <!-- Conteudo Principal -->
+        <div class="main-content">
+            <!-- Tabela de Acoes -->
+            <div class="section">
+                <div class="section-title">Ranking de Acoes</div>
+                <table class="stock-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ticker</th>
+                            <th>Score</th>
+                            <th>Fund</th>
+                            <th>Mom</th>
+                            <th>Val</th>
+                            <th>Div</th>
+                            <th>Alocacao</th>
+                            <th>Posicao</th>
+                            <th>Retorno</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="selected" onclick="selecionarAcao('PETR4')">
+                            <td>1</td>
+                            <td class="ticker">PETR4</td>
+                            <td class="score score-excelente">80.0</td>
+                            <td>100</td>
+                            <td>100</td>
+                            <td>100</td>
+                            <td>100</td>
+                            <td class="allocation">R$ 500</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr onclick="selecionarAcao('VALE3')">
+                            <td>2</td>
+                            <td class="ticker">VALE3</td>
+                            <td class="score score-moderado">43.0</td>
+                            <td>0</td>
+                            <td>57</td>
+                            <td>52</td>
+                            <td>100</td>
+                            <td class="allocation">R$ 500</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr onclick="selecionarAcao('ITUB4')">
+                            <td>3</td>
+                            <td class="ticker">ITUB4</td>
+                            <td class="score score-bom">70.0</td>
+                            <td>33</td>
+                            <td>71</td>
+                            <td>100</td>
+                            <td>100</td>
+                            <td class="allocation">R$ 500</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr onclick="selecionarAcao('BBDC4')">
+                            <td>4</td>
+                            <td class="ticker">BBDC4</td>
+                            <td class="score score-bom">65.0</td>
+                            <td>33</td>
+                            <td>57</td>
+                            <td>100</td>
+                            <td>100</td>
+                            <td class="allocation">R$ 500</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr onclick="selecionarAcao('ABEV3')">
+                            <td>5</td>
+                            <td class="ticker">ABEV3</td>
+                            <td class="score score-bom">65.0</td>
+                            <td>33</td>
+                            <td>57</td>
+                            <td>100</td>
+                            <td>100</td>
+                            <td class="allocation">R$ 500</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Grafico -->
+            <div class="chart-section">
+                    <div class="chart-header">
+                        <div class="chart-title">PETR4 - Grafico Diario</div>
+                        <div class="chart-legend">
+                            <span class="legend-item"><span class="legend-color" style="background:#58a6ff"></span> MM50</span>
+                            <span class="legend-item" id="legend-mm200"><span class="legend-color" style="background:#d29922"></span> MM200</span>
+                        </div>
+                    </div>
+                <div id="chart-container"></div>
+            </div>
+        </div>
+        
+        <!-- Footer com Pesos e Risco -->
+        <div class="footer-section">
+            <div class="info-grid">
+                <div class="info-box">
+                    <h4>Pesos do Sistema</h4>
+                    <div class="info-item">
+                        <span class="info-label">Fundamental</span>
+                        <span class="info-value">30%</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Momentum</span>
+                        <span class="info-value">35%</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Valuation</span>
+                        <span class="info-value">25%</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Dividendos</span>
+                        <span class="info-value">10%</span>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h4>Gestao de Risco</h4>
+                    <div class="info-item">
+                        <span class="info-label">Stop Loss</span>
+                        <span class="info-value">10%</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Trailing Stop</span>
+                        <span class="info-value">8%</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Max Posicoes</span>
+                        <span class="info-value">5</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Max por Posicao</span>
+                        <span class="info-value">5%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            Sistema Trading B3 | Automatizado via GitHub Actions
+        </div>
+    </div>
+    
+    <script>
+        // Busca dados reais via API Python (backend)
+        async function buscarDadosReais(ticker) {
+            try {
+                // Tenta buscar de um arquivo JSON local (gerado pelo Python)
+                // Caminho relativo: ../data/ (pasta pai)
+                const response = await fetch(`../data/${ticker}.json`);
+                if (response.ok) {
+                    return await response.json();
+                }
+            } catch (e) {
+                console.log('Dados locais nao encontrados, usando simulados');
+            }
+            return null;
+        }
+        
+        // Dados simulados como fallback
+        function gerarDadosSimulados(ticker) {
+            const dados = [];
+            const base = ticker === 'PETR4' ? 43 : 
+                         ticker === 'VALE3' ? 76 : 
+                         ticker === 'ITUB4' ? 42 : 
+                         ticker === 'BBDC4' ? 18 : 16;
+            
+            let preco = base * 0.9;
+            const hoje = new Date();
+            
+            for (let i = 250; i >= 0; i--) {
+                const data = new Date(hoje);
+                data.setDate(data.getDate() - i);
+                
+                if (data.getDay() === 0 || data.getDay() === 6) continue;
+                
+                const tendencia = (base - preco) / base * 0.02;
+                const variacao = tendencia + (Math.random() - 0.5) * 0.025;
+                
+                const open = preco;
+                const close = preco * (1 + variacao);
+                const high = Math.max(open, close) * (1 + Math.random() * 0.008);
+                const low = Math.min(open, close) * (1 - Math.random() * 0.008);
+                
+                dados.push({
+                    time: data.toISOString().split('T')[0],
+                    open: parseFloat(open.toFixed(2)),
+                    high: parseFloat(high.toFixed(2)),
+                    low: parseFloat(low.toFixed(2)),
+                    close: parseFloat(close.toFixed(2))
+                });
+                
+                preco = close;
+            }
+            
+            return dados;
+        }
+        
+        // Funcao principal que tenta dados reais, senao usa simulados
+        async function gerarDadosCandle(ticker) {
+            const dadosReais = await buscarDadosReais(ticker);
+            return dadosReais || gerarDadosSimulados(ticker);
+        }
+        
+        // Calcula Media Movel Simples
+        function calcularMM(dados, periodo) {
+            const result = [];
+            // Precisa de pelo menos 'periodo' dados para calcular
+            if (dados.length < periodo) {
+                console.log(`MM${periodo}: Dados insuficientes (${dados.length}/${periodo})`);
+                return result;
+            }
+            for (let i = periodo - 1; i < dados.length; i++) {
+                let soma = 0;
+                for (let j = 0; j < periodo; j++) {
+                    soma += dados[i - j].close;
+                }
+                result.push({
+                    time: dados[i].time,
+                    value: parseFloat((soma / periodo).toFixed(2))
+                });
+            }
+            return result;
+        }
+        
+        // Inicializa o grafico
+        let chart;
+        let candleSeries;
+        let mm50Series;
+        let mm200Series;
+        
+        function inicializarGrafico() {
+            const container = document.getElementById('chart-container');
+            
+            chart = LightweightCharts.createChart(container, {
+                width: container.clientWidth,
+                height: 450,
+                layout: {
+                    background: { color: '#161b22' },
+                    textColor: '#8b949e',
+                },
+                grid: {
+                    vertLines: { color: '#21262d' },
+                    horzLines: { color: '#21262d' },
+                },
+                crosshair: {
+                    mode: LightweightCharts.CrosshairMode.Normal,
+                },
+                rightPriceScale: {
+                    borderColor: '#30363d',
+                    mode: LightweightCharts.PriceScaleMode.Logarithmic,
+                    scaleMargins: {
+                        top: 0.1,
+                        bottom: 0.1
+                    },
+                },
+                timeScale: {
+                    borderColor: '#30363d',
+                    timeVisible: false,
+                },
+            });
+            
+            candleSeries = chart.addCandlestickSeries({
+                upColor: '#3fb950',
+                downColor: '#f85149',
+                borderUpColor: '#3fb950',
+                borderDownColor: '#f85149',
+                wickUpColor: '#3fb950',
+                wickDownColor: '#f85149',
+            });
+            
+            mm50Series = chart.addLineSeries({
+                color: '#58a6ff',
+                lineWidth: 1,
+                title: 'MM50',
+            });
+            
+            mm200Series = chart.addLineSeries({
+                color: '#d29922',
+                lineWidth: 1,
+                title: 'MM200',
+            });
+            
+            // Ajusta ao redimensionar
+            window.addEventListener('resize', () => {
+                chart.applyOptions({ width: container.clientWidth });
+            });
+        }
+        
+        async function atualizarGrafico(ticker) {
+            const todosDados = await gerarDadosCandle(ticker);
+            const mm50 = calcularMM(todosDados, 50);
+            const mm200 = calcularMM(todosDados, 200);
+            
+            // Pega os ultimos 200 dias para exibir (ou todos se menos de 200)
+            const ultimos200dias = todosDados.slice(-Math.min(200, todosDados.length));
+            
+            // Filtra MMs para os mesmos dias
+            const primeiroDia = new Date(ultimos200dias[0].time);
+            
+            const mm50Filtrada = mm50.filter(item => new Date(item.time) >= primeiroDia);
+            const mm200Filtrada = mm200.filter(item => new Date(item.time) >= primeiroDia);
+            
+            candleSeries.setData(ultimos200dias);
+            mm50Series.setData(mm50Filtrada);
+            mm200Series.setData(mm200Filtrada);
+            
+            chart.timeScale().fitContent();
+            
+            // Atualiza titulo e legenda
+            let titulo = `${ticker} - Grafico Diario`;
+            const legendMM200 = document.getElementById('legend-mm200');
+            
+            if (mm200Filtrada.length > 0) {
+                titulo += ` (${ultimos200dias.length} dias)`;
+                legendMM200.style.display = 'inline';
+            } else {
+                titulo += ` (${ultimos200dias.length} dias) - MM50 apenas`;
+                legendMM200.style.display = 'none';
+            }
+            document.querySelector('.chart-title').textContent = titulo;
+        }
+        
+        function selecionarAcao(ticker) {
+            // Remove selecao anterior
+            document.querySelectorAll('.stock-table tr').forEach(row => {
+                row.classList.remove('selected');
+            });
+            
+            // Adiciona selecao na linha clicada
+            event.currentTarget.classList.add('selected');
+            
+            // Atualiza grafico
+            atualizarGrafico(ticker);
+        }
+        
+        // Inicializa na carga da pagina
+        document.addEventListener('DOMContentLoaded', () => {
+            inicializarGrafico();
+            atualizarGrafico('PETR4');
+        });
+    </script>
+</body>
+</html>
