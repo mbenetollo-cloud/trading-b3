@@ -28,20 +28,9 @@ jobs:
         run: |
           python baixar_dados.py
       
-      - name: Calcular scores
+      - name: Executar fluxo completo
         run: |
-          python calcular_scores.py
-          python calcular_momentum.py
-          python recalcular_scores.py
-      
-      - name: Gerar relatórios
-        run: |
-          python gerar_relatorios.py
-      
-      - name: Copiar dados para output
-        run: |
-          cp data/scores.json output/
-          cp data/fundamentais.json output/
+          python fluxo_completo.py
       
       - name: Commit e push
         run: |
