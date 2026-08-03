@@ -363,12 +363,13 @@
                             <th>#</th>
                             <th>Ticker</th>
                             <th>Score Final</th>
-                            <th>Fundamental</th>
+                            <th>Fundamentos</th>
                             <th>Valuation</th>
-                            <th>Momentum</th>
                             <th>Liquidez</th>
+                            <th>Momentum</th>
                             <th>Euforia</th>
-                            <th>Preco Entrada</th>
+                            <th>MM50 Acima?</th>
+                            <th>Preco Atual</th>
                             <th>Posicao</th>
                             <th>Retorno</th>
                         </tr>
@@ -640,10 +641,10 @@
                 // Limpa tbody
                 tbody.innerHTML = '';
                 
-                // Adiciona top 9 (ou menos)
-                const top9 = scores.slice(0, 9);
+                // Adiciona top 10 (ou menos)
+                const top10 = scores.slice(0, 10);
                 
-                top9.forEach((item, index) => {
+                top10.forEach((item, index) => {
                     const tr = document.createElement('tr');
                     tr.onclick = () => selecionarAcao(item.ticker.replace('.SA', ''));
                     
@@ -662,15 +663,21 @@
                     // Status euforia
                     const euforia = item.euforia === 'True' ? 'SIM' : 'NAO';
                     
+                    // MM50 Acima? (verifica se MM50 > MM200)
+                    const mm50 = item.mm50 || 0;
+                    const mm200 = item.mm200 || 0;
+                    const mm50Acima = mm50 > mm200 ? 'SIM' : 'NAO';
+                    
                     tr.innerHTML = `
                         <td>${index + 1}</td>
                         <td class="ticker">${tickerShort}</td>
-                        <td class="score ${scoreClass}">${item.score_composto.toFixed(1)}</td>
+                        <td class="score ${scoreClass}">${item.score_composto}</td>
                         <td>${item.score_fundamental || '-'}</td>
                         <td>${item.score_valuation || '-'}</td>
-                        <td>${item.score_momentum || '-'}</td>
                         <td>${item.score_liquidez || '-'}</td>
+                        <td>${item.score_momentum || '-'}</td>
                         <td>${euforia}</td>
+                        <td>${mm50Acima}</td>
                         <td>${preco}</td>
                         <td>-</td>
                         <td>-</td>
@@ -679,7 +686,7 @@
                     tbody.appendChild(tr);
                 });
                 
-                console.log(`Carregados ${scores.length} scores (top 9 exibidos)`);
+                console.log(`Carregados ${scores.length} scores (top 10 exibidos)`);
             } catch (e) {
                 console.log('Erro ao carregar scores:', e);
             }
