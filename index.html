@@ -346,17 +346,17 @@
             <span class="filter-item">Lucro Negativo</span>
             <span class="filter-item">Patrimonio Negativo</span>
             <span class="filter-item">FCF Negativo</span>
-            <span class="filter-item">Fundamental 60%</span>
-            <span class="filter-item">Valuation 40%</span>
-            <span class="filter-item">RSL 26 sem</span>
-            <span class="filter-item">Euforia 25%</span>
+            <span class="filter-item">Fundamental 35pts</span>
+            <span class="filter-item">Valuation 25pts</span>
+            <span class="filter-item">Momentum 30pts</span>
+            <span class="filter-item">Dividendos 10pts</span>
         </div>
         
         <!-- Conteudo Principal -->
         <div class="main-content">
             <!-- Tabela de Acoes -->
             <div class="section">
-                <div class="section-title">Ranking de Acoes - Filtros Progressivos (Top 9)</div>
+                <div class="section-title">Ranking de Acoes - Filtros Progressivos (Top 10)</div>
                 <table class="stock-table">
                     <thead>
                         <tr>
@@ -400,11 +400,19 @@
                     <h4>Pesos do Sistema</h4>
                     <div class="info-item">
                         <span class="info-label">Fundamental</span>
-                        <span class="info-value">60%</span>
+                        <span class="info-value">35 pts</span>
                     </div>
                     <div class="info-item">
                         <span class="info-label">Valuation</span>
-                        <span class="info-value">40%</span>
+                        <span class="info-value">25 pts</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Momentum</span>
+                        <span class="info-value">30 pts</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Dividendos</span>
+                        <span class="info-value">10 pts</span>
                     </div>
                 </div>
                 
@@ -632,7 +640,7 @@
         // Carrega scores do scores.json e popula a tabela
         async function carregarScores() {
             try {
-                const response = await fetch('./data/scores.json');
+                const response = await fetch('./data/scores.json?' + Date.now());
                 if (!response.ok) throw new Error('Scores nao encontrados');
                 
                 const scores = await response.json();
