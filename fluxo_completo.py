@@ -5,12 +5,12 @@ FILTRO SEMANAL - FLUXO COMPLETO
 ================================
 1. IBrX100 (100 ações)
 2. Filtro de exclusão (lucro/patrimônio/FCF negativos)
-3. Score Fundamentalista (35 pts)
-4. Score Valuation (25 pts)
+3. Score Fundamentalista (35 pts): Cresc.Lucro(15) + Margem(10) + Divida(10)
+4. Score Valuation (25 pts): Cresc.Receita(10) + FCF(10) + Liquidez(5)
 5. Top 30
 6. Liquidez
 7. Top 20
-8. RSL + Tendência (35 pts)
+8. Momentum (30 pts) + Dividendos (10 pts)
 9. Top 10 Compras
 """
 
@@ -63,39 +63,56 @@ def obter_acoes_ibrx100():
         return []
 
 def calcular_score_fundamental(fund):
-    """Calcula score fundamental (0-35 pontos)"""
+    """Calcula score fundamental (0-35 pontos)
+    
+    Critérios:
+    - Crescimento Lucro 5 anos (15 pts): earningsGrowth >= 0
+    - Margem Líquida (10 pts): profitMargins >= 0.10
+    - Dívida/EBITDA (10 pts): debtToEquity <= 150 (proxy)
+    """
     score = 0
     
-    # ROE (10 pts)
-    roe = fund.get('roe')
-    if roe and roe >= ROE_MINIMO:
+    # Crescimento Lucro (15 pts)
+    cresc_lucro = fund.get('crescimento_lucro')
+    if cresc_lucro is not None and cresc_lucro >= 0:
+        score += 15
+    
+    # Margem Líquida (10 pts)
+    margem = fund.get('margem_liquida')
+    if margem is not None and margem >= 0.10:
         score += 10
     
-    # ROIC (10 pts) - não disponível no yfinance
-    roic = fund.get('roic')
-    if roic and roic >= 0.08:
-        score += 10
-    
-    # Divida/EBITDA (10 pts)
+    # Dívida/EBITDA (10 pts) - usa debtToEquity como proxy
     divida = fund.get('divida_ebitda')
-    if divida and divida <= 3.0:
+    if divida is not None and divida <= 150:
         score += 10
     
     return score
 
 def calcular_score_valuation(fund):
-    """Calcula score valuation (0-25 pontos)"""
+    """Calcula score valuation (0-25 pontos)
+    
+    Critérios:
+    - Crescimento Receita 5 anos (10 pts): revenueGrowth >= 0
+    - Fluxo de Caixa Livre (10 pts): freeCashflow > 0
+    - Liquidez Corrente (5 pts): currentRatio >= 1.0
+    """
     score = 0
     
-    # P/L (12 pts)
-    pl = fund.get('pl')
-    if pl and PL_MINIMO <= pl <= PL_MAXIMO:
-        score += 12
+    # Crescimento Receita (10 pts)
+    cresc_receita = fund.get('crescimento_receita')
+    if cresc_receita is not None and cresc_receita >= 0:
+        score += 10
     
-    # P/VP (13 pts)
-    pvp = fund.get('pvp')
-    if pvp and 0 < pvp <= PVP_MAXIMO:
-        score += 13
+    # Fluxo de Caixa Livre (10 pts)
+    fcf = fund.get('fcf')
+    if fcf is not None and fcf > 0:
+        score += 10
+    
+    # Liquidez Corrente (5 pts)
+    liquidez = fund.get('liquidez_corrente')
+    if liquidez is not None and liquidez >= 1.0:
+        score += 5
     
     return score
 
@@ -133,7 +150,7 @@ def calcular_score_momentum(ticker):
                     mm200 = sum(precos[-200:]) / 200
             return score, mm50, mm200
     
-    return 15, mm50, mm200  # Médio padrão
+    return 0, mm50, mm200  # Sem dados = 0 pts
 
 def filtrar_liquidez(acoes, fundamentais):
     """Filtra por liquidez (volume mínimo)"""

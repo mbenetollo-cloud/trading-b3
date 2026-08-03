@@ -21,12 +21,20 @@ jobs:
       
       - name: Instalar dependências
         run: |
-          pip install yfinance pandas
+          pip install yfinance pandas requests beautifulsoup4
           pip install reportlab openpyxl
       
-      - name: Baixar dados
+      - name: Baixar dados de preço
         run: |
           python baixar_dados.py
+      
+      - name: Coletar fundamentais
+        run: |
+          python coletar_fundamentais.py
+      
+      - name: Calcular momentum
+        run: |
+          python calcular_momentum.py
       
       - name: Executar fluxo completo
         run: |
