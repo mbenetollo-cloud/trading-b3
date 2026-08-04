@@ -336,6 +336,44 @@ def main():
         print(f"   Preco: R${s['preco_atual']:.2f} | MM50-MM200: {diff}")
     print("=" * 60)
     print(f"Scores salvos em {OUTPUT_DIR / 'data' / 'scores.json'}")
+    
+    # ─── AUTO-DEPLOY: Commit e push automatico ───
+    print()
+    print("=" * 60)
+    print("ATUALIZANDO LANDING PAGE...")
+    print("=" * 60)
+    
+    import subprocess
+    try:
+        # Git add
+        subprocess.run(['git', 'add', 'data/scores.json'], 
+                      cwd=OUTPUT_DIR, capture_output=True, check=True)
+        
+        # Git commit
+        data_str = datetime.now().strftime('%d/%m/%Y')
+        msg = f"update: Scores {data_str} - pipeline otimizado"
+        result = subprocess.run(['git', 'commit', '-m', msg], 
+                               cwd=OUTPUT_DIR, capture_output=True, text=True)
+        
+        if result.returncode == 0:
+            print("   Commit realizado com sucesso!")
+            
+            # Git push
+            result = subprocess.run(['git', 'push', 'origin', 'master'], 
+                                   cwd=OUTPUT_DIR, capture_output=True, text=True)
+            
+            if result.returncode == 0:
+                print("   Push realizado com sucesso!")
+                print("   Landing page sera atualizada em instantes!")
+                print("   URL: https://mbenetollo-cloud.github.io/trading-b3/")
+            else:
+                print(f"   Erro no push: {result.stderr}")
+        else:
+            print("   Nenhuma alteracao para commitar")
+            
+    except Exception as e:
+        print(f"   Erro ao atualizar landing page: {e}")
+        print("   Execute manualmente: git add . && git commit -m 'update' && git push")
 
 if __name__ == "__main__":
     main()
