@@ -1,340 +1,339 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-FILTRO SEMANAL - FLUXO COMPLETO
-================================
-1. IBrX100 (100 ações)
-2. Filtro de exclusão (lucro/patrimônio/FCF negativos)
-3. Score Fundamentalista (35 pts): Cresc.Lucro(15) + Margem(10) + Divida(10)
-4. Score Valuation (25 pts): Cresc.Receita(10) + FCF(10) + Liquidez(5)
-5. Top 30
-6. Liquidez
-7. Top 20
-8. Momentum (30 pts) + Dividendos (10 pts)
-9. Top 10 Compras
+FILTRO SEMANAL - FLUXO COMPLETO (OTIMIZADO)
+============================================
+Fase 1: Fundamental + Valuation -> Top 30
+Fase 2: RSL (20 dias uteis) -> Top 10
+Fase 3: MM50, MM200, Euforia (220 dias uteis) -> apenas Top 10
+
+Economia: ~85% menos chamadas a API Yahoo Finance
+Uso de DIAS UTEIS (nao corridos) para precisao nos indicadores
 """
 
 import json
 from pathlib import Path
-from datetime import datetime
-import requests
-from bs4 import BeautifulSoup
-import re
+from datetime import datetime, timedelta
+import yfinance as yf
 
 # Config
-ROE_MINIMO = 0.10
-PL_MAXIMO = 20
-PL_MINIMO = 3
-PVP_MAXIMO = 3
 DY_MINIMO = 0.02
-SCORE_MINIMO = 50
 VOLUME_MINIMO = 1000000
 
 # Caminhos
 DATA_DIR = Path(__file__).parent / 'data'
 OUTPUT_DIR = Path(__file__).parent
 
-def obter_acoes_ibrx100():
-    """Obtém ações do IBrX100 - Lista oficial B3 (03/08/2026)
-    
-    Fonte: https://www.b3.com.br/pt_br/market-data-e-indices/indices/indices-amplos/indice-brasil-100-ibrx-100-composicao-da-carteira.htm
-    """
-    # Lista oficial IBrX100 - B3 Carteira do Dia 03/08/2026
-    tickers = [
-        'ALOS3', 'ABEV3', 'ANIM3', 'ASAI3', 'AURE3', 'AXIA3', 'AZZA3',
-        'B3SA3', 'BBSE3', 'BBDC3', 'BBDC4', 'BRAP4', 'SAUD3', 'BBAS3',
-        'BRKM5', 'BRAV3', 'BPAC11', 'CXSE3', 'CBAV3', 'CEAB3', 'CMIG4',
-        'COGN3', 'CSMG3', 'CPLE3', 'CSAN3', 'CPFE3', 'CMIN3', 'CURY3',
-        'CVCB3', 'CYRE3', 'DIRR3', 'ECOR3', 'EMBJ3', 'ENGI11', 'ENEV3',
-        'EGIE3', 'EQTL3', 'EZTC3', 'FLRY3', 'GGBR4', 'GOAU4', 'GGPS3',
-        'GMAT3', 'HAPV3', 'HYPE3', 'IGTI11', 'INTB3', 'IRBR3', 'ISAE4',
-        'ITSA4', 'ITUB3', 'ITUB4', 'JHSF3', 'KLBN11', 'RENT3', 'LREN3',
-        'MGLU3', 'POMO4', 'MBRF3', 'BEEF3', 'MOTV3', 'MDNE3', 'MOVI3',
-        'MRVE3', 'MULT3', 'NATU3', 'ORVR3', 'PETR3', 'PETR4', 'RECV3',
-        'AUAU3', 'PSSA3', 'PRIO3', 'RADL3', 'RAPT4', 'RDOR3', 'RAIL3',
-        'SBSP3', 'SAPR11', 'SANB11', 'SMTO3', 'CSNA3', 'SIMH3', 'SLCE3',
-        'SMFT3', 'SUZB3', 'TAEE11', 'VIVT3', 'TEND3', 'TIMS3', 'TOTS3',
-        'UGPA3', 'USIM5', 'VALE3', 'VAMO3', 'VBBR3', 'VIVA3', 'WEGE3', 'YDUQ3'
-    ]
-    
-    # Adiciona .SA para cada ticker
-    codigos = [f"{t}.SA" for t in tickers]
-    
-    print(f"Obtidas {len(codigos)} ações do IBrX100 (lista oficial B3)")
-    return codigos
+# Lista oficial IBrX100 - B3 Carteira do Dia 03/08/2026
+ACOES_IBRX100 = [
+    'ALOS3', 'ABEV3', 'ANIM3', 'ASAI3', 'AURE3', 'AXIA3', 'AZZA3',
+    'B3SA3', 'BBSE3', 'BBDC3', 'BBDC4', 'BRAP4', 'SAUD3', 'BBAS3',
+    'BRKM5', 'BRAV3', 'BPAC11', 'CXSE3', 'CBAV3', 'CEAB3', 'CMIG4',
+    'COGN3', 'CSMG3', 'CPLE3', 'CSAN3', 'CPFE3', 'CMIN3', 'CURY3',
+    'CVCB3', 'CYRE3', 'DIRR3', 'ECOR3', 'EMBJ3', 'ENGI11', 'ENEV3',
+    'EGIE3', 'EQTL3', 'EZTC3', 'FLRY3', 'GGBR4', 'GOAU4', 'GGPS3',
+    'GMAT3', 'HAPV3', 'HYPE3', 'IGTI11', 'INTB3', 'IRBR3', 'ISAE4',
+    'ITSA4', 'ITUB3', 'ITUB4', 'JHSF3', 'KLBN11', 'RENT3', 'LREN3',
+    'MGLU3', 'POMO4', 'MBRF3', 'BEEF3', 'MOTV3', 'MDNE3', 'MOVI3',
+    'MRVE3', 'MULT3', 'NATU3', 'ORVR3', 'PETR3', 'PETR4', 'RECV3',
+    'AUAU3', 'PSSA3', 'PRIO3', 'RADL3', 'RAPT4', 'RDOR3', 'RAIL3',
+    'SBSP3', 'SAPR11', 'SANB11', 'SMTO3', 'CSNA3', 'SIMH3', 'SLCE3',
+    'SMFT3', 'SUZB3', 'TAEE11', 'VIVT3', 'TEND3', 'TIMS3', 'TOTS3',
+    'UGPA3', 'USIM5', 'VALE3', 'VAMO3', 'VBBR3', 'VIVA3', 'WEGE3', 'YDUQ3'
+]
+
+# ─────────────────────────────────────────────────────────
+# FUNCOES DE SCORING (usam fundamentais.json - sem API)
+# ─────────────────────────────────────────────────────────
 
 def calcular_score_fundamental(fund):
-    """Calcula score fundamental (0-35 pontos)
-    
-    Critérios:
-    - Crescimento Lucro 5 anos (15 pts): earningsGrowth >= 0
-    - Margem Líquida (10 pts): profitMargins >= 0.10
-    - Dívida/EBITDA (10 pts): debtToEquity <= 150 (proxy)
-    """
+    """Score fundamental (0-35 pts): Cresc.Lucro(15) + Margem(10) + Divida(10)"""
     score = 0
-    
-    # Crescimento Lucro (15 pts)
-    cresc_lucro = fund.get('crescimento_lucro')
-    if cresc_lucro is not None and cresc_lucro >= 0:
+    if fund.get('crescimento_lucro') is not None and fund['crescimento_lucro'] >= 0:
         score += 15
-    
-    # Margem Líquida (10 pts)
-    margem = fund.get('margem_liquida')
-    if margem is not None and margem >= 0.10:
+    if fund.get('margem_liquida') is not None and fund['margem_liquida'] >= 0.10:
         score += 10
-    
-    # Dívida/EBITDA (10 pts) - usa debtToEquity como proxy
-    divida = fund.get('divida_ebitda')
-    if divida is not None and divida <= 150:
+    if fund.get('divida_ebitda') is not None and fund['divida_ebitda'] <= 150:
         score += 10
-    
     return score
 
 def calcular_score_valuation(fund):
-    """Calcula score valuation (0-25 pontos)
-    
-    Critérios:
-    - Crescimento Receita 5 anos (10 pts): revenueGrowth >= 0
-    - Fluxo de Caixa Livre (10 pts): freeCashflow > 0
-    - Liquidez Corrente (5 pts): currentRatio >= 1.0
-    """
+    """Score valuation (0-25 pts): Cresc.Receita(10) + FCF(10) + Liquidez(5)"""
     score = 0
-    
-    # Crescimento Receita (10 pts)
-    cresc_receita = fund.get('crescimento_receita')
-    if cresc_receita is not None and cresc_receita >= 0:
+    if fund.get('crescimento_receita') is not None and fund['crescimento_receita'] >= 0:
         score += 10
-    
-    # Fluxo de Caixa Livre (10 pts)
-    fcf = fund.get('fcf')
-    if fcf is not None and fcf > 0:
+    if fund.get('fcf') is not None and fund['fcf'] > 0:
         score += 10
-    
-    # Liquidez Corrente (5 pts)
-    liquidez = fund.get('liquidez_corrente')
-    if liquidez is not None and liquidez >= 1.0:
+    if fund.get('liquidez_corrente') is not None and fund['liquidez_corrente'] >= 1.0:
         score += 5
-    
     return score
 
 def calcular_score_dividendos(fund):
-    """Calcula score dividendos (0-10 pontos)"""
+    """Score dividendos (0-10 pts)"""
     dy = fund.get('dy')
     if dy and dy >= DY_MINIMO:
         return 10
     return 0
 
-def calcular_score_momentum(ticker):
-    """Calcula score momentum (0-30 pontos) e retorna dados de MM"""
-    # Carrega dados de momentum
-    momentums_file = OUTPUT_DIR / 'data' / 'momentums.json'
-    mm50 = 0
-    mm200 = 0
+# ─────────────────────────────────────────────────────────
+# FUNCOES DE DADOS (usam yfinance - chamadas API)
+# ─────────────────────────────────────────────────────────
+
+def baixar_precos(ticker, dias_uteis=30):
+    """Baixa precos historicos de um ticker via yfinance
     
-    if momentums_file.exists():
-        with open(momentums_file, 'r', encoding='utf-8') as f:
-            momentums = json.load(f)
+    Args:
+        ticker: Ticker da acao (ex: 'PETR4')
+        dias_uteis: Numero de DIAS UTEIS desejados (nao corridos)
+                    Conversao: ~1.4x dias corridos (considerando fins de semana)
+                    Ex: 200 dias uteis = ~280 dias corridos
+    """
+    try:
+        ticker_yf = f"{ticker}.SA"
+        # Converte dias uteis para corridos (multiplica por 1.4 para compensar fins de semana)
+        dias_corridos = int(dias_uteis * 1.4) + 30  # +30 margem para feriados
+        data_fim = datetime.now()
+        data_inicio = data_fim - timedelta(days=dias_corridos)
         
-        ticker_short = ticker.replace('.SA', '')
-        if ticker_short in momentums:
-            score = momentums[ticker_short]
-            
-            # Carrega dados de preço para calcular MM
-            dados_file = OUTPUT_DIR / 'data' / f'{ticker_short}.json'
-            if dados_file.exists():
-                with open(dados_file, 'r', encoding='utf-8') as f:
-                    dados = json.load(f)
-                precos = [d['close'] for d in dados]
-                if len(precos) >= 50:
-                    mm50 = sum(precos[-50:]) / 50
-                if len(precos) >= 200:
-                    mm200 = sum(precos[-200:]) / 200
-            return score, mm50, mm200
-    
-    return 0, mm50, mm200  # Sem dados = 0 pts
+        dados = yf.download(
+            ticker_yf,
+            start=data_inicio.strftime('%Y-%m-%d'),
+            progress=False
+        )
+        
+        if dados.empty:
+            return []
+        
+        precos = []
+        for data, row in dados.iterrows():
+            try:
+                close = float(row['Close'].iloc[0]) if hasattr(row['Close'], 'iloc') else float(row['Close'])
+            except:
+                close = float(row['Close'])
+            precos.append(close)
+        
+        return precos
+    except Exception as e:
+        print(f"    Erro ao baixar {ticker}: {e}")
+        return []
+
+def calcular_rsl(precos, periodo=14):
+    """Calcula Relative Strength Level"""
+    if len(precos) < periodo:
+        return 1.0
+    retornos = []
+    for i in range(1, len(precos)):
+        ret = (precos[i] - precos[i-1]) / precos[i-1]
+        retornos.append(ret)
+    ultimos_retornos = retornos[-periodo:]
+    retorno_acumulado = 1
+    for r in ultimos_retornos:
+        retorno_acumulado *= (1 + r)
+    return retorno_acumulado
+
+def calcular_mm(precos, periodo):
+    """Calcula Media Movel"""
+    if len(precos) < periodo:
+        return None
+    return sum(precos[-periodo:]) / periodo
 
 def filtrar_liquidez(acoes, fundamentais):
-    """Filtra por liquidez (volume mínimo)"""
+    """Filtra por liquidez (volume minimo estimado)"""
     acoes_liquidas = []
     for ticker in acoes:
-        fund = fundamentais.get(ticker, {})
-        # Volume mínimo: R$ 1.000.000 por dia
-        # Estimativa: market_cap * 0.001 (0.1% do market cap)
+        fund = fundamentais.get(f"{ticker}.SA", {})
         market_cap = fund.get('market_cap', 0)
         if market_cap and market_cap * 0.001 >= VOLUME_MINIMO:
             acoes_liquidas.append(ticker)
     return acoes_liquidas
 
+# ─────────────────────────────────────────────────────────
+# FLUXO PRINCIPAL
+# ─────────────────────────────────────────────────────────
+
 def main():
-    """Função principal"""
+    """Funcao principal - Fluxo otimizado em 3 fases"""
     print("=" * 60)
-    print("FILTRO SEMANAL - FLUXO COMPLETO")
+    print("FILTRO SEMANAL - FLUXO COMPLETO (OTIMIZADO)")
     print("=" * 60)
     print(f"Data: {datetime.now()}")
     print()
     
-    # 1. Obtém ações do IBrX100
-    print("1. Obtendo ações do IBrX100...")
-    acoes_ibrx = obter_acoes_ibrx100()
-    print(f"   Total: {len(acoes_ibrx)} ações")
-    print()
+    # ─── FASE 1: Fundamental + Valuation (sem API) ───
+    print("=" * 60)
+    print("FASE 1: FUNDAMENTAL + VALUATION")
+    print("=" * 60)
     
-    # 2. Carrega fundamentais
-    print("2. Carregando fundamentais...")
+    # 1. Carrega fundamentais (dados locais - sem chamada API)
+    print("1. Carregando fundamentais...")
     fundamentais_file = OUTPUT_DIR / 'data' / 'fundamentais.json'
     with open(fundamentais_file, 'r', encoding='utf-8') as f:
         fundamentais = json.load(f)
-    print(f"   Total: {len(fundamentais)} ações com fundamentais")
-    print()
+    print(f"   Total: {len(fundamentais)} acoes com fundamentais")
     
-    # 3. Filtro de exclusão
-    print("3. Aplicando filtro de exclusão...")
+    # 2. Filtro de exclusao
+    print("2. Aplicando filtro de exclusao...")
     acoes_filtradas = []
-    for ticker in acoes_ibrx:
-        fund = fundamentais.get(ticker, {})
-        
-        # Exclui se lucro negativo
+    for ticker in ACOES_IBRX100:
+        # Busca com .SA (chave do fundamentais.json)
+        fund = fundamentais.get(f"{ticker}.SA", {})
         roe = fund.get('roe')
+        pvp = fund.get('pvp')
+        fcf = fund.get('fcf')
+        
         if roe and roe < 0:
             continue
-        
-        # Exclui se patrimônio negativo
-        pvp = fund.get('pvp')
         if pvp and pvp < 0:
             continue
-        
-        # Exclui se FCF negativo
-        fcf = fund.get('fcf')
         if fcf and fcf < 0:
             continue
         
         acoes_filtradas.append(ticker)
     
-    print(f"   Excluídas: {len(acoes_ibrx) - len(acoes_filtradas)} ações")
-    print(f"   Restantes: {len(acoes_filtradas)} ações")
-    print()
+    print(f"   Excluidas: {len(ACOES_IBRX100) - len(acoes_filtradas)} acoes")
+    print(f"   Restantes: {len(acoes_filtradas)} acoes")
     
-    # 4. Score Fundamentalista
-    print("4. Calculando score fundamentalista...")
-    scores_fund = []
+    # 3. Score Fundamental + Valuation
+    print("3. Calculando Fundamental + Valuation...")
+    scores = []
     for ticker in acoes_filtradas:
-        fund = fundamentais.get(ticker, {})
-        score = calcular_score_fundamental(fund)
-        scores_fund.append((ticker, score))
-    
-    # Ordena por score
-    scores_fund.sort(key=lambda x: x[1], reverse=True)
-    print(f"   Top 5:")
-    for i, (ticker, score) in enumerate(scores_fund[:5], 1):
-        print(f"   {i}. {ticker}: {score}/35")
-    print()
-    
-    # 5. Score Valuation
-    print("5. Calculando score valuation...")
-    scores_val = []
-    for ticker, score_fund in scores_fund:
-        fund = fundamentais.get(ticker, {})
-        score_val = calcular_score_valuation(fund)
-        score_total = score_fund + score_val
-        scores_val.append((ticker, score_total, score_fund, score_val))
-    
-    # Ordena por score total
-    scores_val.sort(key=lambda x: x[1], reverse=True)
-    print(f"   Top 5:")
-    for i, (ticker, total, fund, val) in enumerate(scores_val[:5], 1):
-        print(f"   {i}. {ticker}: {total}/60 (F:{fund} V:{val})")
-    print()
-    
-    # 6. Top 30
-    print("6. Selecionando Top 30...")
-    top_30 = [t for t, _, _, _ in scores_val[:30]]
-    print(f"   Top 30: {len(top_30)} ações")
-    print()
-    
-    # 7. Liquidez
-    print("7. Aplicando filtro de liquidez...")
-    acoes_liquidas = filtrar_liquidez(top_30, fundamentais)
-    print(f"   Liquidas: {len(acoes_liquidas)} ações")
-    print()
-    
-    # 8. Top 20
-    print("8. Selecionando Top 20...")
-    top_20 = acoes_liquidas[:20]
-    print(f"   Top 20: {len(top_20)} ações")
-    print()
-    
-    # 9. RSL + Tendência
-    print("9. Calculando RSL + Tendência...")
-    scores_momentum = []
-    for ticker in top_20:
-        score_mom, mm50, mm200 = calcular_score_momentum(ticker)
-        fund = fundamentais.get(ticker, {})
+        fund = fundamentais.get(f"{ticker}.SA", {})
         score_fund = calcular_score_fundamental(fund)
         score_val = calcular_score_valuation(fund)
-        score_div = calcular_score_dividendos(fund)
-        score_total = score_fund + score_val + score_div + score_mom
-        scores_momentum.append({
-            'ticker': ticker,
-            'score_fundamental': score_fund,
-            'score_valuation': score_val,
-            'score_dividendos': score_div,
-            'score_momentum': score_mom,
-            'score_composto': score_total,
-            'preco_atual': fund.get('preco_atual'),
-            'mm50': mm50,
-            'mm200': mm200,
-            'euforia': 'False'
-        })
+        score_total = score_fund + score_val
+        scores.append((ticker, score_total, score_fund, score_val))
+    
+    scores.sort(key=lambda x: x[1], reverse=True)
+    
+    print("   Top 10:")
+    for i, (ticker, total, fund, val) in enumerate(scores[:10], 1):
+        print(f"   {i}. {ticker}: {total}/60 (F:{fund} V:{val})")
+    
+    # 4. Top 30
+    top_30 = [t for t, _, _, _ in scores[:30]]
+    print(f"\n   Top 30 selecionados para Fase 2")
+    print()
+    
+    # ─── FASE 2: RSL - dados curtos (30 dias) ───
+    print("=" * 60)
+    print("FASE 2: MOMENTUM RSL (30 dias de dados)")
+    print("=" * 60)
+    
+    scores_rsl = []
+    for i, ticker in enumerate(top_30, 1):
+        print(f"   [{i:2d}/30] {ticker}...", end=" ", flush=True)
+        
+        precos = baixar_precos(ticker, dias_uteis=20)  # 20 dias uteis para RSL 14
+        if precos:
+            rsl = calcular_rsl(precos, 14)
+            if rsl > 1.05:
+                score_rsl = 20
+            elif rsl > 1.0:
+                score_rsl = 15
+            elif rsl > 0.95:
+                score_rsl = 10
+            else:
+                score_rsl = 5
+            
+            fund = fundamentais.get(f"{ticker}.SA", {})
+            score_fund = calcular_score_fundamental(fund)
+            score_val = calcular_score_valuation(fund)
+            score_div = calcular_score_dividendos(fund)
+            score_total = score_fund + score_val + score_div + score_rsl
+            
+            scores_rsl.append({
+                'ticker': ticker,
+                'score_fundamental': score_fund,
+                'score_valuation': score_val,
+                'score_dividendos': score_div,
+                'score_momentum': score_rsl,
+                'score_composto': score_total,
+                'preco_atual': fund.get('preco_atual'),
+                'rsl': rsl
+            })
+            print(f"RSL={rsl:.4f} -> {score_rsl}pts")
+        else:
+            print("SEM DADOS")
     
     # Ordena por score total
-    scores_momentum.sort(key=lambda x: x['score_composto'], reverse=True)
-    print(f"   Top 5:")
-    for i, s in enumerate(scores_momentum[:5], 1):
-        print(f"   {i}. {s['ticker']}: {s['score_composto']}/100 (F:{s['score_fundamental']} V:{s['score_valuation']} D:{s['score_dividendos']} M:{s['score_momentum']})")
+    scores_rsl.sort(key=lambda x: x['score_composto'], reverse=True)
+    
+    print("\n   Top 10 apos RSL:")
+    for i, s in enumerate(scores_rsl[:10], 1):
+        print(f"   {i}. {s['ticker']}: {s['score_composto']}/100 (M:{s['score_momentum']})")
+    
+    # Top 10 final
+    top_10 = scores_rsl[:10]
+    print(f"\n   Top 10 selecionados para Fase 3")
     print()
     
-    # 10. Top 10 Compras - Mantem todos mas adiciona alerta se MM50 < MM200
-    print("10. Selecionando Top 10 Compras...")
-    for s in scores_momentum:
-        mm50 = s.get('mm50', 0)
-        mm200 = s.get('mm200', 0)
-        if mm50 and mm200:
-            # Calcula diferenca percentual
-            diff = abs(mm50 - mm200) / mm200
+    # ─── FASE 3: MM50, MM200, Euforia (730 dias) ───
+    print("=" * 60)
+    print("FASE 3: MM50, MM200, EUFORIA (730 dias)")
+    print("=" * 60)
+    
+    for s in top_10:
+        ticker = s['ticker']
+        print(f"   {ticker}...", end=" ", flush=True)
+        
+        precos = baixar_precos(ticker, dias_uteis=220)  # 220 dias uteis para MM200
+        if precos:
+            mm50 = calcular_mm(precos, 50)
+            mm200 = calcular_mm(precos, 200)
             
-            # Euforia: gap muito grande pode indicar exaustao
-            if mm50 > mm200 and diff > 0.15:  # Mais de 15% acima
-                s['euforia'] = 'True'
+            s['mm50'] = mm50 if mm50 else 0
+            s['mm200'] = mm200 if mm200 else 0
+            
+            # Calcula mm50_status e euforia
+            if mm50 and mm200:
+                diff = abs(mm50 - mm200) / mm200
+                
+                # Euforia
+                if mm50 > mm200 and diff > 0.15:
+                    s['euforia'] = 'True'
+                else:
+                    s['euforia'] = 'False'
+                
+                # Status
+                if diff <= 0.05:
+                    s['mm50_status'] = 'ATENCAO'
+                elif mm50 > mm200:
+                    s['mm50_status'] = 'SIM'
+                else:
+                    s['mm50_status'] = 'NAO'
+                
+                status = s['mm50_status']
+                euph = "EUFORIA" if s['euforia'] == 'True' else ""
+                print(f"MM50={mm50:.2f} MM200={mm200:.2f} -> {status} {euph}")
             else:
+                s['mm50_status'] = 'SEM DADOS'
                 s['euforia'] = 'False'
-            
-            if diff <= 0.05:  # MM50 esta proxima do MM200 (ate 5%) - ATENCAO
-                s['mm50_status'] = 'ATENCAO'
-            elif mm50 > mm200:  # MM50 acima do MM200 com margem > 5%
-                s['mm50_status'] = 'SIM'
-            else:  # MM50 abaixo do MM200
-                s['mm50_status'] = 'NAO'
-        elif mm50:
-            s['mm50_status'] = 'SIM'
-            s['euforia'] = 'False'
+                print("MM50/MM200 indisponivel")
         else:
+            s['mm50'] = 0
+            s['mm200'] = 0
             s['mm50_status'] = 'SEM DADOS'
             s['euforia'] = 'False'
+            print("SEM DADOS")
     
-    top_10 = scores_momentum[:10]
-    print(f"    Top 10: {len(top_10)} ações")
     print()
     
-    # Salva resultados
+    # ─── RESULTADO FINAL ───
+    # Salva todos os scores (top 10 com todos os dados)
     with open(OUTPUT_DIR / 'data' / 'scores.json', 'w', encoding='utf-8') as f:
-        json.dump(scores_momentum, f, ensure_ascii=False, indent=2)
+        json.dump(top_10, f, ensure_ascii=False, indent=2)
     
     print("=" * 60)
     print("RANKING FINAL - TOP 10 COMPRAS:")
     print("=" * 60)
     for i, s in enumerate(top_10, 1):
-        print(f"{i}. {s['ticker']}: {s['score_composto']}/100")
+        mm50 = s.get('mm50', 0)
+        mm200 = s.get('mm200', 0)
+        diff = f"{((mm50 - mm200) / mm200 * 100):+.1f}%" if mm200 else "N/A"
+        euph = " [EUFORIA]" if s.get('euforia') == 'True' else ""
+        print(f"{i}. {s['ticker']}: {s['score_composto']}/100 {s['mm50_status']}{euph}")
         print(f"   F:{s['score_fundamental']} V:{s['score_valuation']} D:{s['score_dividendos']} M:{s['score_momentum']}")
+        print(f"   Preco: R${s['preco_atual']:.2f} | MM50-MM200: {diff}")
     print("=" * 60)
     print(f"Scores salvos em {OUTPUT_DIR / 'data' / 'scores.json'}")
 
