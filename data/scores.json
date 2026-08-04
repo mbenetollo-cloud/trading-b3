@@ -1,17 +1,5 @@
 [
   {
-    "ticker": "ALPA4.SA",
-    "score_fundamental": 35,
-    "score_valuation": 25,
-    "score_dividendos": 10,
-    "score_momentum": 25,
-    "score_composto": 95,
-    "preco_atual": 12.48,
-    "mm50": 12.2498,
-    "mm200": 11.98665,
-    "euforia": "False"
-  },
-  {
     "ticker": "FLRY3.SA",
     "score_fundamental": 25,
     "score_valuation": 25,
@@ -36,18 +24,6 @@
     "euforia": "False"
   },
   {
-    "ticker": "PETR4.SA",
-    "score_fundamental": 20,
-    "score_valuation": 20,
-    "score_dividendos": 10,
-    "score_momentum": 30,
-    "score_composto": 80,
-    "preco_atual": 43.05,
-    "mm50": 40.4456,
-    "mm200": 37.50805,
-    "euforia": "False"
-  },
-  {
     "ticker": "PETR3.SA",
     "score_fundamental": 20,
     "score_valuation": 20,
@@ -57,6 +33,18 @@
     "preco_atual": 48.62,
     "mm50": 45.263999999999996,
     "mm200": 41.01875,
+    "euforia": "False"
+  },
+  {
+    "ticker": "PETR4.SA",
+    "score_fundamental": 20,
+    "score_valuation": 20,
+    "score_dividendos": 10,
+    "score_momentum": 30,
+    "score_composto": 80,
+    "preco_atual": 43.05,
+    "mm50": 40.4456,
+    "mm200": 37.50805,
     "euforia": "False"
   },
   {
@@ -72,6 +60,18 @@
     "euforia": "False"
   },
   {
+    "ticker": "EZTC3.SA",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_momentum": 5,
+    "score_composto": 75,
+    "preco_atual": 11.42,
+    "mm50": 12.6118,
+    "mm200": 13.857149999999999,
+    "euforia": "False"
+  },
+  {
     "ticker": "MULT3.SA",
     "score_fundamental": 35,
     "score_valuation": 25,
@@ -84,15 +84,15 @@
     "euforia": "False"
   },
   {
-    "ticker": "EZTC3.SA",
+    "ticker": "B3SA3.SA",
     "score_fundamental": 35,
     "score_valuation": 25,
     "score_dividendos": 10,
-    "score_momentum": 5,
-    "score_composto": 75,
-    "preco_atual": 11.42,
-    "mm50": 12.6118,
-    "mm200": 13.857149999999999,
+    "score_momentum": 0,
+    "score_composto": 70,
+    "preco_atual": 15.62,
+    "mm50": 0,
+    "mm200": 0,
     "euforia": "False"
   },
   {
@@ -132,18 +132,6 @@
     "euforia": "False"
   },
   {
-    "ticker": "COGN3.SA",
-    "score_fundamental": 25,
-    "score_valuation": 25,
-    "score_dividendos": 10,
-    "score_momentum": 0,
-    "score_composto": 60,
-    "preco_atual": 2.33,
-    "mm50": 0,
-    "mm200": 0,
-    "euforia": "False"
-  },
-  {
     "ticker": "BBSE3.SA",
     "score_fundamental": 25,
     "score_valuation": 25,
@@ -151,6 +139,18 @@
     "score_momentum": 0,
     "score_composto": 60,
     "preco_atual": 41.36,
+    "mm50": 0,
+    "mm200": 0,
+    "euforia": "False"
+  },
+  {
+    "ticker": "COGN3.SA",
+    "score_fundamental": 25,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_momentum": 0,
+    "score_composto": 60,
+    "preco_atual": 2.33,
     "mm50": 0,
     "mm200": 0,
     "euforia": "False"
@@ -180,18 +180,6 @@
     "euforia": "False"
   },
   {
-    "ticker": "RENT3.SA",
-    "score_fundamental": 15,
-    "score_valuation": 25,
-    "score_dividendos": 10,
-    "score_momentum": 0,
-    "score_composto": 50,
-    "preco_atual": 38.1,
-    "mm50": 0,
-    "mm200": 0,
-    "euforia": "False"
-  },
-  {
     "ticker": "ASAI3.SA",
     "score_fundamental": 15,
     "score_valuation": 25,
@@ -199,6 +187,18 @@
     "score_momentum": 0,
     "score_composto": 50,
     "preco_atual": 8.55,
+    "mm50": 0,
+    "mm200": 0,
+    "euforia": "False"
+  },
+  {
+    "ticker": "RENT3.SA",
+    "score_fundamental": 15,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_momentum": 0,
+    "score_composto": 50,
+    "preco_atual": 38.1,
     "mm50": 0,
     "mm200": 0,
     "euforia": "False"
