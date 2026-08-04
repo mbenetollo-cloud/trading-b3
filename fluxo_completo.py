@@ -301,6 +301,13 @@ def main():
         if mm50 and mm200:
             # Calcula diferenca percentual
             diff = abs(mm50 - mm200) / mm200
+            
+            # Euforia: gap muito grande pode indicar exaustao
+            if mm50 > mm200 and diff > 0.15:  # Mais de 15% acima
+                s['euforia'] = 'True'
+            else:
+                s['euforia'] = 'False'
+            
             if diff <= 0.05:  # MM50 esta proxima do MM200 (ate 5%) - ATENCAO
                 s['mm50_status'] = 'ATENCAO'
             elif mm50 > mm200:  # MM50 acima do MM200 com margem > 5%
@@ -309,8 +316,10 @@ def main():
                 s['mm50_status'] = 'NAO'
         elif mm50:
             s['mm50_status'] = 'SIM'
+            s['euforia'] = 'False'
         else:
             s['mm50_status'] = 'SEM DADOS'
+            s['euforia'] = 'False'
     
     top_10 = scores_momentum[:10]
     print(f"    Top 10: {len(top_10)} ações")

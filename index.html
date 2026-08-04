@@ -176,6 +176,7 @@
         .score-excelente { color: #3fb950; }
         .score-bom { color: #58a6ff; }
         .atencao { color: #f0883e; font-weight: bold; }
+        .euforia-alerta { color: #f85149; font-weight: bold; background: rgba(248, 81, 73, 0.15); }
         .sim { color: #3fb950; }
         .nao { color: #f85149; }
         .sem-dados { color: #8b949e; }
@@ -677,6 +678,7 @@
                     
                     // Status euforia
                     const euforia = item.euforia === 'True' ? 'SIM' : 'NAO';
+                    const euforiaClass = item.euforia === 'True' ? 'euforia-alerta' : '';
                     
                     // MM50 Acima? (usa mm50_status do JSON ou verifica)
                     const mm50 = item.mm50 || 0;
@@ -705,7 +707,7 @@
                         <td>${item.score_valuation || '-'}</td>
                         <td>${item.score_liquidez || '-'}</td>
                         <td>${item.score_momentum || '-'}</td>
-                        <td>${euforia}</td>
+                        <td class="${euforiaClass}">${euforia}</td>
                         <td>${mm50Acima}</td>
                         <td>${preco}</td>
                         <td>-</td>
