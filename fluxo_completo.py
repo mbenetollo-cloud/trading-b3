@@ -293,8 +293,25 @@ def main():
         print(f"   {i}. {s['ticker']}: {s['score_composto']}/100 (F:{s['score_fundamental']} V:{s['score_valuation']} D:{s['score_dividendos']} M:{s['score_momentum']})")
     print()
     
-    # 10. Top 10 Compras
+    # 10. Top 10 Compras - Mantem todos mas adiciona alerta se MM50 < MM200
     print("10. Selecionando Top 10 Compras...")
+    for s in scores_momentum:
+        mm50 = s.get('mm50', 0)
+        mm200 = s.get('mm200', 0)
+        if mm50 and mm200:
+            # Calcula diferenca percentual
+            diff = abs(mm50 - mm200) / mm200
+            if mm50 > mm200:
+                s['mm50_status'] = 'SIM'
+            elif diff <= 0.05:  # MM50 esta proxima do MM200 (ate 5%)
+                s['mm50_status'] = 'ATENCAO'
+            else:
+                s['mm50_status'] = 'NAO'
+        elif mm50:
+            s['mm50_status'] = 'SIM'
+        else:
+            s['mm50_status'] = 'SEM DADOS'
+    
     top_10 = scores_momentum[:10]
     print(f"    Top 10: {len(top_10)} ações")
     print()

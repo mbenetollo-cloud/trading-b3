@@ -177,6 +177,7 @@
         .score-bom { color: #58a6ff; }
         .atencao { color: #f0883e; font-weight: bold; }
         .sim { color: #3fb950; }
+        .nao { color: #f85149; }
         .sem-dados { color: #8b949e; }
         .score-moderado { color: #d29922; }
         .score-fraco { color: #f85149; }
@@ -688,6 +689,9 @@
                     } else if (item.mm50_status === 'SIM' || mm50 > mm200) {
                         mm50Acima = 'SIM';
                         mm50Class = 'sim';
+                    } else if (item.mm50_status === 'NAO') {
+                        mm50Acima = 'NAO';
+                        mm50Class = 'nao';
                     } else if (item.mm50_status === 'SEM DADOS') {
                         mm50Acima = 'SEM DADOS';
                         mm50Class = 'sem-dados';
