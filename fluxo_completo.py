@@ -301,11 +301,11 @@ def main():
         if mm50 and mm200:
             # Calcula diferenca percentual
             diff = abs(mm50 - mm200) / mm200
-            if mm50 > mm200:
-                s['mm50_status'] = 'SIM'
-            elif diff <= 0.05:  # MM50 esta proxima do MM200 (ate 5%)
+            if diff <= 0.05:  # MM50 esta proxima do MM200 (ate 5%) - ATENCAO
                 s['mm50_status'] = 'ATENCAO'
-            else:
+            elif mm50 > mm200:  # MM50 acima do MM200 com margem > 5%
+                s['mm50_status'] = 'SIM'
+            else:  # MM50 abaixo do MM200
                 s['mm50_status'] = 'NAO'
         elif mm50:
             s['mm50_status'] = 'SIM'

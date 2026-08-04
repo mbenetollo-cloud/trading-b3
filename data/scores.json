@@ -75,7 +75,7 @@
     "mm50": 13.2164,
     "mm200": 12.703800000000001,
     "euforia": "False",
-    "mm50_status": "SIM"
+    "mm50_status": "ATENCAO"
   },
   {
     "ticker": "FLRY3.SA",
@@ -88,7 +88,7 @@
     "mm50": 15.7872,
     "mm200": 15.68155,
     "euforia": "False",
-    "mm50_status": "SIM"
+    "mm50_status": "ATENCAO"
   },
   {
     "ticker": "ABEV3.SA",
@@ -244,7 +244,7 @@
     "mm50": 14.259400000000001,
     "mm200": 14.231,
     "euforia": "False",
-    "mm50_status": "SIM"
+    "mm50_status": "ATENCAO"
   },
   {
     "ticker": "POMO4.SA",
