@@ -6,26 +6,14 @@
     "score_dividendos": 10,
     "score_momentum": 20,
     "score_composto": 90,
-    "preco_atual": 31.65,
+    "preco_atual": 31.79,
     "rsl": 1.0625000278898737,
     "mm50": 29.670697860717773,
-    "mm200": 36.834704084396364,
+    "mm200": 36.83470391273499,
     "euforia": "False",
-    "mm50_status": "NAO"
-  },
-  {
-    "ticker": "ABEV3",
-    "score_fundamental": 35,
-    "score_valuation": 25,
-    "score_dividendos": 10,
-    "score_momentum": 15,
-    "score_composto": 85,
-    "preco_atual": 15.86,
-    "rsl": 1.019267835363837,
-    "mm50": 16.097762565612793,
-    "mm200": 14.749688243865966,
-    "euforia": "False",
-    "mm50_status": "SIM"
+    "mm50_status": "NAO",
+    "comprar": false,
+    "motivo_nao_compra": "MM50 abaixo MM200"
   },
   {
     "ticker": "B3SA3",
@@ -34,12 +22,14 @@
     "score_dividendos": 10,
     "score_momentum": 15,
     "score_composto": 85,
-    "preco_atual": 15.75,
+    "preco_atual": 15.7,
     "rsl": 1.0006373632344987,
     "mm50": 15.189165496826172,
-    "mm200": 15.431961994171143,
+    "mm200": 15.4319619846344,
     "euforia": "False",
-    "mm50_status": "ATENCAO"
+    "mm50_status": "ATENCAO",
+    "comprar": false,
+    "motivo_nao_compra": "MM50 abaixo MM200"
   },
   {
     "ticker": "JHSF3",
@@ -48,12 +38,14 @@
     "score_dividendos": 10,
     "score_momentum": 15,
     "score_composto": 85,
-    "preco_atual": 11.0,
+    "preco_atual": 10.93,
     "rsl": 1.0211557095182917,
     "mm50": 10.861281929016114,
-    "mm200": 9.273347477912903,
+    "mm200": 9.273347434997559,
     "euforia": "True",
-    "mm50_status": "SIM"
+    "mm50_status": "SIM",
+    "comprar": false,
+    "motivo_nao_compra": "Euforia (gap >15%)"
   },
   {
     "ticker": "CPFE3",
@@ -62,12 +54,14 @@
     "score_dividendos": 10,
     "score_momentum": 10,
     "score_composto": 80,
-    "preco_atual": 46.53,
+    "preco_atual": 46.35,
     "rsl": 0.9897500888711206,
     "mm50": 44.96619956970215,
     "mm200": 45.37980159759522,
     "euforia": "False",
-    "mm50_status": "ATENCAO"
+    "mm50_status": "ATENCAO",
+    "comprar": false,
+    "motivo_nao_compra": "MM50 abaixo MM200"
   },
   {
     "ticker": "CURY3",
@@ -76,12 +70,14 @@
     "score_dividendos": 10,
     "score_momentum": 10,
     "score_composto": 80,
-    "preco_atual": 31.22,
+    "preco_atual": 31.75,
     "rsl": 0.9700580642852838,
     "mm50": 32.06040023803711,
-    "mm200": 32.94506541252136,
+    "mm200": 32.945065307617185,
     "euforia": "False",
-    "mm50_status": "ATENCAO"
+    "mm50_status": "ATENCAO",
+    "comprar": false,
+    "motivo_nao_compra": "MM50 abaixo MM200"
   },
   {
     "ticker": "MULT3",
@@ -90,12 +86,14 @@
     "score_dividendos": 10,
     "score_momentum": 10,
     "score_composto": 80,
-    "preco_atual": 28.94,
+    "preco_atual": 29.07,
     "rsl": 0.9774714162256112,
     "mm50": 28.710970191955568,
     "mm200": 29.63026626586914,
     "euforia": "False",
-    "mm50_status": "ATENCAO"
+    "mm50_status": "ATENCAO",
+    "comprar": false,
+    "motivo_nao_compra": "MM50 abaixo MM200"
   },
   {
     "ticker": "TEND3",
@@ -104,12 +102,14 @@
     "score_dividendos": 10,
     "score_momentum": 10,
     "score_composto": 80,
-    "preco_atual": 31.63,
+    "preco_atual": 31.86,
     "rsl": 0.9642857060387899,
     "mm50": 33.10900009155274,
     "mm200": 28.800175275802612,
     "euforia": "False",
-    "mm50_status": "SIM"
+    "mm50_status": "SIM",
+    "comprar": true,
+    "motivo_nao_compra": null
   },
   {
     "ticker": "FLRY3",
@@ -118,12 +118,14 @@
     "score_dividendos": 10,
     "score_momentum": 20,
     "score_composto": 80,
-    "preco_atual": 17.65,
+    "preco_atual": 17.49,
     "rsl": 1.0593579363204348,
     "mm50": 15.788999862670899,
     "mm200": 15.682049398422242,
     "euforia": "False",
-    "mm50_status": "ATENCAO"
+    "mm50_status": "ATENCAO",
+    "comprar": true,
+    "motivo_nao_compra": null
   },
   {
     "ticker": "INTB3",
@@ -132,11 +134,29 @@
     "score_dividendos": 10,
     "score_momentum": 20,
     "score_composto": 80,
-    "preco_atual": 14.82,
+    "preco_atual": 15.02,
     "rsl": 1.150883355792553,
     "mm50": 13.217107982635499,
     "mm200": 12.704373321533204,
     "euforia": "False",
-    "mm50_status": "ATENCAO"
+    "mm50_status": "ATENCAO",
+    "comprar": true,
+    "motivo_nao_compra": null
+  },
+  {
+    "ticker": "VBBR3",
+    "score_fundamental": 25,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_momentum": 20,
+    "score_composto": 80,
+    "preco_atual": 35.44,
+    "rsl": 1.0500740333839702,
+    "mm50": 31.317289428710936,
+    "mm200": 28.434167747497558,
+    "euforia": "False",
+    "mm50_status": "SIM",
+    "comprar": true,
+    "motivo_nao_compra": null
   }
 ]
