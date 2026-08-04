@@ -9,7 +9,8 @@
     "preco_atual": 31.65,
     "mm50": 29.6602,
     "mm200": 36.93955,
-    "euforia": "False"
+    "euforia": "False",
+    "mm50_status": "ATENCAO"
   },
   {
     "ticker": "B3SA3.SA",
@@ -21,7 +22,8 @@
     "preco_atual": 15.75,
     "mm50": 15.2314,
     "mm200": 15.39625,
-    "euforia": "False"
+    "euforia": "False",
+    "mm50_status": "ATENCAO"
   },
   {
     "ticker": "FLRY3.SA",
@@ -33,7 +35,8 @@
     "preco_atual": 17.65,
     "mm50": 15.725999999999999,
     "mm200": 15.654000000000002,
-    "euforia": "False"
+    "euforia": "False",
+    "mm50_status": "SIM"
   },
   {
     "ticker": "ABEV3.SA",
@@ -45,7 +48,73 @@
     "preco_atual": 15.86,
     "mm50": 16.1126,
     "mm200": 14.70365,
-    "euforia": "False"
+    "euforia": "False",
+    "mm50_status": "SIM"
+  },
+  {
+    "ticker": "CXSE3.SA",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_momentum": 15,
+    "score_composto": 85,
+    "preco_atual": 19.84,
+    "mm50": 0,
+    "mm200": 0,
+    "euforia": "False",
+    "mm50_status": "SEM DADOS"
+  },
+  {
+    "ticker": "CPFE3.SA",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_momentum": 15,
+    "score_composto": 85,
+    "preco_atual": 46.53,
+    "mm50": 0,
+    "mm200": 0,
+    "euforia": "False",
+    "mm50_status": "SEM DADOS"
+  },
+  {
+    "ticker": "CURY3.SA",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_momentum": 15,
+    "score_composto": 85,
+    "preco_atual": 31.22,
+    "mm50": 0,
+    "mm200": 0,
+    "euforia": "False",
+    "mm50_status": "SEM DADOS"
+  },
+  {
+    "ticker": "JHSF3.SA",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_momentum": 15,
+    "score_composto": 85,
+    "preco_atual": 11.0,
+    "mm50": 0,
+    "mm200": 0,
+    "euforia": "False",
+    "mm50_status": "SEM DADOS"
+  },
+  {
+    "ticker": "TEND3.SA",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_momentum": 15,
+    "score_composto": 85,
+    "preco_atual": 31.63,
+    "mm50": 0,
+    "mm200": 0,
+    "euforia": "False",
+    "mm50_status": "SEM DADOS"
   },
   {
     "ticker": "BBSE3.SA",
@@ -57,7 +126,34 @@
     "preco_atual": 41.92,
     "mm50": 38.5604,
     "mm200": 34.6616,
-    "euforia": "False"
+    "euforia": "False",
+    "mm50_status": "SIM"
+  },
+  {
+    "ticker": "ALOS3.SA",
+    "score_fundamental": 35,
+    "score_valuation": 20,
+    "score_dividendos": 10,
+    "score_momentum": 15,
+    "score_composto": 80,
+    "preco_atual": 27.51,
+    "mm50": 0,
+    "mm200": 0,
+    "euforia": "False",
+    "mm50_status": "SEM DADOS"
+  },
+  {
+    "ticker": "TIMS3.SA",
+    "score_fundamental": 35,
+    "score_valuation": 20,
+    "score_dividendos": 10,
+    "score_momentum": 15,
+    "score_composto": 80,
+    "preco_atual": 18.84,
+    "mm50": 0,
+    "mm200": 0,
+    "euforia": "False",
+    "mm50_status": "SEM DADOS"
   },
   {
     "ticker": "EZTC3.SA",
@@ -69,7 +165,8 @@
     "preco_atual": 11.25,
     "mm50": 12.6118,
     "mm200": 13.857149999999999,
-    "euforia": "False"
+    "euforia": "False",
+    "mm50_status": "ATENCAO"
   },
   {
     "ticker": "MULT3.SA",
@@ -81,67 +178,47 @@
     "preco_atual": 28.94,
     "mm50": 28.743000000000002,
     "mm200": 29.6043,
-    "euforia": "False"
+    "euforia": "False",
+    "mm50_status": "ATENCAO"
   },
   {
-    "ticker": "CXSE3.SA",
+    "ticker": "INTB3.SA",
     "score_fundamental": 35,
-    "score_valuation": 25,
+    "score_valuation": 15,
     "score_dividendos": 10,
-    "score_momentum": 0,
-    "score_composto": 70,
-    "preco_atual": 19.84,
+    "score_momentum": 15,
+    "score_composto": 75,
+    "preco_atual": 14.82,
     "mm50": 0,
     "mm200": 0,
-    "euforia": "False"
+    "euforia": "False",
+    "mm50_status": "SEM DADOS"
   },
   {
-    "ticker": "CPFE3.SA",
+    "ticker": "POMO4.SA",
     "score_fundamental": 35,
-    "score_valuation": 25,
+    "score_valuation": 15,
     "score_dividendos": 10,
-    "score_momentum": 0,
-    "score_composto": 70,
-    "preco_atual": 46.53,
+    "score_momentum": 15,
+    "score_composto": 75,
+    "preco_atual": 4.83,
     "mm50": 0,
     "mm200": 0,
-    "euforia": "False"
+    "euforia": "False",
+    "mm50_status": "SEM DADOS"
   },
   {
-    "ticker": "CURY3.SA",
-    "score_fundamental": 35,
+    "ticker": "CPLE3.SA",
+    "score_fundamental": 25,
     "score_valuation": 25,
     "score_dividendos": 10,
-    "score_momentum": 0,
-    "score_composto": 70,
-    "preco_atual": 31.22,
+    "score_momentum": 15,
+    "score_composto": 75,
+    "preco_atual": 14.93,
     "mm50": 0,
     "mm200": 0,
-    "euforia": "False"
-  },
-  {
-    "ticker": "JHSF3.SA",
-    "score_fundamental": 35,
-    "score_valuation": 25,
-    "score_dividendos": 10,
-    "score_momentum": 0,
-    "score_composto": 70,
-    "preco_atual": 11.0,
-    "mm50": 0,
-    "mm200": 0,
-    "euforia": "False"
-  },
-  {
-    "ticker": "TEND3.SA",
-    "score_fundamental": 35,
-    "score_valuation": 25,
-    "score_dividendos": 10,
-    "score_momentum": 0,
-    "score_composto": 70,
-    "preco_atual": 31.63,
-    "mm50": 0,
-    "mm200": 0,
-    "euforia": "False"
+    "euforia": "False",
+    "mm50_status": "SEM DADOS"
   },
   {
     "ticker": "VIVT3.SA",
@@ -153,7 +230,8 @@
     "preco_atual": 31.96,
     "mm50": 33.924,
     "mm200": 34.69225,
-    "euforia": "False"
+    "euforia": "False",
+    "mm50_status": "ATENCAO"
   },
   {
     "ticker": "COGN3.SA",
@@ -165,7 +243,8 @@
     "preco_atual": 2.3,
     "mm50": 2.316,
     "mm200": 3.0104,
-    "euforia": "False"
+    "euforia": "False",
+    "mm50_status": "ATENCAO"
   },
   {
     "ticker": "LREN3.SA",
@@ -177,66 +256,7 @@
     "preco_atual": 13.88,
     "mm50": 14.310599999999999,
     "mm200": 14.228,
-    "euforia": "False"
-  },
-  {
-    "ticker": "ALOS3.SA",
-    "score_fundamental": 35,
-    "score_valuation": 20,
-    "score_dividendos": 10,
-    "score_momentum": 0,
-    "score_composto": 65,
-    "preco_atual": 27.51,
-    "mm50": 0,
-    "mm200": 0,
-    "euforia": "False"
-  },
-  {
-    "ticker": "TIMS3.SA",
-    "score_fundamental": 35,
-    "score_valuation": 20,
-    "score_dividendos": 10,
-    "score_momentum": 0,
-    "score_composto": 65,
-    "preco_atual": 18.84,
-    "mm50": 0,
-    "mm200": 0,
-    "euforia": "False"
-  },
-  {
-    "ticker": "INTB3.SA",
-    "score_fundamental": 35,
-    "score_valuation": 15,
-    "score_dividendos": 10,
-    "score_momentum": 0,
-    "score_composto": 60,
-    "preco_atual": 14.82,
-    "mm50": 0,
-    "mm200": 0,
-    "euforia": "False"
-  },
-  {
-    "ticker": "POMO4.SA",
-    "score_fundamental": 35,
-    "score_valuation": 15,
-    "score_dividendos": 10,
-    "score_momentum": 0,
-    "score_composto": 60,
-    "preco_atual": 4.83,
-    "mm50": 0,
-    "mm200": 0,
-    "euforia": "False"
-  },
-  {
-    "ticker": "CPLE3.SA",
-    "score_fundamental": 25,
-    "score_valuation": 25,
-    "score_dividendos": 10,
-    "score_momentum": 0,
-    "score_composto": 60,
-    "preco_atual": 14.93,
-    "mm50": 0,
-    "mm200": 0,
-    "euforia": "False"
+    "euforia": "False",
+    "mm50_status": "SIM"
   }
 ]

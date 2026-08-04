@@ -175,6 +175,9 @@
         
         .score-excelente { color: #3fb950; }
         .score-bom { color: #58a6ff; }
+        .atencao { color: #f0883e; font-weight: bold; }
+        .sim { color: #3fb950; }
+        .sem-dados { color: #8b949e; }
         .score-moderado { color: #d29922; }
         .score-fraco { color: #f85149; }
         
@@ -316,7 +319,7 @@
                 <h1>Sistema Trading B3</h1>
                 <div class="subtitle">Indice IBrX100 | Filtros Progressivos</div>
             </div>
-            <div class="update-time">Ultima atualizacao: 02/08/2026</div>
+            <div class="update-time" id="ultima-atualizacao">Ultima atualizacao: --</div>
         </div>
         
         <!-- Metricas -->
@@ -674,10 +677,21 @@
                     // Status euforia
                     const euforia = item.euforia === 'True' ? 'SIM' : 'NAO';
                     
-                    // MM50 Acima? (verifica se MM50 > MM200)
+                    // MM50 Acima? (usa mm50_status do JSON ou verifica)
                     const mm50 = item.mm50 || 0;
                     const mm200 = item.mm200 || 0;
-                    const mm50Acima = mm50 > mm200 ? 'SIM' : 'NAO';
+                    let mm50Acima = 'NAO';
+                    let mm50Class = '';
+                    if (item.mm50_status === 'ATENCAO') {
+                        mm50Acima = 'ATENCAO!';
+                        mm50Class = 'atencao';
+                    } else if (item.mm50_status === 'SIM' || mm50 > mm200) {
+                        mm50Acima = 'SIM';
+                        mm50Class = 'sim';
+                    } else if (item.mm50_status === 'SEM DADOS') {
+                        mm50Acima = 'SEM DADOS';
+                        mm50Class = 'sem-dados';
+                    }
                     
                     tr.innerHTML = `
                         <td>${index + 1}</td>
