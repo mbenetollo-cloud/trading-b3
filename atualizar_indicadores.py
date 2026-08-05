@@ -188,5 +188,34 @@ def main():
     print(f"  ATENCAO (indefinido): {atencao_count}")
     print(f"  EUFORIA (gap > 15%): {euphoria_count}")
 
+    # ─── AUTO-COMMIT ───
+    print()
+    print("=" * 60)
+    print("COMMIT AUTOMÁTICO...")
+    print("=" * 60)
+    
+    import subprocess
+    try:
+        subprocess.run(['git', 'add', 'data/indicadores.json'], 
+                      cwd=OUTPUT_DIR, capture_output=True, check=True)
+        
+        data_str = datetime.now().strftime('%d/%m/%Y %H:%M')
+        msg = f"update: Indicadores {data_str}"
+        result = subprocess.run(['git', 'commit', '-m', msg], 
+                               cwd=OUTPUT_DIR, capture_output=True, text=True)
+        
+        if result.returncode == 0:
+            print("   Commit realizado com sucesso!")
+            result = subprocess.run(['git', 'push', 'origin', 'master'], 
+                                   cwd=OUTPUT_DIR, capture_output=True, text=True)
+            if result.returncode == 0:
+                print("   Push realizado com sucesso!")
+            else:
+                print(f"   Erro no push: {result.stderr}")
+        else:
+            print("   Nenhuma alteração para commitar")
+    except Exception as e:
+        print(f"   Erro no auto-commit: {e}")
+
 if __name__ == '__main__':
     main()
