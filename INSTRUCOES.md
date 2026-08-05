@@ -2,9 +2,9 @@
 
 ## Regras Fundamentais
 1. NUNCA usar dados de simulação em produção
-2. DY deve ser decimal (0.02 = 2%), não percentual
+2. DY deve ser percentual (2.0 = 2%), não decimal (0.02)
 3. MM50/MM200 é FILTRO de compra, não apenas componente de score
-4. DY_MINIMO = 2.0 (2%), não 0.02
+4. DY_MINIMO = 2.0 (2%)
 5. Sempre commitar alterações imediatamente
 6. Documentar mudanças no INSTRUCOES.md
 
@@ -24,8 +24,8 @@
 - Filtros: Lucro negativo, Patrimônio negativo, FCF negativo
 
 ## Fontes de Dados
-- **Investidor10**: Calendário de dividendos
-- **Yahoo Finance**: Preços, fundamentais, indicadores
+- **Yahoo Finance (yfinance)**: Preços, fundamentais, indicadores, dividendos
+- *Nota: Investidor10 era fonte planejada mas é JS-rendered, inacessível*
 
 ## Histórico de Alterações
 - 04/08/2026: Corrigido bug DY, adicionado filtro compra MM50/Euforia
