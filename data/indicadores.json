@@ -1,0 +1,992 @@
+{
+  "ALOS3": {
+    "ticker": "ALOS3",
+    "preco_atual": 27.57,
+    "mm50": 27.07,
+    "mm200": 27.38,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9873,
+    "data_atualizacao": "2026-08-04T21:00:37.830179"
+  },
+  "ABEV3": {
+    "ticker": "ABEV3",
+    "preco_atual": 15.87,
+    "mm50": 16.1,
+    "mm200": 14.75,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 1.0193,
+    "data_atualizacao": "2026-08-04T21:00:38.637354"
+  },
+  "ANIM3": {
+    "ticker": "ANIM3",
+    "preco_atual": 2.19,
+    "mm50": 2.67,
+    "mm200": 3.61,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.1347,
+    "data_atualizacao": "2026-08-04T21:00:39.412709"
+  },
+  "ASAI3": {
+    "ticker": "ASAI3",
+    "preco_atual": 8.66,
+    "mm50": 8.45,
+    "mm200": 8.54,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 1.0,
+    "data_atualizacao": "2026-08-04T21:00:42.454980"
+  },
+  "AURE3": {
+    "ticker": "AURE3",
+    "preco_atual": 11.28,
+    "mm50": 11.69,
+    "mm200": 11.98,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9408,
+    "data_atualizacao": "2026-08-04T21:00:43.009360"
+  },
+  "AXIA3": {
+    "ticker": "AXIA3",
+    "preco_atual": 53.71,
+    "mm50": 52.41,
+    "mm200": 56.54,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0653,
+    "data_atualizacao": "2026-08-04T21:00:43.892894"
+  },
+  "AZZA3": {
+    "ticker": "AZZA3",
+    "preco_atual": 16.04,
+    "mm50": 17.92,
+    "mm200": 22.84,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.8596,
+    "data_atualizacao": "2026-08-04T21:00:45.594636"
+  },
+  "B3SA3": {
+    "ticker": "B3SA3",
+    "preco_atual": 15.7,
+    "mm50": 15.19,
+    "mm200": 15.43,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 1.0006,
+    "data_atualizacao": "2026-08-04T21:00:47.408318"
+  },
+  "BBSE3": {
+    "ticker": "BBSE3",
+    "preco_atual": 42.07,
+    "mm50": 38.85,
+    "mm200": 34.78,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 1.0334,
+    "data_atualizacao": "2026-08-04T21:00:48.978925"
+  },
+  "BBDC3": {
+    "ticker": "BBDC3",
+    "preco_atual": 15.95,
+    "mm50": 15.52,
+    "mm200": 15.76,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9784,
+    "data_atualizacao": "2026-08-04T21:00:50.107476"
+  },
+  "BBDC4": {
+    "ticker": "BBDC4",
+    "preco_atual": 18.22,
+    "mm50": 17.82,
+    "mm200": 18.29,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9806,
+    "data_atualizacao": "2026-08-04T21:00:50.735803"
+  },
+  "BRAP4": {
+    "ticker": "BRAP4",
+    "preco_atual": 21.87,
+    "mm50": 22.1,
+    "mm200": 21.49,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 1.0046,
+    "data_atualizacao": "2026-08-04T21:00:51.541252"
+  },
+  "SAUD3": {
+    "ticker": "SAUD3",
+    "preco_atual": 14.23,
+    "mm50": 14.19,
+    "mm200": 13.01,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 0.927,
+    "data_atualizacao": "2026-08-04T21:00:52.344992"
+  },
+  "BBAS3": {
+    "ticker": "BBAS3",
+    "preco_atual": 20.99,
+    "mm50": 20.13,
+    "mm200": 21.98,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0214,
+    "data_atualizacao": "2026-08-04T21:00:53.136425"
+  },
+  "BRKM5": {
+    "ticker": "BRKM5",
+    "preco_atual": 5.83,
+    "mm50": 7.46,
+    "mm200": 8.58,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9095,
+    "data_atualizacao": "2026-08-04T21:00:53.904075"
+  },
+  "BRAV3": {
+    "ticker": "BRAV3",
+    "preco_atual": 18.95,
+    "mm50": 19.81,
+    "mm200": 17.81,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 0.9451,
+    "data_atualizacao": "2026-08-04T21:00:54.622302"
+  },
+  "BPAC11": {
+    "ticker": "BPAC11",
+    "preco_atual": 56.75,
+    "mm50": 54.15,
+    "mm200": 55.13,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9949,
+    "data_atualizacao": "2026-08-04T21:00:57.159443"
+  },
+  "CXSE3": {
+    "ticker": "CXSE3",
+    "preco_atual": 19.75,
+    "mm50": 19.52,
+    "mm200": 17.1,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 0.9072,
+    "data_atualizacao": "2026-08-04T21:00:58.065352"
+  },
+  "CBAV3": {
+    "ticker": "CBAV3",
+    "preco_atual": 11.12,
+    "mm50": 10.8,
+    "mm200": 9.06,
+    "mm50_status": "SIM",
+    "euforia": true,
+    "rsl": 1.023,
+    "data_atualizacao": "2026-08-04T21:00:58.894272"
+  },
+  "CEAB3": {
+    "ticker": "CEAB3",
+    "preco_atual": 9.72,
+    "mm50": 10.41,
+    "mm200": 12.37,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.94,
+    "data_atualizacao": "2026-08-04T21:00:59.845187"
+  },
+  "CMIG4": {
+    "ticker": "CMIG4",
+    "preco_atual": 11.28,
+    "mm50": 10.89,
+    "mm200": 10.97,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 1.0117,
+    "data_atualizacao": "2026-08-04T21:01:00.719049"
+  },
+  "COGN3": {
+    "ticker": "COGN3",
+    "preco_atual": 2.26,
+    "mm50": 2.31,
+    "mm200": 3.01,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0044,
+    "data_atualizacao": "2026-08-04T21:01:01.719507"
+  },
+  "CSMG3": {
+    "ticker": "CSMG3",
+    "preco_atual": 63.91,
+    "mm50": 60.13,
+    "mm200": 50.77,
+    "mm50_status": "SIM",
+    "euforia": true,
+    "rsl": 0.9778,
+    "data_atualizacao": "2026-08-04T21:01:02.537853"
+  },
+  "CPLE3": {
+    "ticker": "CPLE3",
+    "preco_atual": 14.93,
+    "mm50": 14.79,
+    "mm200": 13.92,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 0.994,
+    "data_atualizacao": "2026-08-04T21:01:03.340624"
+  },
+  "CSAN3": {
+    "ticker": "CSAN3",
+    "preco_atual": 4.05,
+    "mm50": 3.76,
+    "mm200": 5.15,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0305,
+    "data_atualizacao": "2026-08-04T21:01:04.141559"
+  },
+  "CPFE3": {
+    "ticker": "CPFE3",
+    "preco_atual": 46.35,
+    "mm50": 44.97,
+    "mm200": 45.38,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9898,
+    "data_atualizacao": "2026-08-04T21:01:05.140725"
+  },
+  "CMIN3": {
+    "ticker": "CMIN3",
+    "preco_atual": 5.91,
+    "mm50": 4.83,
+    "mm200": 5.09,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.1279,
+    "data_atualizacao": "2026-08-04T21:01:06.082091"
+  },
+  "CURY3": {
+    "ticker": "CURY3",
+    "preco_atual": 31.75,
+    "mm50": 32.06,
+    "mm200": 32.95,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9701,
+    "data_atualizacao": "2026-08-04T21:01:07.337381"
+  },
+  "CVCB3": {
+    "ticker": "CVCB3",
+    "preco_atual": 1.38,
+    "mm50": 1.36,
+    "mm200": 1.9,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0299,
+    "data_atualizacao": "2026-08-04T21:01:08.722553"
+  },
+  "CYRE3": {
+    "ticker": "CYRE3",
+    "preco_atual": 21.35,
+    "mm50": 21.8,
+    "mm200": 26.56,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9489,
+    "data_atualizacao": "2026-08-04T21:01:10.142067"
+  },
+  "DIRR3": {
+    "ticker": "DIRR3",
+    "preco_atual": 11.69,
+    "mm50": 12.89,
+    "mm200": 14.14,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9227,
+    "data_atualizacao": "2026-08-04T21:01:12.018612"
+  },
+  "ECOR3": {
+    "ticker": "ECOR3",
+    "preco_atual": 7.11,
+    "mm50": 7.25,
+    "mm200": 8.79,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9392,
+    "data_atualizacao": "2026-08-04T21:01:13.398101"
+  },
+  "EMBJ3": {
+    "ticker": "EMBJ3",
+    "preco_atual": 90.51,
+    "mm50": 80.0,
+    "mm200": 83.92,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 1.0991,
+    "data_atualizacao": "2026-08-04T21:01:14.301695"
+  },
+  "ENGI11": {
+    "ticker": "ENGI11",
+    "preco_atual": 50.33,
+    "mm50": 48.32,
+    "mm200": 49.75,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9886,
+    "data_atualizacao": "2026-08-04T21:01:15.460932"
+  },
+  "ENEV3": {
+    "ticker": "ENEV3",
+    "preco_atual": 27.16,
+    "mm50": 25.58,
+    "mm200": 22.79,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 1.0078,
+    "data_atualizacao": "2026-08-04T21:01:16.375204"
+  },
+  "EGIE3": {
+    "ticker": "EGIE3",
+    "preco_atual": 30.13,
+    "mm50": 32.42,
+    "mm200": 31.89,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.984,
+    "data_atualizacao": "2026-08-04T21:01:17.822883"
+  },
+  "EQTL3": {
+    "ticker": "EQTL3",
+    "preco_atual": 39.21,
+    "mm50": 38.85,
+    "mm200": 39.56,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9722,
+    "data_atualizacao": "2026-08-04T21:01:18.899951"
+  },
+  "EZTC3": {
+    "ticker": "EZTC3",
+    "preco_atual": 11.14,
+    "mm50": 12.54,
+    "mm200": 13.85,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9086,
+    "data_atualizacao": "2026-08-04T21:01:19.659833"
+  },
+  "FLRY3": {
+    "ticker": "FLRY3",
+    "preco_atual": 17.49,
+    "mm50": 15.79,
+    "mm200": 15.68,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 1.0594,
+    "data_atualizacao": "2026-08-04T21:01:20.530278"
+  },
+  "GGBR4": {
+    "ticker": "GGBR4",
+    "preco_atual": 25.87,
+    "mm50": 23.17,
+    "mm200": 21.0,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 1.069,
+    "data_atualizacao": "2026-08-04T21:01:21.523581"
+  },
+  "GOAU4": {
+    "ticker": "GOAU4",
+    "preco_atual": 11.41,
+    "mm50": 10.15,
+    "mm200": 9.23,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 1.0846,
+    "data_atualizacao": "2026-08-04T21:01:22.308358"
+  },
+  "GGPS3": {
+    "ticker": "GGPS3",
+    "preco_atual": 11.66,
+    "mm50": 11.97,
+    "mm200": 15.54,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9102,
+    "data_atualizacao": "2026-08-04T21:01:22.816214"
+  },
+  "GMAT3": {
+    "ticker": "GMAT3",
+    "preco_atual": 3.95,
+    "mm50": 3.92,
+    "mm200": 4.75,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9925,
+    "data_atualizacao": "2026-08-04T21:01:23.333035"
+  },
+  "HAPV3": {
+    "ticker": "HAPV3",
+    "preco_atual": 11.78,
+    "mm50": 10.97,
+    "mm200": 14.37,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0719,
+    "data_atualizacao": "2026-08-04T21:01:23.965487"
+  },
+  "HYPE3": {
+    "ticker": "HYPE3",
+    "preco_atual": 21.54,
+    "mm50": 20.9,
+    "mm200": 22.52,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0267,
+    "data_atualizacao": "2026-08-04T21:01:24.831713"
+  },
+  "IGTI11": {
+    "ticker": "IGTI11",
+    "preco_atual": 25.57,
+    "mm50": 24.96,
+    "mm200": 26.13,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9634,
+    "data_atualizacao": "2026-08-04T21:01:25.339865"
+  },
+  "INTB3": {
+    "ticker": "INTB3",
+    "preco_atual": 15.02,
+    "mm50": 13.22,
+    "mm200": 12.7,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 1.1509,
+    "data_atualizacao": "2026-08-04T21:01:25.992815"
+  },
+  "IRBR3": {
+    "ticker": "IRBR3",
+    "preco_atual": 54.39,
+    "mm50": 53.7,
+    "mm200": 52.66,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9601,
+    "data_atualizacao": "2026-08-04T21:01:26.381949"
+  },
+  "ISAE4": {
+    "ticker": "ISAE4",
+    "preco_atual": 26.61,
+    "mm50": 27.72,
+    "mm200": 27.3,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9579,
+    "data_atualizacao": "2026-08-04T21:01:27.142715"
+  },
+  "ITSA4": {
+    "ticker": "ITSA4",
+    "preco_atual": 13.65,
+    "mm50": 13.26,
+    "mm200": 12.63,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9799,
+    "data_atualizacao": "2026-08-04T21:01:27.995151"
+  },
+  "ITUB3": {
+    "ticker": "ITUB3",
+    "preco_atual": 44.75,
+    "mm50": 43.36,
+    "mm200": 39.5,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 0.9841,
+    "data_atualizacao": "2026-08-04T21:01:28.404284"
+  },
+  "ITUB4": {
+    "ticker": "ITUB4",
+    "preco_atual": 42.1,
+    "mm50": 41.36,
+    "mm200": 40.72,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9763,
+    "data_atualizacao": "2026-08-04T21:01:29.201544"
+  },
+  "JHSF3": {
+    "ticker": "JHSF3",
+    "preco_atual": 10.93,
+    "mm50": 10.86,
+    "mm200": 9.27,
+    "mm50_status": "SIM",
+    "euforia": true,
+    "rsl": 1.0212,
+    "data_atualizacao": "2026-08-04T21:01:29.831856"
+  },
+  "KLBN11": {
+    "ticker": "KLBN11",
+    "preco_atual": 18.25,
+    "mm50": 17.23,
+    "mm200": 17.99,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 1.0495,
+    "data_atualizacao": "2026-08-04T21:01:30.459532"
+  },
+  "RENT3": {
+    "ticker": "RENT3",
+    "preco_atual": 39.09,
+    "mm50": 39.88,
+    "mm200": 43.22,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9688,
+    "data_atualizacao": "2026-08-04T21:01:31.324150"
+  },
+  "LREN3": {
+    "ticker": "LREN3",
+    "preco_atual": 13.67,
+    "mm50": 14.26,
+    "mm200": 14.23,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9695,
+    "data_atualizacao": "2026-08-04T21:01:31.815984"
+  },
+  "MGLU3": {
+    "ticker": "MGLU3",
+    "preco_atual": 4.92,
+    "mm50": 5.0,
+    "mm200": 7.85,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9781,
+    "data_atualizacao": "2026-08-04T21:01:32.323293"
+  },
+  "POMO4": {
+    "ticker": "POMO4",
+    "preco_atual": 4.81,
+    "mm50": 5.68,
+    "mm200": 6.05,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.8858,
+    "data_atualizacao": "2026-08-04T21:01:33.137380"
+  },
+  "MBRF3": {
+    "ticker": "MBRF3",
+    "preco_atual": 16.93,
+    "mm50": 16.11,
+    "mm200": 18.17,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0994,
+    "data_atualizacao": "2026-08-04T21:01:33.517165"
+  },
+  "BEEF3": {
+    "ticker": "BEEF3",
+    "preco_atual": 3.62,
+    "mm50": 3.62,
+    "mm200": 4.86,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9731,
+    "data_atualizacao": "2026-08-04T21:01:34.137481"
+  },
+  "MOTV3": {
+    "ticker": "MOTV3",
+    "preco_atual": 14.96,
+    "mm50": 14.41,
+    "mm200": 15.41,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0,
+    "data_atualizacao": "2026-08-04T21:01:35.534872"
+  },
+  "MDNE3": {
+    "ticker": "MDNE3",
+    "preco_atual": 24.91,
+    "mm50": 26.87,
+    "mm200": 27.34,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9337,
+    "data_atualizacao": "2026-08-04T21:01:36.595126"
+  },
+  "MOVI3": {
+    "ticker": "MOVI3",
+    "preco_atual": 7.76,
+    "mm50": 8.98,
+    "mm200": 10.56,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.8909,
+    "data_atualizacao": "2026-08-04T21:01:37.008960"
+  },
+  "MRVE3": {
+    "ticker": "MRVE3",
+    "preco_atual": 4.62,
+    "mm50": 5.09,
+    "mm200": 7.24,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9487,
+    "data_atualizacao": "2026-08-04T21:01:37.359882"
+  },
+  "MULT3": {
+    "ticker": "MULT3",
+    "preco_atual": 29.07,
+    "mm50": 28.71,
+    "mm200": 29.63,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9775,
+    "data_atualizacao": "2026-08-04T21:01:38.005249"
+  },
+  "NATU3": {
+    "ticker": "NATU3",
+    "preco_atual": 8.42,
+    "mm50": 8.63,
+    "mm200": 8.82,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9712,
+    "data_atualizacao": "2026-08-04T21:01:38.658645"
+  },
+  "ORVR3": {
+    "ticker": "ORVR3",
+    "preco_atual": 71.25,
+    "mm50": 75.66,
+    "mm200": 70.91,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 0.9466,
+    "data_atualizacao": "2026-08-04T21:01:39.020061"
+  },
+  "PETR3": {
+    "ticker": "PETR3",
+    "preco_atual": 48.15,
+    "mm50": 45.25,
+    "mm200": 41.2,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 1.0575,
+    "data_atualizacao": "2026-08-04T21:01:40.538547"
+  },
+  "PETR4": {
+    "ticker": "PETR4",
+    "preco_atual": 42.5,
+    "mm50": 40.43,
+    "mm200": 37.65,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 1.0471,
+    "data_atualizacao": "2026-08-04T21:01:40.921087"
+  },
+  "RECV3": {
+    "ticker": "RECV3",
+    "preco_atual": 10.25,
+    "mm50": 10.42,
+    "mm200": 11.04,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9961,
+    "data_atualizacao": "2026-08-04T21:01:41.351914"
+  },
+  "AUAU3": {
+    "ticker": "AUAU3",
+    "preco_atual": 3.68,
+    "mm50": 3.24,
+    "mm200": 0,
+    "mm50_status": "SEM DADOS",
+    "euforia": false,
+    "rsl": 1.1429,
+    "data_atualizacao": "2026-08-04T21:01:41.684106"
+  },
+  "PSSA3": {
+    "ticker": "PSSA3",
+    "preco_atual": 54.25,
+    "mm50": 52.07,
+    "mm200": 48.66,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 0.9824,
+    "data_atualizacao": "2026-08-04T21:01:42.082708"
+  },
+  "PRIO3": {
+    "ticker": "PRIO3",
+    "preco_atual": 58.45,
+    "mm50": 58.04,
+    "mm200": 52.85,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 1.0165,
+    "data_atualizacao": "2026-08-04T21:01:43.371132"
+  },
+  "RADL3": {
+    "ticker": "RADL3",
+    "preco_atual": 19.41,
+    "mm50": 17.76,
+    "mm200": 21.4,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0396,
+    "data_atualizacao": "2026-08-04T21:01:43.933463"
+  },
+  "RAPT4": {
+    "ticker": "RAPT4",
+    "preco_atual": 5.1,
+    "mm50": 4.81,
+    "mm200": 5.6,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0603,
+    "data_atualizacao": "2026-08-04T21:01:45.252347"
+  },
+  "RDOR3": {
+    "ticker": "RDOR3",
+    "preco_atual": 34.4,
+    "mm50": 34.28,
+    "mm200": 38.4,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9553,
+    "data_atualizacao": "2026-08-04T21:01:52.072861"
+  },
+  "RAIL3": {
+    "ticker": "RAIL3",
+    "preco_atual": 14.12,
+    "mm50": 13.61,
+    "mm200": 15.07,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0036,
+    "data_atualizacao": "2026-08-04T21:01:53.660490"
+  },
+  "SBSP3": {
+    "ticker": "SBSP3",
+    "preco_atual": 28.01,
+    "mm50": 28.55,
+    "mm200": 28.43,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9343,
+    "data_atualizacao": "2026-08-04T21:01:55.270967"
+  },
+  "SAPR11": {
+    "ticker": "SAPR11",
+    "preco_atual": 35.28,
+    "mm50": 37.14,
+    "mm200": 39.73,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9469,
+    "data_atualizacao": "2026-08-04T21:01:56.657347"
+  },
+  "SANB11": {
+    "ticker": "SANB11",
+    "preco_atual": 29.1,
+    "mm50": 26.54,
+    "mm200": 29.59,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0994,
+    "data_atualizacao": "2026-08-04T21:01:59.128858"
+  },
+  "SMTO3": {
+    "ticker": "SMTO3",
+    "preco_atual": 13.94,
+    "mm50": 15.58,
+    "mm200": 15.83,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.8976,
+    "data_atualizacao": "2026-08-04T21:01:59.757540"
+  },
+  "CSNA3": {
+    "ticker": "CSNA3",
+    "preco_atual": 4.79,
+    "mm50": 5.43,
+    "mm200": 7.46,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9141,
+    "data_atualizacao": "2026-08-04T21:02:00.476843"
+  },
+  "SIMH3": {
+    "ticker": "SIMH3",
+    "preco_atual": 7.56,
+    "mm50": 7.97,
+    "mm200": 10.26,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9805,
+    "data_atualizacao": "2026-08-04T21:02:01.880169"
+  },
+  "SLCE3": {
+    "ticker": "SLCE3",
+    "preco_atual": 13.57,
+    "mm50": 13.87,
+    "mm200": 15.3,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0052,
+    "data_atualizacao": "2026-08-04T21:02:02.748647"
+  },
+  "SMFT3": {
+    "ticker": "SMFT3",
+    "preco_atual": 20.04,
+    "mm50": 19.48,
+    "mm200": 20.86,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9557,
+    "data_atualizacao": "2026-08-04T21:02:03.399772"
+  },
+  "SUZB3": {
+    "ticker": "SUZB3",
+    "preco_atual": 43.02,
+    "mm50": 41.74,
+    "mm200": 47.47,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0371,
+    "data_atualizacao": "2026-08-04T21:02:04.574563"
+  },
+  "TAEE11": {
+    "ticker": "TAEE11",
+    "preco_atual": 39.89,
+    "mm50": 39.96,
+    "mm200": 40.19,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.9748,
+    "data_atualizacao": "2026-08-04T21:02:06.403324"
+  },
+  "VIVT3": {
+    "ticker": "VIVT3",
+    "preco_atual": 31.65,
+    "mm50": 33.88,
+    "mm200": 34.71,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 0.8962,
+    "data_atualizacao": "2026-08-04T21:02:07.373650"
+  },
+  "TEND3": {
+    "ticker": "TEND3",
+    "preco_atual": 31.86,
+    "mm50": 33.11,
+    "mm200": 28.8,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 0.9643,
+    "data_atualizacao": "2026-08-04T21:02:08.615038"
+  },
+  "TIMS3": {
+    "ticker": "TIMS3",
+    "preco_atual": 18.83,
+    "mm50": 21.83,
+    "mm200": 23.65,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.8288,
+    "data_atualizacao": "2026-08-04T21:02:09.610110"
+  },
+  "TOTS3": {
+    "ticker": "TOTS3",
+    "preco_atual": 31.79,
+    "mm50": 29.67,
+    "mm200": 36.83,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0625,
+    "data_atualizacao": "2026-08-04T21:02:10.539930"
+  },
+  "UGPA3": {
+    "ticker": "UGPA3",
+    "preco_atual": 32.6,
+    "mm50": 28.17,
+    "mm200": 25.63,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 1.0482,
+    "data_atualizacao": "2026-08-04T21:02:11.218596"
+  },
+  "USIM5": {
+    "ticker": "USIM5",
+    "preco_atual": 7.52,
+    "mm50": 9.17,
+    "mm200": 7.2,
+    "mm50_status": "SIM",
+    "euforia": true,
+    "rsl": 0.9171,
+    "data_atualizacao": "2026-08-04T21:02:12.043236"
+  },
+  "VALE3": {
+    "ticker": "VALE3",
+    "preco_atual": 76.31,
+    "mm50": 77.66,
+    "mm200": 76.44,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 1.0242,
+    "data_atualizacao": "2026-08-04T21:02:12.840273"
+  },
+  "VAMO3": {
+    "ticker": "VAMO3",
+    "preco_atual": 3.33,
+    "mm50": 3.01,
+    "mm200": 3.53,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 1.0673,
+    "data_atualizacao": "2026-08-04T21:02:13.514736"
+  },
+  "VBBR3": {
+    "ticker": "VBBR3",
+    "preco_atual": 35.44,
+    "mm50": 31.32,
+    "mm200": 28.43,
+    "mm50_status": "SIM",
+    "euforia": false,
+    "rsl": 1.0501,
+    "data_atualizacao": "2026-08-04T21:02:14.218899"
+  },
+  "VIVA3": {
+    "ticker": "VIVA3",
+    "preco_atual": 22.6,
+    "mm50": 22.04,
+    "mm200": 27.27,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9609,
+    "data_atualizacao": "2026-08-04T21:02:14.578624"
+  },
+  "WEGE3": {
+    "ticker": "WEGE3",
+    "preco_atual": 49.17,
+    "mm50": 44.89,
+    "mm200": 45.94,
+    "mm50_status": "ATENCAO",
+    "euforia": false,
+    "rsl": 1.1109,
+    "data_atualizacao": "2026-08-04T21:02:14.958563"
+  },
+  "YDUQ3": {
+    "ticker": "YDUQ3",
+    "preco_atual": 8.29,
+    "mm50": 8.65,
+    "mm200": 11.18,
+    "mm50_status": "NAO",
+    "euforia": false,
+    "rsl": 0.9463,
+    "data_atualizacao": "2026-08-04T21:02:15.373177"
+  }
+}

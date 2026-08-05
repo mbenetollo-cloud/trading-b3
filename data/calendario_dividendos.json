@@ -1,0 +1,590 @@
+{
+  "ALOS3": {
+    "ultimo_dividendo": 0.291941,
+    "data_ultimo_dividendo": "2026-07-24",
+    "total_dividendos_ano": 36,
+    "fonte": "yfinance"
+  },
+  "ABEV3": {
+    "ultimo_dividendo": 0.0449,
+    "data_ultimo_dividendo": "2026-06-23",
+    "total_dividendos_ano": 53,
+    "fonte": "yfinance"
+  },
+  "ANIM3": {
+    "ultimo_dividendo": 0.077785,
+    "data_ultimo_dividendo": "2026-04-27",
+    "total_dividendos_ano": 9,
+    "fonte": "yfinance"
+  },
+  "ASAI3": {
+    "ultimo_dividendo": 0.104345,
+    "data_ultimo_dividendo": "2026-01-07",
+    "total_dividendos_ano": 8,
+    "fonte": "yfinance"
+  },
+  "AURE3": {
+    "ultimo_dividendo": 0.057033,
+    "data_ultimo_dividendo": "2025-04-25",
+    "total_dividendos_ano": 5,
+    "fonte": "yfinance"
+  },
+  "AXIA3": {
+    "ultimo_dividendo": 1.889536,
+    "data_ultimo_dividendo": "2025-11-17",
+    "total_dividendos_ano": 18,
+    "fonte": "yfinance"
+  },
+  "AZZA3": {
+    "ultimo_dividendo": 1.584744,
+    "data_ultimo_dividendo": "2025-12-22",
+    "total_dividendos_ano": 50,
+    "fonte": "yfinance"
+  },
+  "B3SA3": {
+    "ultimo_dividendo": 0.221177,
+    "data_ultimo_dividendo": "2026-06-25",
+    "total_dividendos_ano": 83,
+    "fonte": "yfinance"
+  },
+  "BBSE3": {
+    "ultimo_dividendo": 2.606807,
+    "data_ultimo_dividendo": "2026-02-13",
+    "total_dividendos_ano": 28,
+    "fonte": "yfinance"
+  },
+  "BBDC3": {
+    "ultimo_dividendo": 0.01725,
+    "data_ultimo_dividendo": "2026-08-04",
+    "total_dividendos_ano": 267,
+    "fonte": "yfinance"
+  },
+  "BBDC4": {
+    "ultimo_dividendo": 0.018975,
+    "data_ultimo_dividendo": "2026-08-04",
+    "total_dividendos_ano": 267,
+    "fonte": "yfinance"
+  },
+  "BRAP4": {
+    "ultimo_dividendo": 1.542496,
+    "data_ultimo_dividendo": "2025-12-18",
+    "total_dividendos_ano": 34,
+    "fonte": "yfinance"
+  },
+  "SAUD3": {
+    "ultimo_dividendo": 0.078674,
+    "data_ultimo_dividendo": "2026-07-01",
+    "total_dividendos_ano": 103,
+    "fonte": "yfinance"
+  },
+  "BBAS3": {
+    "ultimo_dividendo": 0.141262,
+    "data_ultimo_dividendo": "2026-06-02",
+    "total_dividendos_ano": 129,
+    "fonte": "yfinance"
+  },
+  "BRKM5": {
+    "ultimo_dividendo": 1.696348,
+    "data_ultimo_dividendo": "2022-04-20",
+    "total_dividendos_ano": 16,
+    "fonte": "yfinance"
+  },
+  "BRAV3": {
+    "ultimo_dividendo": 0.123602,
+    "data_ultimo_dividendo": "2026-04-22",
+    "total_dividendos_ano": 2,
+    "fonte": "yfinance"
+  },
+  "BPAC11": {
+    "ultimo_dividendo": 0.148376,
+    "data_ultimo_dividendo": "2025-12-30",
+    "total_dividendos_ano": 23,
+    "fonte": "yfinance"
+  },
+  "CXSE3": {
+    "ultimo_dividendo": 0.35,
+    "data_ultimo_dividendo": "2026-08-04",
+    "total_dividendos_ano": 15,
+    "fonte": "yfinance"
+  },
+  "CBAV3": {
+    "ultimo_dividendo": 0.044153,
+    "data_ultimo_dividendo": "2026-04-30",
+    "total_dividendos_ano": 4,
+    "fonte": "yfinance"
+  },
+  "CEAB3": {
+    "ultimo_dividendo": 0.5216,
+    "data_ultimo_dividendo": "2025-12-26",
+    "total_dividendos_ano": 4,
+    "fonte": "yfinance"
+  },
+  "CMIG4": {
+    "ultimo_dividendo": 0.220405,
+    "data_ultimo_dividendo": "2026-06-24",
+    "total_dividendos_ano": 52,
+    "fonte": "yfinance"
+  },
+  "COGN3": {
+    "ultimo_dividendo": 0.014297,
+    "data_ultimo_dividendo": "2026-04-28",
+    "total_dividendos_ano": 30,
+    "fonte": "yfinance"
+  },
+  "CSMG3": {
+    "ultimo_dividendo": 0.375874,
+    "data_ultimo_dividendo": "2026-06-24",
+    "total_dividendos_ano": 67,
+    "fonte": "yfinance"
+  },
+  "CPLE3": {
+    "ultimo_dividendo": 0.237703,
+    "data_ultimo_dividendo": "2026-04-30",
+    "total_dividendos_ano": 36,
+    "fonte": "yfinance"
+  },
+  "CSAN3": {
+    "ultimo_dividendo": 0.451477,
+    "data_ultimo_dividendo": "2024-06-06",
+    "total_dividendos_ano": 22,
+    "fonte": "yfinance"
+  },
+  "CPFE3": {
+    "ultimo_dividendo": 3.731536,
+    "data_ultimo_dividendo": "2026-04-30",
+    "total_dividendos_ano": 26,
+    "fonte": "yfinance"
+  },
+  "CMIN3": {
+    "ultimo_dividendo": 0.141493,
+    "data_ultimo_dividendo": "2026-04-17",
+    "total_dividendos_ano": 17,
+    "fonte": "yfinance"
+  },
+  "CURY3": {
+    "ultimo_dividendo": 0.5194,
+    "data_ultimo_dividendo": "2026-05-18",
+    "total_dividendos_ano": 17,
+    "fonte": "yfinance"
+  },
+  "CVCB3": {
+    "ultimo_dividendo": 0.343998,
+    "data_ultimo_dividendo": "2019-12-26",
+    "total_dividendos_ano": 13,
+    "fonte": "yfinance"
+  },
+  "CYRE3": {
+    "ultimo_dividendo": 2.729921,
+    "data_ultimo_dividendo": "2025-12-10",
+    "total_dividendos_ano": 21,
+    "fonte": "yfinance"
+  },
+  "DIRR3": {
+    "ultimo_dividendo": 1.55,
+    "data_ultimo_dividendo": "2025-12-17",
+    "total_dividendos_ano": 22,
+    "fonte": "yfinance"
+  },
+  "ECOR3": {
+    "ultimo_dividendo": 0.302448,
+    "data_ultimo_dividendo": "2026-05-13",
+    "total_dividendos_ano": 21,
+    "fonte": "yfinance"
+  },
+  "EMBJ3": {
+    "ultimo_dividendo": 0.280965,
+    "data_ultimo_dividendo": "2026-06-24",
+    "total_dividendos_ano": 47,
+    "fonte": "yfinance"
+  },
+  "ENGI11": {
+    "ultimo_dividendo": 0.637414,
+    "data_ultimo_dividendo": "2025-11-27",
+    "total_dividendos_ano": 35,
+    "fonte": "yfinance"
+  },
+  "ENEV3": {
+    "ultimo_dividendo": 1.646989,
+    "data_ultimo_dividendo": "2009-04-29",
+    "total_dividendos_ano": 1,
+    "fonte": "yfinance"
+  },
+  "EGIE3": {
+    "ultimo_dividendo": 0.484493,
+    "data_ultimo_dividendo": "2026-05-05",
+    "total_dividendos_ano": 54,
+    "fonte": "yfinance"
+  },
+  "EQTL3": {
+    "ultimo_dividendo": 0.133293,
+    "data_ultimo_dividendo": "2025-12-30",
+    "total_dividendos_ano": 28,
+    "fonte": "yfinance"
+  },
+  "EZTC3": {
+    "ultimo_dividendo": 0.102497,
+    "data_ultimo_dividendo": "2026-05-15",
+    "total_dividendos_ano": 32,
+    "fonte": "yfinance"
+  },
+  "FLRY3": {
+    "ultimo_dividendo": 0.899059,
+    "data_ultimo_dividendo": "2025-12-03",
+    "total_dividendos_ano": 40,
+    "fonte": "yfinance"
+  },
+  "GGBR4": {
+    "ultimo_dividendo": 0.18,
+    "data_ultimo_dividendo": "2026-05-14",
+    "total_dividendos_ano": 93,
+    "fonte": "yfinance"
+  },
+  "GOAU4": {
+    "ultimo_dividendo": 0.08,
+    "data_ultimo_dividendo": "2026-05-14",
+    "total_dividendos_ano": 90,
+    "fonte": "yfinance"
+  },
+  "GGPS3": {
+    "ultimo_dividendo": 0.324828,
+    "data_ultimo_dividendo": "2025-12-17",
+    "total_dividendos_ano": 5,
+    "fonte": "yfinance"
+  },
+  "GMAT3": {
+    "ultimo_dividendo": 0.049574,
+    "data_ultimo_dividendo": "2025-11-21",
+    "total_dividendos_ano": 8,
+    "fonte": "yfinance"
+  },
+  "HAPV3": {
+    "ultimo_dividendo": 0.08058,
+    "data_ultimo_dividendo": "2021-12-28",
+    "total_dividendos_ano": 11,
+    "fonte": "yfinance"
+  },
+  "HYPE3": {
+    "ultimo_dividendo": 0.26304,
+    "data_ultimo_dividendo": "2026-06-29",
+    "total_dividendos_ano": 47,
+    "fonte": "yfinance"
+  },
+  "IGTI11": {
+    "ultimo_dividendo": 0.168708,
+    "data_ultimo_dividendo": "2026-07-16",
+    "total_dividendos_ano": 10,
+    "fonte": "yfinance"
+  },
+  "INTB3": {
+    "ultimo_dividendo": 0.285636,
+    "data_ultimo_dividendo": "2026-08-04",
+    "total_dividendos_ano": 16,
+    "fonte": "yfinance"
+  },
+  "IRBR3": {
+    "ultimo_dividendo": 0.320107,
+    "data_ultimo_dividendo": "2026-07-01",
+    "total_dividendos_ano": 10,
+    "fonte": "yfinance"
+  },
+  "ISAE4": {
+    "ultimo_dividendo": 0.140638,
+    "data_ultimo_dividendo": "2026-04-20",
+    "total_dividendos_ano": 66,
+    "fonte": "yfinance"
+  },
+  "ITSA4": {
+    "ultimo_dividendo": 0.138,
+    "data_ultimo_dividendo": "2026-06-19",
+    "total_dividendos_ano": 141,
+    "fonte": "yfinance"
+  },
+  "ITUB3": {
+    "ultimo_dividendo": 0.018182,
+    "data_ultimo_dividendo": "2026-08-03",
+    "total_dividendos_ano": 279,
+    "fonte": "yfinance"
+  },
+  "ITUB4": {
+    "ultimo_dividendo": 0.018182,
+    "data_ultimo_dividendo": "2026-08-03",
+    "total_dividendos_ano": 274,
+    "fonte": "yfinance"
+  },
+  "JHSF3": {
+    "ultimo_dividendo": 0.069156,
+    "data_ultimo_dividendo": "2026-07-31",
+    "total_dividendos_ano": 60,
+    "fonte": "yfinance"
+  },
+  "KLBN11": {
+    "ultimo_dividendo": 0.902914,
+    "data_ultimo_dividendo": "2025-12-16",
+    "total_dividendos_ano": 47,
+    "fonte": "yfinance"
+  },
+  "RENT3": {
+    "ultimo_dividendo": 0.535127,
+    "data_ultimo_dividendo": "2026-06-29",
+    "total_dividendos_ano": 87,
+    "fonte": "yfinance"
+  },
+  "LREN3": {
+    "ultimo_dividendo": 0.229299,
+    "data_ultimo_dividendo": "2026-06-24",
+    "total_dividendos_ano": 78,
+    "fonte": "yfinance"
+  },
+  "MGLU3": {
+    "ultimo_dividendo": 0.081332,
+    "data_ultimo_dividendo": "2026-04-27",
+    "total_dividendos_ano": 17,
+    "fonte": "yfinance"
+  },
+  "POMO4": {
+    "ultimo_dividendo": 0.085,
+    "data_ultimo_dividendo": "2026-04-27",
+    "total_dividendos_ano": 47,
+    "fonte": "yfinance"
+  },
+  "MBRF3": {
+    "ultimo_dividendo": 2.833731,
+    "data_ultimo_dividendo": "2024-12-13",
+    "total_dividendos_ano": 11,
+    "fonte": "yfinance"
+  },
+  "BEEF3": {
+    "ultimo_dividendo": 0.031147,
+    "data_ultimo_dividendo": "2026-04-29",
+    "total_dividendos_ano": 13,
+    "fonte": "yfinance"
+  },
+  "MOTV3": {
+    "ultimo_dividendo": 0.061704,
+    "data_ultimo_dividendo": "2026-04-22",
+    "total_dividendos_ano": 38,
+    "fonte": "yfinance"
+  },
+  "MDNE3": {
+    "ultimo_dividendo": 4.135739,
+    "data_ultimo_dividendo": "2026-01-02",
+    "total_dividendos_ano": 4,
+    "fonte": "yfinance"
+  },
+  "MOVI3": {
+    "ultimo_dividendo": 0.739591,
+    "data_ultimo_dividendo": "2025-12-22",
+    "total_dividendos_ano": 24,
+    "fonte": "yfinance"
+  },
+  "MRVE3": {
+    "ultimo_dividendo": 0.197808,
+    "data_ultimo_dividendo": "2022-09-22",
+    "total_dividendos_ano": 24,
+    "fonte": "yfinance"
+  },
+  "MULT3": {
+    "ultimo_dividendo": 0.285105,
+    "data_ultimo_dividendo": "2026-07-01",
+    "total_dividendos_ano": 44,
+    "fonte": "yfinance"
+  },
+  "NATU3": {
+    "ultimo_dividendo": 0.127845,
+    "data_ultimo_dividendo": "2019-11-07",
+    "total_dividendos_ano": 24,
+    "fonte": "yfinance"
+  },
+  "PETR3": {
+    "ultimo_dividendo": 0.700973,
+    "data_ultimo_dividendo": "2026-06-02",
+    "total_dividendos_ano": 50,
+    "fonte": "yfinance"
+  },
+  "PETR4": {
+    "ultimo_dividendo": 0.700973,
+    "data_ultimo_dividendo": "2026-06-02",
+    "total_dividendos_ano": 61,
+    "fonte": "yfinance"
+  },
+  "RECV3": {
+    "ultimo_dividendo": 0.340748,
+    "data_ultimo_dividendo": "2026-05-19",
+    "total_dividendos_ano": 10,
+    "fonte": "yfinance"
+  },
+  "AUAU3": {
+    "ultimo_dividendo": 0.030277,
+    "data_ultimo_dividendo": "2026-05-15",
+    "total_dividendos_ano": 1,
+    "fonte": "yfinance"
+  },
+  "PSSA3": {
+    "ultimo_dividendo": 0.512804,
+    "data_ultimo_dividendo": "2026-06-23",
+    "total_dividendos_ano": 53,
+    "fonte": "yfinance"
+  },
+  "PRIO3": {
+    "ultimo_dividendo": 0.072644,
+    "data_ultimo_dividendo": "2023-12-14",
+    "total_dividendos_ano": 1,
+    "fonte": "yfinance"
+  },
+  "RADL3": {
+    "ultimo_dividendo": 0.115582,
+    "data_ultimo_dividendo": "2026-07-06",
+    "total_dividendos_ano": 83,
+    "fonte": "yfinance"
+  },
+  "RAPT4": {
+    "ultimo_dividendo": 0.046745,
+    "data_ultimo_dividendo": "2025-05-02",
+    "total_dividendos_ano": 33,
+    "fonte": "yfinance"
+  },
+  "RDOR3": {
+    "ultimo_dividendo": 0.183353,
+    "data_ultimo_dividendo": "2026-06-26",
+    "total_dividendos_ano": 21,
+    "fonte": "yfinance"
+  },
+  "RAIL3": {
+    "ultimo_dividendo": 0.108402,
+    "data_ultimo_dividendo": "2026-04-29",
+    "total_dividendos_ano": 5,
+    "fonte": "yfinance"
+  },
+  "SBSP3": {
+    "ultimo_dividendo": 0.166685,
+    "data_ultimo_dividendo": "2026-03-20",
+    "total_dividendos_ano": 25,
+    "fonte": "yfinance"
+  },
+  "SAPR11": {
+    "ultimo_dividendo": 0.552413,
+    "data_ultimo_dividendo": "2026-01-02",
+    "total_dividendos_ano": 20,
+    "fonte": "yfinance"
+  },
+  "SANB11": {
+    "ultimo_dividendo": 0.534694,
+    "data_ultimo_dividendo": "2026-07-22",
+    "total_dividendos_ano": 68,
+    "fonte": "yfinance"
+  },
+  "SMTO3": {
+    "ultimo_dividendo": 0.216592,
+    "data_ultimo_dividendo": "2026-07-06",
+    "total_dividendos_ano": 27,
+    "fonte": "yfinance"
+  },
+  "CSNA3": {
+    "ultimo_dividendo": 0.550489,
+    "data_ultimo_dividendo": "2024-11-22",
+    "total_dividendos_ano": 28,
+    "fonte": "yfinance"
+  },
+  "SIMH3": {
+    "ultimo_dividendo": 0.171303,
+    "data_ultimo_dividendo": "2026-06-05",
+    "total_dividendos_ano": 8,
+    "fonte": "yfinance"
+  },
+  "SLCE3": {
+    "ultimo_dividendo": 0.805165,
+    "data_ultimo_dividendo": "2025-12-15",
+    "total_dividendos_ano": 21,
+    "fonte": "yfinance"
+  },
+  "SMFT3": {
+    "ultimo_dividendo": 0.065164,
+    "data_ultimo_dividendo": "2026-06-05",
+    "total_dividendos_ano": 10,
+    "fonte": "yfinance"
+  },
+  "SUZB3": {
+    "ultimo_dividendo": 0.004552,
+    "data_ultimo_dividendo": "2026-04-30",
+    "total_dividendos_ano": 22,
+    "fonte": "yfinance"
+  },
+  "TAEE11": {
+    "ultimo_dividendo": 0.558998,
+    "data_ultimo_dividendo": "2026-05-12",
+    "total_dividendos_ano": 59,
+    "fonte": "yfinance"
+  },
+  "VIVT3": {
+    "ultimo_dividendo": 0.156465,
+    "data_ultimo_dividendo": "2026-07-28",
+    "total_dividendos_ano": 115,
+    "fonte": "yfinance"
+  },
+  "TEND3": {
+    "ultimo_dividendo": 0.825206,
+    "data_ultimo_dividendo": "2025-12-26",
+    "total_dividendos_ano": 12,
+    "fonte": "yfinance"
+  },
+  "TIMS3": {
+    "ultimo_dividendo": 0.167457,
+    "data_ultimo_dividendo": "2026-06-23",
+    "total_dividendos_ano": 45,
+    "fonte": "yfinance"
+  },
+  "TOTS3": {
+    "ultimo_dividendo": 0.18,
+    "data_ultimo_dividendo": "2026-06-16",
+    "total_dividendos_ano": 48,
+    "fonte": "yfinance"
+  },
+  "UGPA3": {
+    "ultimo_dividendo": 1.0,
+    "data_ultimo_dividendo": "2025-12-08",
+    "total_dividendos_ano": 36,
+    "fonte": "yfinance"
+  },
+  "USIM5": {
+    "ultimo_dividendo": 0.283058,
+    "data_ultimo_dividendo": "2024-04-26",
+    "total_dividendos_ano": 24,
+    "fonte": "yfinance"
+  },
+  "VALE3": {
+    "ultimo_dividendo": 3.581771,
+    "data_ultimo_dividendo": "2025-12-12",
+    "total_dividendos_ano": 38,
+    "fonte": "yfinance"
+  },
+  "VAMO3": {
+    "ultimo_dividendo": 0.140115,
+    "data_ultimo_dividendo": "2025-12-19",
+    "total_dividendos_ano": 6,
+    "fonte": "yfinance"
+  },
+  "VBBR3": {
+    "ultimo_dividendo": 0.466623,
+    "data_ultimo_dividendo": "2026-06-23",
+    "total_dividendos_ano": 23,
+    "fonte": "yfinance"
+  },
+  "VIVA3": {
+    "ultimo_dividendo": 0.697659,
+    "data_ultimo_dividendo": "2025-12-22",
+    "total_dividendos_ano": 9,
+    "fonte": "yfinance"
+  },
+  "WEGE3": {
+    "ultimo_dividendo": 0.104424,
+    "data_ultimo_dividendo": "2026-06-22",
+    "total_dividendos_ano": 108,
+    "fonte": "yfinance"
+  },
+  "YDUQ3": {
+    "ultimo_dividendo": 0.569143,
+    "data_ultimo_dividendo": "2025-12-29",
+    "total_dividendos_ano": 21,
+    "fonte": "yfinance"
+  }
+}
