@@ -4,11 +4,17 @@
 FILTRO SEMANAL - FLUXO COMPLETO (OTIMIZADO)
 ============================================
 Fase 1: Fundamental + Valuation -> Top 30
-Fase 2: RSL (20 dias uteis) -> Top 10
+Fase 2: RSL (10 dias uteis) -> Top 10
 Fase 3: MM50, MM200, Euforia (220 dias uteis) -> apenas Top 10
 
 Economia: ~85% menos chamadas a API Yahoo Finance
 Uso de DIAS UTEIS (nao corridos) para precisao nos indicadores
+
+PARAMETROS OTIMIZADOS (04/08/2026):
+- RSL: 10 periodos (melhor que 14)
+- Stop Loss: 6% (melhor que 10%)
+- Take Profit: 25% (melhor que 20%)
+- Trailing Stop: 5% (melhor que 8%)
 """
 
 import json
@@ -16,9 +22,13 @@ from pathlib import Path
 from datetime import datetime, timedelta
 import yfinance as yf
 
-# Config
-DY_MINIMO = 2.0  # 2% minimo para score de dividendos
-VOLUME_MINIMO = 1000000
+# Config otimizada
+from config import (
+    DY_MINIMO, VOLUME_MINIMO, RSL_PERIODOS, 
+    STOP_LOSS, TAKE_PROFIT, TRAILING_STOP,
+    MAX_POSICOES, MAX_POR_POSICAO, CAPITAL_INICIAL,
+    MM_CURTA, MM_LONGA
+)
 
 # Caminhos
 DATA_DIR = Path(__file__).parent / 'data'
@@ -117,8 +127,10 @@ def baixar_precos(ticker, dias_uteis=30):
         print(f"    Erro ao baixar {ticker}: {e}")
         return []
 
-def calcular_rsl(precos, periodo=14):
+def calcular_rsl(precos, periodo=None):
     """Calcula Relative Strength Level"""
+    if periodo is None:
+        periodo = RSL_PERIODOS  # Usa da config
     if len(precos) < periodo:
         return 1.0
     retornos = []
@@ -223,9 +235,9 @@ def main():
     for i, ticker in enumerate(top_30, 1):
         print(f"   [{i:2d}/30] {ticker}...", end=" ", flush=True)
         
-        precos = baixar_precos(ticker, dias_uteis=20)  # 20 dias uteis para RSL 14
+        precos = baixar_precos(ticker, dias_uteis=30)  # 30 dias uteis para RSL 10
         if precos:
-            rsl = calcular_rsl(precos, 14)
+            rsl = calcular_rsl(precos, RSL_PERIODOS)  # Usa da config
             if rsl > 1.05:
                 score_rsl = 20
             elif rsl > 1.0:

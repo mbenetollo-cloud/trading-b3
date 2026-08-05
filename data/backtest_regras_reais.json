@@ -1,5 +1,5 @@
 {
-  "data_execucao": "2026-08-04 19:06:43",
+  "data_execucao": "2026-08-04 21:16:43",
   "parametros": {
     "rsl_periodos": 14,
     "atr_periodos": 12,
@@ -9,133 +9,83 @@
     "capital_inicial": 10000
   },
   "resultado": {
-    "capital_final": 11138.922065496445,
-    "lucro_total": 1138.9220654964447,
-    "retorno_total": 11.389220654964438,
-    "total_operacoes": 61,
-    "wins": 24,
-    "losses": 37,
-    "win_rate": 39.34426229508197
+    "capital_final": 10895.562901973724,
+    "lucro_total": 895.5629019737244,
+    "retorno_total": 8.955629019737255,
+    "total_operacoes": 65,
+    "wins": 26,
+    "losses": 39,
+    "win_rate": 40.0
   },
   "operacoes": [
     {
-      "ticker": "BRAP4",
-      "data_entrada": "2025-02-26",
-      "data_saida": "2025-02-28",
-      "preco_entrada": 14.43110466003418,
-      "preco_saida": 13.992775917053223,
-      "retorno": -0.030373887052103112,
-      "lucro": -14.903177261352539,
-      "motivo": "STOP LOSS"
-    },
-    {
-      "ticker": "CEAB3",
-      "data_entrada": "2025-02-28",
-      "data_saida": "2025-04-03",
-      "preco_entrada": 9.451895713806152,
-      "preco_saida": 11.539548873901367,
-      "retorno": 0.22087137049616734,
-      "lucro": 108.55796432495117,
-      "motivo": "TAKE PROFIT"
-    },
-    {
-      "ticker": "ALOS3",
-      "data_entrada": "2025-04-03",
-      "data_saida": "2025-04-04",
-      "preco_entrada": 17.895305633544922,
-      "preco_saida": 17.170654296875,
-      "retorno": -0.04049393463901259,
-      "lucro": -20.290237426757812,
-      "motivo": "STOP LOSS"
-    },
-    {
-      "ticker": "ABEV3",
-      "data_entrada": "2025-02-26",
-      "data_saida": "2025-04-17",
-      "preco_entrada": 10.854764938354492,
-      "preco_saida": 13.111261367797852,
-      "retorno": 0.20788072724359047,
-      "lucro": 103.79883575439453,
+      "ticker": "ANIM3",
+      "data_entrada": "2025-03-17",
+      "data_saida": "2025-03-26",
+      "preco_entrada": 2.016111135482788,
+      "preco_saida": 2.421262741088867,
+      "retorno": 0.20095698023564532,
+      "lucro": 100.47759819030762,
       "motivo": "TAKE PROFIT"
     },
     {
       "ticker": "ANIM3",
-      "data_entrada": "2025-04-04",
-      "data_saida": "2025-04-17",
-      "preco_entrada": 2.2765655517578125,
-      "preco_saida": 2.9904041290283203,
-      "retorno": 0.31355942143608784,
-      "lucro": 157.75832557678223,
-      "motivo": "TAKE PROFIT"
-    },
-    {
-      "ticker": "AXIA3",
-      "data_entrada": "2025-02-26",
-      "data_saida": "2025-05-02",
-      "preco_entrada": 34.1658935546875,
-      "preco_saida": 41.433265686035156,
-      "retorno": 0.21270838767073855,
-      "lucro": 101.74320983886719,
-      "motivo": "TAKE PROFIT"
-    },
-    {
-      "ticker": "ANIM3",
-      "data_entrada": "2025-05-02",
-      "data_saida": "2025-05-09",
-      "preco_entrada": 3.2084124088287354,
-      "preco_saida": 4.042403221130371,
-      "retorno": 0.25993878156271466,
-      "lucro": 135.106511592865,
-      "motivo": "TAKE PROFIT"
-    },
-    {
-      "ticker": "BBSE3",
-      "data_entrada": "2025-02-26",
-      "data_saida": "2025-06-04",
-      "preco_entrada": 33.017921447753906,
-      "preco_saida": 31.6718692779541,
-      "retorno": -0.040767320012246616,
-      "lucro": -20.19078254699707,
+      "data_entrada": "2025-03-26",
+      "data_saida": "2025-04-08",
+      "preco_entrada": 2.421262741088867,
+      "preco_saida": 2.1029295921325684,
+      "retorno": -0.13147402120149138,
+      "lucro": -66.21329498291016,
       "motivo": "STOP LOSS"
     },
     {
-      "ticker": "CXSE3",
-      "data_entrada": "2025-02-26",
-      "data_saida": "2025-06-10",
-      "preco_entrada": 13.421419143676758,
-      "preco_saida": 13.003053665161133,
-      "retorno": -0.03117147851780859,
-      "lucro": -15.479522705078125,
-      "motivo": "STOP LOSS"
+      "ticker": "AZZA3",
+      "data_entrada": "2025-04-08",
+      "data_saida": "2025-04-25",
+      "preco_entrada": 22.48905372619629,
+      "preco_saida": 27.56839942932129,
+      "retorno": 0.22585857835398132,
+      "lucro": 111.74560546875,
+      "motivo": "TAKE PROFIT"
     },
     {
       "ticker": "ASAI3",
-      "data_entrada": "2025-06-04",
+      "data_entrada": "2025-03-17",
+      "data_saida": "2025-05-05",
+      "preco_entrada": 7.615763187408447,
+      "preco_saida": 9.147404670715332,
+      "retorno": 0.20111464151606373,
+      "lucro": 99.55669641494751,
+      "motivo": "TAKE PROFIT"
+    },
+    {
+      "ticker": "ANIM3",
+      "data_entrada": "2025-04-25",
+      "data_saida": "2025-05-09",
+      "preco_entrada": 2.9827442169189453,
+      "preco_saida": 4.042403221130371,
+      "retorno": 0.3552631158249335,
+      "lucro": 180.14203071594238,
+      "motivo": "TAKE PROFIT"
+    },
+    {
+      "ticker": "ASAI3",
+      "data_entrada": "2025-05-05",
+      "data_saida": "2025-05-27",
+      "preco_entrada": 9.147404670715332,
+      "preco_saida": 11.308442115783691,
+      "retorno": 0.2362459651519238,
+      "lucro": 121.01809692382812,
+      "motivo": "TAKE PROFIT"
+    },
+    {
+      "ticker": "ASAI3",
+      "data_entrada": "2025-05-27",
       "data_saida": "2025-06-20",
-      "preco_entrada": 11.347912788391113,
+      "preco_entrada": 11.308442115783691,
       "preco_saida": 10.637434959411621,
-      "retorno": -0.0626086789904051,
-      "lucro": -32.68198013305664,
-      "motivo": "STOP LOSS"
-    },
-    {
-      "ticker": "ABEV3",
-      "data_entrada": "2025-04-17",
-      "data_saida": "2025-06-25",
-      "preco_entrada": 13.111261367797852,
-      "preco_saida": 12.425592422485352,
-      "retorno": -0.052296184636861066,
-      "lucro": -26.7410888671875,
-      "motivo": "STOP LOSS"
-    },
-    {
-      "ticker": "AURE3",
-      "data_entrada": "2025-06-10",
-      "data_saida": "2025-07-09",
-      "preco_entrada": 9.979999542236328,
-      "preco_saida": 9.449999809265137,
-      "retorno": -0.05310618810433618,
-      "lucro": -27.559986114501953,
+      "retorno": -0.05933683433154033,
+      "lucro": -30.866329193115234,
       "motivo": "STOP LOSS"
     },
     {
@@ -145,7 +95,27 @@
       "preco_entrada": 4.042403221130371,
       "preco_saida": 3.7284302711486816,
       "retorno": -0.07766987428183715,
-      "lucro": -40.81648349761963,
+      "lucro": -40.18853759765625,
+      "motivo": "STOP LOSS"
+    },
+    {
+      "ticker": "BRAP4",
+      "data_entrada": "2025-07-11",
+      "data_saida": "2025-07-15",
+      "preco_entrada": 14.818136215209961,
+      "preco_saida": 14.284469604492188,
+      "retorno": -0.036014421987158915,
+      "lucro": -18.67833137512207,
+      "motivo": "STOP LOSS"
+    },
+    {
+      "ticker": "BRKM5",
+      "data_entrada": "2025-07-15",
+      "data_saida": "2025-07-17",
+      "preco_entrada": 9.529999732971191,
+      "preco_saida": 8.960000038146973,
+      "retorno": -0.05981109242345262,
+      "lucro": -30.779983520507812,
       "motivo": "STOP LOSS"
     },
     {
@@ -159,13 +129,13 @@
       "motivo": "STOP LOSS"
     },
     {
-      "ticker": "BBDC3",
-      "data_entrada": "2025-06-25",
-      "data_saida": "2025-07-18",
-      "preco_entrada": 12.70372486114502,
-      "preco_saida": 12.284438133239746,
-      "retorno": -0.03300502273846334,
-      "lucro": -17.19075584411621,
+      "ticker": "AXIA3",
+      "data_entrada": "2025-03-17",
+      "data_saida": "2025-07-24",
+      "preco_entrada": 36.88456344604492,
+      "preco_saida": 35.80825424194336,
+      "retorno": -0.029180478323296344,
+      "lucro": -13.992019653320312,
       "motivo": "STOP LOSS"
     },
     {
@@ -179,53 +149,73 @@
       "motivo": "STOP LOSS"
     },
     {
-      "ticker": "BRAP4",
-      "data_entrada": "2025-07-09",
-      "data_saida": "2025-08-20",
-      "preco_entrada": 14.373414993286133,
-      "preco_saida": 13.964269638061523,
-      "retorno": -0.028465424216563874,
-      "lucro": -14.729232788085938,
-      "motivo": "STOP LOSS"
-    },
-    {
-      "ticker": "ALOS3",
-      "data_entrada": "2025-04-17",
-      "data_saida": "2025-08-28",
-      "preco_entrada": 17.859954833984375,
-      "preco_saida": 21.638134002685547,
-      "retorno": 0.21154472135125207,
-      "lucro": 105.78901672363281,
-      "motivo": "TAKE PROFIT"
-    },
-    {
-      "ticker": "AXIA3",
-      "data_entrada": "2025-08-20",
-      "data_saida": "2025-09-19",
-      "preco_entrada": 40.848636627197266,
-      "preco_saida": 49.02418518066406,
-      "retorno": 0.20014250727828375,
-      "lucro": 98.10658264160156,
-      "motivo": "TAKE PROFIT"
-    },
-    {
-      "ticker": "BRAV3",
-      "data_entrada": "2025-07-18",
-      "data_saida": "2025-09-30",
-      "preco_entrada": 18.626455307006836,
-      "preco_saida": 17.87105941772461,
-      "retorno": -0.04055499969433606,
-      "lucro": -20.395689010620117,
+      "ticker": "AURE3",
+      "data_entrada": "2025-07-24",
+      "data_saida": "2025-07-28",
+      "preco_entrada": 9.760000228881836,
+      "preco_saida": 9.319999694824219,
+      "retorno": -0.045082020874914086,
+      "lucro": -23.32002830505371,
       "motivo": "STOP LOSS"
     },
     {
       "ticker": "ABEV3",
-      "data_entrada": "2025-09-19",
+      "data_entrada": "2025-03-17",
+      "data_saida": "2025-07-31",
+      "preco_entrada": 12.70855712890625,
+      "preco_saida": 11.773603439331055,
+      "retorno": -0.07356883083513834,
+      "lucro": -36.46319389343262,
+      "motivo": "STOP LOSS"
+    },
+    {
+      "ticker": "CBAV3",
+      "data_entrada": "2025-07-31",
+      "data_saida": "2025-08-07",
+      "preco_entrada": 4.660469055175781,
+      "preco_saida": 3.654684066772461,
+      "retorno": -0.21581196581196582,
+      "lucro": -110.63634872436523,
+      "motivo": "STOP LOSS"
+    },
+    {
+      "ticker": "ANIM3",
+      "data_entrada": "2025-08-07",
+      "data_saida": "2025-08-11",
+      "preco_entrada": 3.8854169845581055,
+      "preco_saida": 3.316340923309326,
+      "retorno": -0.14646460431672334,
+      "lucro": -74.54896402359009,
+      "motivo": "STOP LOSS"
+    },
+    {
+      "ticker": "ALOS3",
+      "data_entrada": "2025-03-17",
+      "data_saida": "2025-08-12",
+      "preco_entrada": 17.099504470825195,
+      "preco_saida": 20.567317962646484,
+      "retorno": 0.2028019874925614,
+      "lucro": 100.56659126281738,
+      "motivo": "TAKE PROFIT"
+    },
+    {
+      "ticker": "ASAI3",
+      "data_entrada": "2025-08-11",
+      "data_saida": "2025-09-25",
+      "preco_entrada": 9.62105655670166,
+      "preco_saida": 9.048727035522461,
+      "retorno": -0.059487179792175354,
+      "lucro": -29.76113510131836,
+      "motivo": "STOP LOSS"
+    },
+    {
+      "ticker": "BRAV3",
+      "data_entrada": "2025-07-17",
       "data_saida": "2025-09-30",
-      "preco_entrada": 11.85864543914795,
-      "preco_saida": 11.423986434936523,
-      "retorno": -0.036653343456624694,
-      "lucro": -19.124996185302734,
+      "preco_entrada": 18.606576919555664,
+      "preco_saida": 17.87105941772461,
+      "retorno": -0.039529973998496185,
+      "lucro": -20.59449005126953,
       "motivo": "STOP LOSS"
     },
     {
@@ -235,8 +225,28 @@
       "preco_entrada": 12.78927993774414,
       "preco_saida": 12.254803657531738,
       "retorno": -0.04179095952345515,
-      "lucro": -21.913527488708496,
+      "lucro": -20.84457492828369,
       "motivo": "STOP LOSS"
+    },
+    {
+      "ticker": "BBSE3",
+      "data_entrada": "2025-10-02",
+      "data_saida": "2025-10-15",
+      "preco_entrada": 30.79628562927246,
+      "preco_saida": 29.80014991760254,
+      "retorno": -0.03234596936986049,
+      "lucro": -15.93817138671875,
+      "motivo": "STOP LOSS"
+    },
+    {
+      "ticker": "ABEV3",
+      "data_entrada": "2025-10-15",
+      "data_saida": "2025-10-16",
+      "preco_entrada": 11.329495429992676,
+      "preco_saida": 11.480680465698242,
+      "retorno": 0.013344375011205962,
+      "lucro": 6.652141571044922,
+      "motivo": "TENDENCIA QUEDA"
     },
     {
       "ticker": "AURE3",
@@ -255,18 +265,38 @@
       "preco_entrada": 3.090672731399536,
       "preco_saida": 3.7774884700775146,
       "retorno": 0.22222208508209496,
-      "lucro": 117.44549131393433,
+      "lucro": 113.32459688186646,
+      "motivo": "TAKE PROFIT"
+    },
+    {
+      "ticker": "AXIA3",
+      "data_entrada": "2025-09-25",
+      "data_saida": "2025-11-11",
+      "preco_entrada": 48.87871551513672,
+      "preco_saida": 59.15876007080078,
+      "retorno": 0.21031740395224885,
+      "lucro": 102.80044555664062,
       "motivo": "TAKE PROFIT"
     },
     {
       "ticker": "ALOS3",
-      "data_entrada": "2025-08-28",
-      "data_saida": "2025-11-14",
-      "preco_entrada": 21.638134002685547,
-      "preco_saida": 26.286724090576172,
-      "retorno": 0.2148332239422161,
-      "lucro": 111.566162109375,
+      "data_entrada": "2025-08-12",
+      "data_saida": "2025-11-12",
+      "preco_entrada": 20.567317962646484,
+      "preco_saida": 24.71736717224121,
+      "retorno": 0.20177882294287836,
+      "lucro": 99.60118103027344,
       "motivo": "TAKE PROFIT"
+    },
+    {
+      "ticker": "ASAI3",
+      "data_entrada": "2025-11-11",
+      "data_saida": "2025-11-12",
+      "preco_entrada": 9.51251220703125,
+      "preco_saida": 9.5421142578125,
+      "retorno": 0.0031119067326262568,
+      "lucro": 1.62811279296875,
+      "motivo": "TENDENCIA QUEDA"
     },
     {
       "ticker": "ANIM3",
@@ -275,37 +305,27 @@
       "preco_entrada": 3.7774884700775146,
       "preco_saida": 3.286905527114868,
       "retorno": -0.12987013642759831,
-      "lucro": -69.17219495773315,
+      "lucro": -67.20986318588257,
       "motivo": "STOP LOSS"
     },
     {
-      "ticker": "AXIA3",
-      "data_entrada": "2025-09-30",
-      "data_saida": "2025-11-18",
-      "preco_entrada": 50.934722900390625,
-      "preco_saida": 61.310001373291016,
-      "retorno": 0.20369755408683732,
-      "lucro": 103.7527847290039,
-      "motivo": "TAKE PROFIT"
-    },
-    {
       "ticker": "B3SA3",
-      "data_entrada": "2025-11-14",
+      "data_entrada": "2025-11-13",
       "data_saida": "2025-11-19",
-      "preco_entrada": 13.781881332397461,
+      "preco_entrada": 13.810514450073242,
       "preco_saida": 13.218771934509277,
-      "retorno": -0.040858674103111475,
-      "lucro": -21.96126651763916,
+      "retorno": -0.04284724640079042,
+      "lucro": -22.486215591430664,
       "motivo": "STOP LOSS"
     },
     {
       "ticker": "BRAP4",
-      "data_entrada": "2025-10-02",
+      "data_entrada": "2025-10-17",
       "data_saida": "2025-12-02",
-      "preco_entrada": 15.262858390808105,
+      "preco_entrada": 15.325119018554688,
       "preco_saida": 18.55047607421875,
-      "retorno": 0.21539986804769004,
-      "lucro": 111.77900123596191,
+      "retorno": 0.21046212115932045,
+      "lucro": 106.43678283691406,
       "motivo": "TAKE PROFIT"
     },
     {
@@ -315,17 +335,17 @@
       "preco_entrada": 3.718618631362915,
       "preco_saida": 3.394834041595459,
       "retorno": -0.08707120085847185,
-      "lucro": -47.59633469581604,
+      "lucro": -45.97741174697876,
       "motivo": "STOP LOSS"
     },
     {
       "ticker": "SAUD3",
-      "data_entrada": "2025-07-11",
-      "data_saida": "2026-01-13",
-      "preco_entrada": 11.045119285583496,
-      "preco_saida": 10.452499389648438,
-      "retorno": -0.05365445864478515,
-      "lucro": -27.853135108947754,
+      "data_entrada": "2025-07-28",
+      "data_saida": "2025-12-22",
+      "preco_entrada": 11.188067436218262,
+      "preco_saida": 10.750858306884766,
+      "retorno": -0.03907816357257134,
+      "lucro": -20.11161994934082,
       "motivo": "STOP LOSS"
     },
     {
@@ -335,7 +355,7 @@
       "preco_entrada": 18.680526733398438,
       "preco_saida": 23.110000610351562,
       "retorno": 0.23711718305211285,
-      "lucro": 128.45474243164062,
+      "lucro": 124.0252685546875,
       "motivo": "TAKE PROFIT"
     },
     {
@@ -345,17 +365,17 @@
       "preco_entrada": 13.218771934509277,
       "preco_saida": 16.20132064819336,
       "retorno": 0.2256297883389425,
-      "lucro": 119.30194854736328,
+      "lucro": 116.3193998336792,
       "motivo": "TAKE PROFIT"
     },
     {
-      "ticker": "AURE3",
-      "data_entrada": "2025-11-18",
-      "data_saida": "2026-02-04",
-      "preco_entrada": 11.600000381469727,
-      "preco_saida": 10.960000038146973,
-      "retorno": -0.05517244157552911,
-      "lucro": -29.44001579284668,
+      "ticker": "ANIM3",
+      "data_entrada": "2026-01-28",
+      "data_saida": "2026-02-09",
+      "preco_entrada": 5.1707444190979,
+      "preco_saida": 4.758654594421387,
+      "retorno": -0.07969642110998164,
+      "lucro": -42.85734176635742,
       "motivo": "STOP LOSS"
     },
     {
@@ -365,68 +385,78 @@
       "preco_entrada": 14.791143417358398,
       "preco_saida": 17.774763107299805,
       "retorno": 0.20171663581058435,
-      "lucro": 107.41030883789062,
+      "lucro": 104.42668914794922,
       "motivo": "TAKE PROFIT"
     },
     {
-      "ticker": "ANIM3",
-      "data_entrada": "2026-01-21",
-      "data_saida": "2026-03-18",
-      "preco_entrada": 4.3367533683776855,
-      "preco_saida": 3.8559820652008057,
-      "retorno": -0.11085972900431025,
-      "lucro": -60.577184200286865,
-      "motivo": "STOP LOSS"
-    },
-    {
-      "ticker": "BRKM5",
-      "data_entrada": "2026-03-18",
-      "data_saida": "2026-03-20",
-      "preco_entrada": 11.890000343322754,
-      "preco_saida": 10.199999809265137,
-      "retorno": -0.14213628976105927,
-      "lucro": -77.74002456665039,
-      "motivo": "STOP LOSS"
-    },
-    {
-      "ticker": "AURE3",
+      "ticker": "BBSE3",
       "data_entrada": "2026-02-10",
-      "data_saida": "2026-04-09",
-      "preco_entrada": 11.550000190734863,
-      "preco_saida": 13.899999618530273,
-      "retorno": 0.20346315056172243,
-      "lucro": 112.79997253417969,
-      "motivo": "TAKE PROFIT"
+      "data_saida": "2026-02-13",
+      "preco_entrada": 35.58143997192383,
+      "preco_saida": 33.81999969482422,
+      "retorno": -0.04950446857939154,
+      "lucro": -26.42160415649414,
+      "motivo": "STOP LOSS"
+    },
+    {
+      "ticker": "CPFE3",
+      "data_entrada": "2025-12-22",
+      "data_saida": "2026-03-03",
+      "preco_entrada": 46.48942947387695,
+      "preco_saida": 44.08113479614258,
+      "retorno": -0.051803059426393454,
+      "lucro": -26.491241455078125,
+      "motivo": "STOP LOSS"
+    },
+    {
+      "ticker": "BBAS3",
+      "data_entrada": "2026-02-13",
+      "data_saida": "2026-03-13",
+      "preco_entrada": 24.978378295898438,
+      "preco_saida": 23.58292007446289,
+      "retorno": -0.05586664614110226,
+      "lucro": -29.304622650146484,
+      "motivo": "STOP LOSS"
     },
     {
       "ticker": "B3SA3",
-      "data_entrada": "2026-01-28",
-      "data_saida": "2026-04-15",
-      "preco_entrada": 16.20132064819336,
-      "preco_saida": 19.54804039001465,
-      "retorno": 0.20657079842404627,
-      "lucro": 113.78847122192383,
-      "motivo": "TAKE PROFIT"
-    },
-    {
-      "ticker": "BBDC3",
-      "data_entrada": "2026-04-15",
-      "data_saida": "2026-04-23",
-      "preco_entrada": 17.556264877319336,
-      "preco_saida": 16.79507064819336,
-      "retorno": -0.043357413119766236,
-      "lucro": -24.35821533203125,
+      "data_entrada": "2026-02-09",
+      "data_saida": "2026-03-20",
+      "preco_entrada": 17.290569305419922,
+      "preco_saida": 15.887303352355957,
+      "retorno": -0.08115788024539455,
+      "lucro": -43.50124454498291,
       "motivo": "STOP LOSS"
     },
     {
-      "ticker": "ABEV3",
-      "data_entrada": "2026-01-13",
-      "data_saida": "2026-05-06",
-      "preco_entrada": 13.87137508392334,
-      "preco_saida": 16.902935028076172,
-      "retorno": 0.21854790356482773,
-      "lucro": 118.23083782196045,
+      "ticker": "PETR3",
+      "data_entrada": "2026-03-03",
+      "data_saida": "2026-03-26",
+      "preco_entrada": 43.17271041870117,
+      "preco_saida": 51.918148040771484,
+      "retorno": 0.20256864897419183,
+      "lucro": 104.94525146484375,
       "motivo": "TAKE PROFIT"
+    },
+    {
+      "ticker": "AURE3",
+      "data_entrada": "2025-11-12",
+      "data_saida": "2026-04-09",
+      "preco_entrada": 11.449999809265137,
+      "preco_saida": 13.899999618530273,
+      "retorno": 0.2139737860329605,
+      "lucro": 112.69999122619629,
+      "motivo": "TAKE PROFIT"
+    },
+    {
+      "ticker": "BBSE3",
+      "data_entrada": "2026-03-13",
+      "data_saida": "2026-04-27",
+      "preco_entrada": 35.04999923706055,
+      "preco_saida": 33.95000076293945,
+      "retorno": -0.031383694666617765,
+      "lucro": -16.499977111816406,
+      "motivo": "STOP LOSS"
     },
     {
       "ticker": "AURE3",
@@ -435,17 +465,7 @@
       "preco_entrada": 13.899999618530273,
       "preco_saida": 13.0600004196167,
       "retorno": -0.06043159870261868,
-      "lucro": -33.59996795654297,
-      "motivo": "STOP LOSS"
-    },
-    {
-      "ticker": "ABEV3",
-      "data_entrada": "2026-05-06",
-      "data_saida": "2026-05-12",
-      "preco_entrada": 16.902935028076172,
-      "preco_saida": 16.0852108001709,
-      "retorno": -0.04837764722795268,
-      "lucro": -26.984899520874023,
+      "lucro": -32.759968757629395,
       "motivo": "STOP LOSS"
     },
     {
@@ -455,17 +475,27 @@
       "preco_entrada": 11.549104690551758,
       "preco_saida": 11.024380683898926,
       "retorno": -0.04543417180052971,
-      "lucro": -24.662028312683105,
+      "lucro": -24.137304306030273,
+      "motivo": "STOP LOSS"
+    },
+    {
+      "ticker": "GOAU4",
+      "data_entrada": "2026-05-12",
+      "data_saida": "2026-05-29",
+      "preco_entrada": 10.288666725158691,
+      "preco_saida": 9.800000190734863,
+      "retorno": -0.04749561313215644,
+      "lucro": -25.410659790039062,
       "motivo": "STOP LOSS"
     },
     {
       "ticker": "SAUD3",
-      "data_entrada": "2026-04-23",
-      "data_saida": "2026-05-13",
-      "preco_entrada": 15.077058792114258,
-      "preco_saida": 13.823951721191406,
-      "retorno": -0.08311349635236968,
-      "lucro": -46.36496162414551,
+      "data_entrada": "2026-03-26",
+      "data_saida": "2026-06-05",
+      "preco_entrada": 13.326687812805176,
+      "preco_saida": 12.521120071411133,
+      "retorno": -0.06044770859117743,
+      "lucro": -32.22270965576172,
       "motivo": "STOP LOSS"
     },
     {
@@ -475,27 +505,17 @@
       "preco_entrada": 17.29521942138672,
       "preco_saida": 15.944336891174316,
       "retorno": -0.0781072790867252,
-      "lucro": -43.228240966796875,
+      "lucro": -41.87735843658447,
       "motivo": "STOP LOSS"
     },
     {
-      "ticker": "GGBR4",
-      "data_entrada": "2026-05-12",
-      "data_saida": "2026-06-18",
-      "preco_entrada": 23.43900489807129,
-      "preco_saida": 21.649999618530273,
-      "retorno": -0.07632599111271257,
-      "lucro": -42.936126708984375,
-      "motivo": "STOP LOSS"
-    },
-    {
-      "ticker": "GOAU4",
-      "data_entrada": "2026-05-13",
-      "data_saida": "2026-06-18",
-      "preco_entrada": 10.119999885559082,
-      "preco_saida": 9.529999732971191,
-      "retorno": -0.05830041099405565,
-      "lucro": -32.450008392333984,
+      "ticker": "ASAI3",
+      "data_entrada": "2026-05-29",
+      "data_saida": "2026-06-12",
+      "preco_entrada": 8.75,
+      "preco_saida": 8.100000381469727,
+      "retorno": -0.0742856706891741,
+      "lucro": -39.64997673034668,
       "motivo": "STOP LOSS"
     },
     {
@@ -509,14 +529,14 @@
       "motivo": "TENDENCIA QUEDA"
     },
     {
-      "ticker": "BRAP4",
-      "data_entrada": "2026-06-18",
-      "data_saida": "2026-07-07",
-      "preco_entrada": 22.649999618530273,
-      "preco_saida": 21.790000915527344,
-      "retorno": -0.0379690382996454,
-      "lucro": -20.639968872070312,
-      "motivo": "STOP LOSS"
+      "ticker": "BBDC3",
+      "data_entrada": "2026-06-12",
+      "data_saida": "2026-07-01",
+      "preco_entrada": 15.159358024597168,
+      "preco_saida": 15.394083023071289,
+      "retorno": 0.015483835007608015,
+      "lucro": 8.215374946594238,
+      "motivo": "TENDENCIA QUEDA"
     },
     {
       "ticker": "ALOS3",
@@ -525,18 +545,18 @@
       "preco_entrada": 27.755809783935547,
       "preco_saida": 26.875457763671875,
       "retorno": -0.03171775664686967,
-      "lucro": -17.607040405273438,
+      "lucro": -16.726688385009766,
       "motivo": "STOP LOSS"
     },
     {
-      "ticker": "ABEV3",
-      "data_entrada": "2026-05-12",
-      "data_saida": "2026-07-15",
-      "preco_entrada": 16.0852108001709,
-      "preco_saida": 15.569999694824219,
-      "retorno": -0.03203011211647943,
-      "lucro": -18.03238868713379,
-      "motivo": "STOP LOSS"
+      "ticker": "ASAI3",
+      "data_entrada": "2026-07-02",
+      "data_saida": "2026-07-07",
+      "preco_entrada": 8.6899995803833,
+      "preco_saida": 8.529999732971191,
+      "retorno": -0.01841195110909914,
+      "lucro": -9.759990692138672,
+      "motivo": "TENDENCIA QUEDA"
     },
     {
       "ticker": "AURE3",
@@ -545,27 +565,17 @@
       "preco_entrada": 12.069999694824219,
       "preco_saida": 11.3100004196167,
       "retorno": -0.06296597302594942,
-      "lucro": -34.9599666595459,
-      "motivo": "STOP LOSS"
-    },
-    {
-      "ticker": "ALOS3",
-      "data_entrada": "2026-07-15",
-      "data_saida": "2026-07-20",
-      "preco_entrada": 27.923965454101562,
-      "preco_saida": 27.004047393798828,
-      "retorno": -0.032943675632846545,
-      "lucro": -17.478443145751953,
+      "lucro": -33.43996810913086,
       "motivo": "STOP LOSS"
     },
     {
       "ticker": "BBSE3",
-      "data_entrada": "2026-02-04",
-      "data_saida": "2026-07-21",
-      "preco_entrada": 34.58530807495117,
-      "preco_saida": 41.54999923706055,
-      "retorno": 0.20137716127946353,
-      "lucro": 111.43505859375,
+      "data_entrada": "2026-06-05",
+      "data_saida": "2026-07-22",
+      "preco_entrada": 35.38999938964844,
+      "preco_saida": 42.58000183105469,
+      "retorno": 0.20316480829070946,
+      "lucro": 107.85003662109375,
       "motivo": "TAKE PROFIT"
     },
     {
@@ -575,57 +585,87 @@
       "preco_entrada": 15.260000228881836,
       "preco_saida": 15.4399995803833,
       "retorno": 0.011795501232089703,
-      "lucro": 6.479976654052734,
+      "lucro": 6.119977951049805,
       "motivo": "TENDENCIA QUEDA"
     },
     {
-      "ticker": "CXSE3",
-      "data_entrada": "2026-06-18",
+      "ticker": "BBSE3",
+      "data_entrada": "2026-07-22",
+      "data_saida": "2026-07-27",
+      "preco_entrada": 42.58000183105469,
+      "preco_saida": 40.540000915527344,
+      "retorno": -0.04790983625650102,
+      "lucro": -24.480010986328125,
+      "motivo": "STOP LOSS"
+    },
+    {
+      "ticker": "BRAV3",
+      "data_entrada": "2026-07-27",
+      "data_saida": "2026-07-31",
+      "preco_entrada": 21.0,
+      "preco_saida": 19.799999237060547,
+      "retorno": -0.05714289347330729,
+      "lucro": -30.000019073486328,
+      "motivo": "STOP LOSS"
+    },
+    {
+      "ticker": "GGBR4",
+      "data_entrada": "2026-04-27",
       "data_saida": "2026-08-04",
-      "preco_entrada": 18.989168167114258,
-      "preco_saida": 19.75,
-      "retorno": 0.040066622518166055,
-      "lucro": 22.064123153686523,
+      "preco_entrada": 21.494022369384766,
+      "preco_saida": 25.8700008392334,
+      "retorno": 0.20359048644527342,
+      "lucro": 109.39946174621582,
+      "motivo": "TAKE PROFIT"
+    },
+    {
+      "ticker": "ABEV3",
+      "data_entrada": "2026-01-21",
+      "data_saida": "2026-08-04",
+      "preco_entrada": 14.270265579223633,
+      "preco_saida": 15.869999885559082,
+      "retorno": 0.11210263028773162,
+      "lucro": 59.19016933441162,
       "motivo": "FIM SIMULACAO"
     },
     {
       "ticker": "SAUD3",
-      "data_entrada": "2026-07-07",
+      "data_entrada": "2026-07-08",
       "data_saida": "2026-08-04",
-      "preco_entrada": 14.829999923706055,
+      "preco_entrada": 15.0,
       "preco_saida": 14.229999542236328,
-      "retorno": -0.040458555937725516,
-      "lucro": -22.200014114379883,
+      "retorno": -0.05133336385091146,
+      "lucro": -26.950016021728516,
       "motivo": "FIM SIMULACAO"
     },
     {
-      "ticker": "BRAV3",
-      "data_entrada": "2026-07-20",
+      "ticker": "BRAP4",
+      "data_entrada": "2026-07-27",
       "data_saida": "2026-08-04",
-      "preco_entrada": 19.979999542236328,
-      "preco_saida": 18.950000762939453,
-      "retorno": -0.05155149163640015,
-      "lucro": -27.809967041015625,
+      "preco_entrada": 21.75,
+      "preco_saida": 21.8700008392334,
+      "retorno": 0.005517279964753951,
+      "lucro": 2.8800201416015625,
       "motivo": "FIM SIMULACAO"
     },
     {
       "ticker": "BBSE3",
-      "data_entrada": "2026-07-21",
+      "data_entrada": "2026-07-31",
       "data_saida": "2026-08-04",
-      "preco_entrada": 41.54999923706055,
+      "preco_entrada": 41.2599983215332,
       "preco_saida": 42.06999969482422,
-      "retorno": 0.012515053364907337,
-      "lucro": 6.760005950927734,
+      "retorno": 0.019631638541979378,
+      "lucro": 10.530017852783203,
       "motivo": "FIM SIMULACAO"
     },
     {
-      "ticker": "ABEV3",
-      "data_entrada": "2026-07-27",
+      "ticker": "CPLE3",
+      "data_entrada": "2026-08-04",
       "data_saida": "2026-08-04",
-      "preco_entrada": 15.859999656677246,
-      "preco_saida": 15.869999885559082,
-      "retorno": 0.000630531468998218,
-      "lucro": 0.3500080108642578,
+      "preco_entrada": 14.930000305175781,
+      "preco_saida": 14.930000305175781,
+      "retorno": 0.0,
+      "lucro": 0.0,
       "motivo": "FIM SIMULACAO"
     }
   ]
