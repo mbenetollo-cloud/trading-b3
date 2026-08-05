@@ -17,7 +17,7 @@ from datetime import datetime, timedelta
 import yfinance as yf
 
 # Config
-DY_MINIMO = 0.02
+DY_MINIMO = 2.0  # 2% minimo para score de dividendos
 VOLUME_MINIMO = 1000000
 
 # Caminhos
@@ -318,6 +318,30 @@ def main():
     
     print()
     
+    # ─── FILTRO DE COMPRA (MM50/Euforia) ───
+    # Score semanal define universo, filtro garante tendencia no momento
+    print("=" * 60)
+    print("FILTRO DE COMPRA - VERIFICACAO TENDENCIA")
+    print("=" * 60)
+    for s in top_10:
+        mm50 = s.get('mm50', 0)
+        mm200 = s.get('mm200', 0)
+        euforia = s.get('euforia') == 'True'
+        
+        if mm50 <= mm200:
+            s['comprar'] = False
+            s['motivo_nao_compra'] = 'MM50 abaixo MM200'
+            print(f"   {s['ticker']}: NAO COMPRAR - MM50 ({mm50:.2f}) abaixo MM200 ({mm200:.2f})")
+        elif euforia:
+            s['comprar'] = False
+            s['motivo_nao_compra'] = 'Euforia (gap >15%)'
+            print(f"   {s['ticker']}: NAO COMPRAR - Euforia detectada")
+        else:
+            s['comprar'] = True
+            s['motivo_nao_compra'] = None
+            print(f"   {s['ticker']}: COMPRAR - Tendencia confirmada")
+    print()
+    
     # ─── RESULTADO FINAL ───
     # Salva todos os scores (top 10 com todos os dados)
     with open(OUTPUT_DIR / 'data' / 'scores.json', 'w', encoding='utf-8') as f:
@@ -331,9 +355,12 @@ def main():
         mm200 = s.get('mm200', 0)
         diff = f"{((mm50 - mm200) / mm200 * 100):+.1f}%" if mm200 else "N/A"
         euph = " [EUFORIA]" if s.get('euforia') == 'True' else ""
-        print(f"{i}. {s['ticker']}: {s['score_composto']}/100 {s['mm50_status']}{euph}")
+        comp = " [COMPRAR]" if s.get('comprar') else " [NAO COMPRAR]"
+        print(f"{i}. {s['ticker']}: {s['score_composto']}/100 {s['mm50_status']}{euph}{comp}")
         print(f"   F:{s['score_fundamental']} V:{s['score_valuation']} D:{s['score_dividendos']} M:{s['score_momentum']}")
         print(f"   Preco: R${s['preco_atual']:.2f} | MM50-MM200: {diff}")
+        if s.get('motivo_nao_compra'):
+            print(f"   Motivo: {s['motivo_nao_compra']}")
     print("=" * 60)
     print(f"Scores salvos em {OUTPUT_DIR / 'data' / 'scores.json'}")
     

@@ -51,8 +51,8 @@ MAX_POR_POSICAO = 0.05  # 5% por posicao
 CAPITAL_INICIAL = 10000
 SCORE_MINIMO = 50
 
-def baixar_dados_completos(ticker, meses=12):
-    """Baixa dados OHLCV completos"""
+def baixar_dados_completos(ticker, meses=20):
+    """Baixa dados OHLCV completos (1.5 anos = ~20 meses)"""
     try:
         ticker_yf = f"{ticker}.SA"
         data_fim = datetime.now()
@@ -272,12 +272,21 @@ def simular_sistema(historico, fundamentais):
                 
                 # Condicoes de entrada:
                 # 1. RSL > 1 (forca relativa)
-                # 2. MM50 > MM200 (se MM200 disponivel) ou apenas RSL forte
+                # 2. MM50 > MM200 (se MM200 disponivel)
+                # 3. Euforia: NAO comprar se gap > 15%
                 condicao_tendencia = True
+                tem_euforia = False
+                
                 if mm200 is not None:
                     condicao_tendencia = mm50 > mm200
+                    # Verifica euforia (gap > 15%)
+                    if mm50 > mm200:
+                        gap = (mm50 - mm200) / mm200
+                        if gap > 0.15:
+                            tem_euforia = True
                 
-                if rsl > 1.0 and condicao_tendencia:
+                # Entra apenas se: RSL forte + tendencia alta + SEM euforia
+                if rsl > 1.0 and condicao_tendencia and not tem_euforia:
                     # Encontra preco atual
                     preco_atual = None
                     for d in dados:
@@ -393,11 +402,14 @@ def main():
     print("BACKTESTING - SISTEMA IBrX100 (COM REGRAS REAIS)")
     print("=" * 70)
     print(f"Data: {datetime.now()}")
+    print(f"Periodo: Janeiro/2025 a Agosto/2026 (~1.5 anos)")
     print(f"Parametros:")
     print(f"  - RSL: {RSL_PERIODOS} periodos")
-    print(f"  - Stop Loss: ATR {ATR_PERIODOS} x {ATR_MULTIPLICADOR}")
+    print(f"  - Stop Loss: ATR {ATR_PERIODOS} x {ATR_MULTIPLICADOR} (ou {STOP_LOSS_FIXO*100:.0f}% fixo)")
     print(f"  - Take Profit: {TAKE_PROFIT*100:.0f}%")
-    print(f"  - Max posicoes: {MAX_POSICOES}")
+    print(f"  - Trailing Stop: {TRAILING_STOP*100:.0f}%")
+    print(f"  - Max posicoes: {MAX_POSICOES} ({MAX_POR_POSICAO*100:.0f}% cada)")
+    print(f"  - Score minimo: {SCORE_MINIMO}")
     print(f"  - Capital inicial: R$ {CAPITAL_INICIAL:,.2f}")
     print("=" * 70)
     print()
@@ -407,12 +419,12 @@ def main():
     with open(fundamentais_file, 'r', encoding='utf-8') as f:
         fundamentais = json.load(f)
     
-    # Baixa historico completo (12 meses para ter MM200)
-    print("Baixando historico completo (12 meses)...")
+    # Baixa historico completo (1.5 anos = ~20 meses)
+    print("Baixando historico completo (Janeiro/2025 a Agosto/2026)...")
     historico = {}
     for i, ticker in enumerate(ACOES_IBRX100, 1):
         print(f"   [{i:2d}/{len(ACOES_IBRX100)}] {ticker}...", end=" ", flush=True)
-        dados = baixar_dados_completos(ticker, meses=12)
+        dados = baixar_dados_completos(ticker, meses=20)
         if dados:
             historico[ticker] = dados
             print(f"OK ({len(dados)} dias)")

@@ -44,7 +44,7 @@ def coletar_fundamental(ticker: str) -> dict:
             'roic': info.get('returnOnCapital'),
             'pl': info.get('trailingPE'),
             'pvp': info.get('priceToBook'),
-            'dy': info.get('dividendYield', 0) * 100 if info.get('dividendYield') else 0,
+            'dy': info.get('dividendYield', 0) if info.get('dividendYield') else 0,
         }
         
         return fundamental

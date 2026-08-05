@@ -34,7 +34,7 @@ def calcular_momentum(ticker):
     
     if not arquivo.exists():
         print(f"    Arquivo nao encontrado: {arquivo}")
-        return 15  # Medio padrao
+        return 0  # Sem dados = sem score
     
     with open(arquivo, 'r') as f:
         dados = json.load(f)

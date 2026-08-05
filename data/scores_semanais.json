@@ -1,0 +1,498 @@
+[
+  {
+    "ticker": "B3SA3",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 70,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "CXSE3",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 70,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "CPFE3",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 70,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "CURY3",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 70,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "EZTC3",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 70,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "JHSF3",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 70,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "MULT3",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 70,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "TEND3",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 70,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "TOTS3",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 70,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "ALOS3",
+    "score_fundamental": 35,
+    "score_valuation": 20,
+    "score_dividendos": 10,
+    "score_semanal": 65,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "VIVT3",
+    "score_fundamental": 35,
+    "score_valuation": 20,
+    "score_dividendos": 10,
+    "score_semanal": 65,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "TIMS3",
+    "score_fundamental": 35,
+    "score_valuation": 20,
+    "score_dividendos": 10,
+    "score_semanal": 65,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "ABEV3",
+    "score_fundamental": 35,
+    "score_valuation": 25,
+    "score_dividendos": 0,
+    "score_semanal": 60,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "COGN3",
+    "score_fundamental": 25,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 60,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "CPLE3",
+    "score_fundamental": 25,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 60,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "FLRY3",
+    "score_fundamental": 25,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 60,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "INTB3",
+    "score_fundamental": 35,
+    "score_valuation": 15,
+    "score_dividendos": 10,
+    "score_semanal": 60,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "LREN3",
+    "score_fundamental": 25,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 60,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "POMO4",
+    "score_fundamental": 35,
+    "score_valuation": 15,
+    "score_dividendos": 10,
+    "score_semanal": 60,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "UGPA3",
+    "score_fundamental": 25,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 60,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "VBBR3",
+    "score_fundamental": 25,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 60,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "SAUD3",
+    "score_fundamental": 20,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 55,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "HYPE3",
+    "score_fundamental": 20,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 55,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "ISAE4",
+    "score_fundamental": 20,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 55,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "SAPR11",
+    "score_fundamental": 20,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 55,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "TAEE11",
+    "score_fundamental": 20,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 55,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "VIVA3",
+    "score_fundamental": 20,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 55,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "ANIM3",
+    "score_fundamental": 15,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 50,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "GGBR4",
+    "score_fundamental": 25,
+    "score_valuation": 15,
+    "score_dividendos": 10,
+    "score_semanal": 50,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "GOAU4",
+    "score_fundamental": 25,
+    "score_valuation": 15,
+    "score_dividendos": 10,
+    "score_semanal": 50,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "RENT3",
+    "score_fundamental": 15,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 50,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "PETR3",
+    "score_fundamental": 20,
+    "score_valuation": 20,
+    "score_dividendos": 10,
+    "score_semanal": 50,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "PETR4",
+    "score_fundamental": 20,
+    "score_valuation": 20,
+    "score_dividendos": 10,
+    "score_semanal": 50,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "SMTO3",
+    "score_fundamental": 25,
+    "score_valuation": 25,
+    "score_dividendos": 0,
+    "score_semanal": 50,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "BPAC11",
+    "score_fundamental": 25,
+    "score_valuation": 10,
+    "score_dividendos": 10,
+    "score_semanal": 45,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "CMIN3",
+    "score_fundamental": 20,
+    "score_valuation": 15,
+    "score_dividendos": 10,
+    "score_semanal": 45,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "EGIE3",
+    "score_fundamental": 10,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 45,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "GMAT3",
+    "score_fundamental": 10,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 45,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "MOVI3",
+    "score_fundamental": 15,
+    "score_valuation": 20,
+    "score_dividendos": 10,
+    "score_semanal": 45,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "RADL3",
+    "score_fundamental": 10,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 45,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "SANB11",
+    "score_fundamental": 25,
+    "score_valuation": 10,
+    "score_dividendos": 10,
+    "score_semanal": 45,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "VALE3",
+    "score_fundamental": 10,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 45,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "ASAI3",
+    "score_fundamental": 15,
+    "score_valuation": 25,
+    "score_dividendos": 0,
+    "score_semanal": 40,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "AZZA3",
+    "score_fundamental": 10,
+    "score_valuation": 15,
+    "score_dividendos": 10,
+    "score_semanal": 35,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "BBSE3",
+    "score_fundamental": 10,
+    "score_valuation": 15,
+    "score_dividendos": 10,
+    "score_semanal": 35,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "EQTL3",
+    "score_fundamental": 0,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 35,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "ITUB4",
+    "score_fundamental": 25,
+    "score_valuation": 0,
+    "score_dividendos": 10,
+    "score_semanal": 35,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "KLBN11",
+    "score_fundamental": 0,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 35,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "BEEF3",
+    "score_fundamental": 0,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 35,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "AUAU3",
+    "score_fundamental": 10,
+    "score_valuation": 25,
+    "score_dividendos": 0,
+    "score_semanal": 35,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "RDOR3",
+    "score_fundamental": 0,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 35,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "SIMH3",
+    "score_fundamental": 0,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 35,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "VAMO3",
+    "score_fundamental": 0,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 35,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "WEGE3",
+    "score_fundamental": 20,
+    "score_valuation": 15,
+    "score_dividendos": 0,
+    "score_semanal": 35,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "YDUQ3",
+    "score_fundamental": 0,
+    "score_valuation": 25,
+    "score_dividendos": 10,
+    "score_semanal": 35,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "BRAV3",
+    "score_fundamental": 0,
+    "score_valuation": 25,
+    "score_dividendos": 0,
+    "score_semanal": 25,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "ITUB3",
+    "score_fundamental": 25,
+    "score_valuation": 0,
+    "score_dividendos": 0,
+    "score_semanal": 25,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "MGLU3",
+    "score_fundamental": 10,
+    "score_valuation": 15,
+    "score_dividendos": 0,
+    "score_semanal": 25,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "MBRF3",
+    "score_fundamental": 0,
+    "score_valuation": 15,
+    "score_dividendos": 10,
+    "score_semanal": 25,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "BBDC3",
+    "score_fundamental": 10,
+    "score_valuation": 10,
+    "score_dividendos": 0,
+    "score_semanal": 20,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "BBDC4",
+    "score_fundamental": 10,
+    "score_valuation": 10,
+    "score_dividendos": 0,
+    "score_semanal": 20,
+    "freshness": "ATUALIZADO"
+  },
+  {
+    "ticker": "BBAS3",
+    "score_fundamental": 10,
+    "score_valuation": 0,
+    "score_dividendos": 0,
+    "score_semanal": 10,
+    "freshness": "ATUALIZADO"
+  }
+]
