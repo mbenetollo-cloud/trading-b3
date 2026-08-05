@@ -1,21 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-BACKTESTING - SISTEMA IBrX100 (COM REGRAS REAIS)
-=================================================
-Usa as mesmas regras do sistema de trading:
-- RSL 14: > 1 = compra
-- Stop Loss: ATR 12 x 1,5
-- Take Profit: 20%
-- Max 5 posicoes
-- Max 5% por posicao
+BACKTESTING - VARIACAO DE INDICADORES
+======================================
+Testa variacoes de:
+- Take Profit (15%, 20%, 25%, 30%)
+- Trailing Stop (5%, 8%, 10%, 12%)
+- RSL Periodos (10, 14, 20, 30)
 """
 
 import json
 from pathlib import Path
 from datetime import datetime, timedelta
 import yfinance as yf
-import numpy as np
 
 # Caminhos
 DATA_DIR = Path(__file__).parent / 'data'
@@ -39,28 +36,22 @@ ACOES_IBRX100 = [
     'UGPA3', 'USIM5', 'VALE3', 'VAMO3', 'VBBR3', 'VIVA3', 'WEGE3', 'YDUQ3'
 ]
 
-# Parametros do sistema (OTIMIZADOS - 04/08/2026)
-RSL_PERIODOS = 10        # OTIMIZADO: 10 > 14
+# Parametros fixos (usados como base)
+STOP_LOSS_FIXO = 0.06  # 6% (melhor encontrado)
 ATR_PERIODOS = 12
 ATR_MULTIPLICADOR = 1.5
-TAKE_PROFIT = 0.25       # OTIMIZADO: 25% > 20%
-STOP_LOSS_FIXO = 0.06    # OTIMIZADO: 6% > 10%
-TRAILING_STOP = 0.05     # OTIMIZADO: 5% > 8%
 MAX_POSICOES = 5
-MAX_POR_POSICAO = 0.05  # 5% por posicao
+MAX_POR_POSICAO = 0.05
 CAPITAL_INICIAL = 10000
-SCORE_MINIMO = 50
 
 def baixar_dados_completos(ticker, data_inicio_str='2025-01-01', data_fim_str='2026-06-30'):
-    """Baixa dados OHLCV completos para o período especificado"""
+    """Baixa dados OHLCV completos"""
     try:
         ticker_yf = f"{ticker}.SA"
-        data_inicio = datetime.strptime(data_inicio_str, '%Y-%m-%d')
-        data_fim = datetime.strptime(data_fim_str, '%Y-%m-%d')
-        
         dados = yf.download(
             ticker_yf,
-            start=data_inicio.strftime('%Y-%m-%d'),
+            start=data_inicio_str,
+            end=data_fim_str,
             progress=False
         )
         
@@ -89,8 +80,7 @@ def baixar_dados_completos(ticker, data_inicio_str='2025-01-01', data_fim_str='2
             })
         
         return resultado
-    except Exception as e:
-        print(f"    Erro ao baixar {ticker}: {e}")
+    except:
         return None
 
 def calcular_atr(dados, periodo=12):
@@ -103,18 +93,15 @@ def calcular_atr(dados, periodo=12):
         high = dados[i]['high']
         low = dados[i]['low']
         prev_close = dados[i-1]['close']
-        
         tr = max(high - low, abs(high - prev_close), abs(low - prev_close))
         tr_list.append(tr)
     
-    # ATR = media dos ultimos 'periodo' TRs
     if len(tr_list) >= periodo:
-        atr = sum(tr_list[-periodo:]) / periodo
-        return atr
+        return sum(tr_list[-periodo:]) / periodo
     return None
 
 def calcular_rsl(dados, periodo=14):
-    """Calcula RSL (preco / media)"""
+    """Calcula RSL"""
     if len(dados) < periodo:
         return None
     
@@ -122,9 +109,7 @@ def calcular_rsl(dados, periodo=14):
     media = sum(precos) / periodo
     preco_atual = dados[-1]['close']
     
-    if media > 0:
-        return preco_atual / media
-    return None
+    return preco_atual / media if media > 0 else None
 
 def calcular_mm(dados, periodo):
     """Calcula Media Movvel"""
@@ -134,53 +119,29 @@ def calcular_mm(dados, periodo):
     precos = [d['close'] for d in dados[-periodo:]]
     return sum(precos) / periodo
 
-def simular_sistema(historico, fundamentais):
-    """Simula o sistema completo com gerenciamento de risco"""
+def simular_sistema(historico, take_profit, trailing_stop, rsl_periodos):
+    """Simula o sistema com parametros especificos"""
     
-    print("Simulando sistema com gerenciamento de risco...")
-    print(f"  Capital inicial: R$ {CAPITAL_INICIAL:,.2f}")
-    print(f"  Stop Loss: ATR {ATR_PERIODOS} x {ATR_MULTIPLICADOR} (ou {STOP_LOSS_FIXO*100:.0f}% fixo)")
-    print(f"  Take Profit: {TAKE_PROFIT*100:.0f}%")
-    print(f"  Trailing Stop: {TRAILING_STOP*100:.0f}%")
-    print(f"  Max posicoes: {MAX_POSICOES} ({MAX_POR_POSICAO*100:.0f}% cada)")
-    print(f"  Score minimo: {SCORE_MINIMO}")
-    print()
-    
-    # Carrega dados de todos os ativos
     dados_ativos = {}
     for ticker in ACOES_IBRX100:
         dados = historico.get(ticker)
         if dados and len(dados) > 50:
             dados_ativos[ticker] = dados
     
-    print(f"  Ativos com dados suficientes: {len(dados_ativos)}")
-    print()
-    
-    # Simula dia a dia (ultimos 6 meses)
     capital = CAPITAL_INICIAL
-    posicoes = []  # Lista de posicoes abertas
+    posicoes = []
     historico_operacoes = []
     
-    # Pega todas as datas disponiveis
     todas_datas = set()
     for dados in dados_ativos.values():
         for d in dados:
             todas_datas.add(d['data'])
     
     datas_ordenadas = sorted(todas_datas)
-    
-    # Comeca depois de 50 dias (para ter RSL 14 + MM50)
-    if len(datas_ordenadas) < 50:
-        print("  Dados insuficientes para simulacao")
-        return None
-    
     datas_simulacao = datas_ordenadas[50:]
     
-    print(f"  Dias de simulacao: {len(datas_simulacao)}")
-    print()
-    
     for data_atual in datas_simulacao:
-        # 1. Verifica stops das posicoes abertas
+        # 1. Verifica stops
         posicoes_para_fechar = []
         for pos in posicoes:
             ticker = pos['ticker']
@@ -188,7 +149,6 @@ def simular_sistema(historico, fundamentais):
             if not dados:
                 continue
             
-            # Encontra preco atual
             preco_atual = None
             for d in dados:
                 if d['data'] == data_atual:
@@ -198,37 +158,34 @@ def simular_sistema(historico, fundamentais):
             if preco_atual is None:
                 continue
             
-            # Calcula ATR atual
             dados_ate_agora = [d for d in dados if d['data'] <= data_atual]
             atr = calcular_atr(dados_ate_agora, ATR_PERIODOS)
             
-            if atr is None:
-                continue
+            # Stop Loss
+            stop_loss_fixo_calc = pos['preco_entrada'] * (1 - STOP_LOSS_FIXO)
+            stop_loss_atr = None
+            if atr is not None:
+                stop_loss_atr = pos['preco_entrada'] - (atr * ATR_MULTIPLICADOR)
             
-            # Stop Loss: preco_entrada - (ATR x multiplicador)
-            stop_loss = pos['preco_entrada'] - (atr * ATR_MULTIPLICADOR)
+            stop_loss = max(stop_loss_fixo_calc, stop_loss_atr) if stop_loss_atr else stop_loss_fixo_calc
             
-            # Take Profit: preco_entrada x 1.20
-            take_profit = pos['preco_entrada'] * (1 + TAKE_PROFIT)
+            # Take Profit
+            take_profit_calc = pos['preco_entrada'] * (1 + take_profit)
             
-            # Trailing Stop: se preco subiu, ajusta stop para cima
+            # Trailing Stop
             preco_maximo = pos.get('preco_maximo', pos['preco_entrada'])
             if preco_atual > preco_maximo:
                 preco_maximo = preco_atual
                 pos['preco_maximo'] = preco_maximo
-                # Ajusta stop loss para trailing (preco_maximo - 8%)
-                novo_stop = preco_maximo * (1 - TRAILING_STOP)
+                novo_stop = preco_maximo * (1 - trailing_stop)
                 if novo_stop > stop_loss:
                     stop_loss = novo_stop
-                    pos['stop_loss'] = stop_loss
             
-            # Verifica se bateu o stop
             if preco_atual <= stop_loss:
                 posicoes_para_fechar.append((pos, preco_atual, 'STOP LOSS'))
-            elif preco_atual >= take_profit:
+            elif preco_atual >= take_profit_calc:
                 posicoes_para_fechar.append((pos, preco_atual, 'TAKE PROFIT'))
         
-        # Fecha posicoes que bateram o stop
         for pos, preco_saida, motivo in posicoes_para_fechar:
             retorno = (preco_saida - pos['preco_entrada']) / pos['preco_entrada']
             lucro = pos['capital_investido'] * retorno
@@ -247,47 +204,37 @@ def simular_sistema(historico, fundamentais):
             capital += lucro
             posicoes.remove(pos)
         
-        # 2. Verifica novas entradas (se tem espaco)
+        # 2. Verifica novas entradas
         if len(posicoes) < MAX_POSICOES:
             for ticker, dados in dados_ativos.items():
                 if len(posicoes) >= MAX_POSICOES:
                     break
                 
-                # Verifica se ja tem posicao aberta
                 if any(p['ticker'] == ticker for p in posicoes):
                     continue
                 
-                # Encontra dados ate a data atual
                 dados_ate_agora = [d for d in dados if d['data'] <= data_atual]
                 if len(dados_ate_agora) < 50:
                     continue
                 
-                # Calcula indicadores
-                rsl = calcular_rsl(dados_ate_agora, RSL_PERIODOS)
+                rsl = calcular_rsl(dados_ate_agora, rsl_periodos)
                 mm50 = calcular_mm(dados_ate_agora, 50)
                 mm200 = calcular_mm(dados_ate_agora, 200)
                 
                 if rsl is None or mm50 is None:
                     continue
                 
-                # Condicoes de entrada:
-                # 1. RSL > 1 (forca relativa)
-                # 2. MM50 > MM200 (se MM200 disponivel)
-                # 3. Euforia: NAO comprar se gap > 15%
                 condicao_tendencia = True
                 tem_euforia = False
                 
                 if mm200 is not None:
                     condicao_tendencia = mm50 > mm200
-                    # Verifica euforia (gap > 15%)
                     if mm50 > mm200:
                         gap = (mm50 - mm200) / mm200
                         if gap > 0.15:
                             tem_euforia = True
                 
-                # Entra apenas se: RSL forte + tendencia alta + SEM euforia
                 if rsl > 1.0 and condicao_tendencia and not tem_euforia:
-                    # Encontra preco atual
                     preco_atual = None
                     for d in dados:
                         if d['data'] == data_atual:
@@ -297,29 +244,18 @@ def simular_sistema(historico, fundamentais):
                     if preco_atual is None:
                         continue
                     
-                    # Calcula ATR para stop
-                    atr = calcular_atr(dados_ate_agora, ATR_PERIODOS)
-                    if atr is None:
-                        continue
-                    
-                    # Capital por posicao (5% do capital total)
                     capital_por_posicao = capital * 0.05
-                    
-                    # Quantidade de acoes
                     qtd_acoes = int(capital_por_posicao / preco_atual)
                     if qtd_acoes < 1:
                         continue
                     
-                    # Abre posicao
                     posicoes.append({
                         'ticker': ticker,
                         'data_entrada': data_atual,
                         'preco_entrada': preco_atual,
                         'quantidade': qtd_acoes,
                         'capital_investido': qtd_acoes * preco_atual,
-                        'stop_loss': preco_atual - (atr * ATR_MULTIPLICADOR),
-                        'take_profit': preco_atual * (1 + TAKE_PROFIT),
-                        'preco_maximo': preco_atual  # Para trailing stop
+                        'preco_maximo': preco_atual
                     })
         
         # 3. Verifica saida por tendencia de queda
@@ -331,25 +267,19 @@ def simular_sistema(historico, fundamentais):
                 continue
             
             dados_ate_agora = [d for d in dados if d['data'] <= data_atual]
-            if len(dados_ate_agora) < 50:
-                continue
-            
             mm50 = calcular_mm(dados_ate_agora, 50)
             mm200 = calcular_mm(dados_ate_agora, 200)
             
-            # Se MM50 caiu abaixo do MM200, tendencia mudou
             if mm50 is not None and mm200 is not None and mm50 < mm200:
-                # Encontra preco atual
                 preco_atual = None
                 for d in dados:
                     if d['data'] == data_atual:
                         preco_atual = d['close']
                         break
                 
-                if preco_atual:
+                if preco_atual is not None:
                     posicoes_para_fechar_tendencia.append((pos, preco_atual))
         
-        # Fecha posicoes por tendencia
         for pos, preco_saida in posicoes_para_fechar_tendencia:
             retorno = (preco_saida - pos['preco_entrada']) / pos['preco_entrada']
             lucro = pos['capital_investido'] * retorno
@@ -370,8 +300,7 @@ def simular_sistema(historico, fundamentais):
     
     # Fecha posicoes restantes
     for pos in posicoes:
-        ticker = pos['ticker']
-        dados = dados_ativos.get(ticker)
+        dados = dados_ativos.get(pos['ticker'])
         if dados:
             ultimo_preco = dados[-1]['close']
             retorno = (ultimo_preco - pos['preco_entrada']) / pos['preco_entrada']
@@ -380,7 +309,7 @@ def simular_sistema(historico, fundamentais):
             historico_operacoes.append({
                 'ticker': pos['ticker'],
                 'data_entrada': pos['data_entrada'],
-                'data_saida': dados[-1]['data'],
+                'data_saida': datas_ordenadas[-1],
                 'preco_entrada': pos['preco_entrada'],
                 'preco_saida': ultimo_preco,
                 'retorno': retorno,
@@ -399,32 +328,20 @@ def simular_sistema(historico, fundamentais):
 def main():
     """Funcao principal"""
     print("=" * 70)
-    print("BACKTESTING - SISTEMA IBrX100 (COM REGRAS REAIS)")
+    print("BACKTESTING - VARIACAO DE INDICADORES")
     print("=" * 70)
     print(f"Data: {datetime.now()}")
     print(f"Periodo: Janeiro/2025 a Junho/2026 (~18 meses)")
-    print(f"Parametros:")
-    print(f"  - RSL: {RSL_PERIODOS} periodos")
-    print(f"  - Stop Loss: ATR {ATR_PERIODOS} x {ATR_MULTIPLICADOR} (ou {STOP_LOSS_FIXO*100:.0f}% fixo)")
-    print(f"  - Take Profit: {TAKE_PROFIT*100:.0f}%")
-    print(f"  - Trailing Stop: {TRAILING_STOP*100:.0f}%")
-    print(f"  - Max posicoes: {MAX_POSICOES} ({MAX_POR_POSICAO*100:.0f}% cada)")
-    print(f"  - Score minimo: {SCORE_MINIMO}")
-    print(f"  - Capital inicial: R$ {CAPITAL_INICIAL:,.2f}")
+    print(f"Stop Loss fixo: 6% (melhor encontrado)")
     print("=" * 70)
     print()
     
-    # Carrega fundamentais
-    fundamentais_file = OUTPUT_DIR / 'data' / 'fundamentais.json'
-    with open(fundamentais_file, 'r', encoding='utf-8') as f:
-        fundamentais = json.load(f)
-    
-    # Baixa historico completo (1.5 anos = ~20 meses)
-    print("Baixando historico completo (Janeiro/2025 a Junho/2026)...")
+    # Baixa historico uma vez so
+    print("Baixando historico completo...")
     historico = {}
     for i, ticker in enumerate(ACOES_IBRX100, 1):
         print(f"   [{i:2d}/{len(ACOES_IBRX100)}] {ticker}...", end=" ", flush=True)
-        dados = baixar_dados_completos(ticker, data_inicio_str='2025-01-01', data_fim_str='2026-06-30')
+        dados = baixar_dados_completos(ticker)
         if dados:
             historico[ticker] = dados
             print(f"OK ({len(dados)} dias)")
@@ -433,91 +350,175 @@ def main():
     
     print()
     print(f"Historico carregado: {len(historico)} ativos")
-    print()
     
-    # Executa simulacao
-    resultado = simular_sistema(historico, fundamentais)
+    # ============================================
+    # TESTE 1: VARIACAO TAKE PROFIT
+    # ============================================
+    print("\n" + "=" * 70)
+    print("TESTE 1: VARIACAO TAKE PROFIT (15%, 20%, 25%, 30%)")
+    print("=" * 70)
     
-    if resultado:
-        print()
-        print("=" * 70)
-        print("RESULTADO DA SIMULACAO")
-        print("=" * 70)
-        print(f"Capital inicial: R$ {resultado['capital_inicial']:,.2f}")
-        print(f"Capital final:   R$ {resultado['capital_final']:,.2f}")
+    resultados_tp = []
+    for tp in [0.15, 0.20, 0.25, 0.30]:
+        print(f"\nTestando Take Profit {tp*100:.0f}%...")
+        resultado = simular_sistema(historico, tp, 0.08, 14)
         
         lucro_total = resultado['capital_final'] - resultado['capital_inicial']
         retorno_total = (resultado['capital_final'] / resultado['capital_inicial'] - 1) * 100
         
-        print(f"Lucro/Prejuizo:  R$ {lucro_total:,.2f}")
-        print(f"Retorno total:   {retorno_total:+.2f}%")
-        print()
-        
-        # Analise das operacoes
         ops = resultado['operacoes']
-        if ops:
-            total_ops = len(ops)
-            wins = sum(1 for o in ops if o['retorno'] > 0)
-            losses = sum(1 for o in ops if o['retorno'] <= 0)
-            
-            print(f"Total de operacoes: {total_ops}")
-            print(f"Operacoes vencedoras: {wins} ({wins/total_ops*100:.1f}%)")
-            print(f"Operacoes perdedoras: {losses} ({losses/total_ops*100:.1f}%)")
-            print()
-            
-            # Retorno medio
-            media_retorno = sum(o['retorno'] for o in ops) / total_ops * 100
-            print(f"Retorno medio por operacao: {media_retorno:+.2f}%")
-            
-            # Melhor e pior operacao
-            melhor = max(ops, key=lambda x: x['retorno'])
-            pior = min(ops, key=lambda x: x['retorno'])
-            
-            print(f"Melhor operacao: {melhor['ticker']} ({melhor['retorno']*100:+.2f}%)")
-            print(f"Pior operacao:   {pior['ticker']} ({pior['retorno']*100:+.2f}%)")
-            print()
-            
-            # Operacoes por motivo
-            motivos = {}
-            for o in ops:
-                motivo = o['motivo']
-                if motivo not in motivos:
-                    motivos[motivo] = {'count': 0, 'lucro': 0}
-                motivos[motivo]['count'] += 1
-                motivos[motivo]['lucro'] += o['lucro']
-            
-            print("Operacoes por motivo:")
-            for motivo, dados in sorted(motivos.items()):
-                print(f"  {motivo}: {dados['count']} ops, R$ {dados['lucro']:,.2f}")
-            
-            # Salva resultados
-            with open(OUTPUT_DIR / 'data' / 'backtest_regras_reais.json', 'w', encoding='utf-8') as f:
-                json.dump({
-                    'data_execucao': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                    'parametros': {
-                        'rsl_periodos': RSL_PERIODOS,
-                        'atr_periodos': ATR_PERIODOS,
-                        'atr_multiplicador': ATR_MULTIPLICADOR,
-                        'take_profit': TAKE_PROFIT,
-                        'max_posicoes': MAX_POSICOES,
-                        'capital_inicial': CAPITAL_INICIAL
-                    },
-                    'resultado': {
-                        'capital_final': resultado['capital_final'],
-                        'lucro_total': lucro_total,
-                        'retorno_total': retorno_total,
-                        'total_operacoes': total_ops,
-                        'wins': wins,
-                        'losses': losses,
-                        'win_rate': wins/total_ops*100
-                    },
-                    'operacoes': ops
-                }, f, ensure_ascii=False, indent=2)
-            
-            print()
-            print("Resultados salvos em: data/backtest_regras_reais.json")
+        total_ops = len(ops)
+        wins = sum(1 for o in ops if o['retorno'] > 0)
+        losses = sum(1 for o in ops if o['retorno'] <= 0)
         
-        print("=" * 70)
+        take_profits = sum(1 for o in ops if o['motivo'] == 'TAKE PROFIT')
+        stop_losses = sum(1 for o in ops if o['motivo'] == 'STOP LOSS')
+        
+        print(f"  Retorno: {retorno_total:+.2f}% | Win Rate: {wins/total_ops*100:.1f}% | TP: {take_profits} | SL: {stop_losses}")
+        
+        resultados_tp.append({
+            'take_profit': tp,
+            'retorno_total': retorno_total,
+            'win_rate': wins/total_ops*100,
+            'take_profits': take_profits,
+            'stop_losses': stop_losses
+        })
+    
+    print("\nRESUMO TAKE PROFIT:")
+    print(f"{'TP':<8} {'Retorno':<12} {'Win Rate':<12} {'TPs':<8} {'SLs':<8}")
+    print("-" * 50)
+    for r in resultados_tp:
+        print(f"{r['take_profit']*100:.0f}%{'':<6} {r['retorno_total']:+.2f}%{'':<8} {r['win_rate']:.1f}%{'':<8} {r['take_profits']:<8} {r['stop_losses']:<8}")
+    
+    melhor_tp = max(resultados_tp, key=lambda x: x['retorno_total'])
+    print(f"\nMELHOR TP: {melhor_tp['take_profit']*100:.0f}% -> {melhor_tp['retorno_total']:+.2f}%")
+    
+    # ============================================
+    # TESTE 2: VARIACAO TRAILING STOP
+    # ============================================
+    print("\n" + "=" * 70)
+    print("TESTE 2: VARIACAO TRAILING STOP (5%, 8%, 10%, 12%)")
+    print("=" * 70)
+    
+    resultados_ts = []
+    for ts in [0.05, 0.08, 0.10, 0.12]:
+        print(f"\nTestando Trailing Stop {ts*100:.0f}%...")
+        resultado = simular_sistema(historico, 0.20, ts, 14)
+        
+        lucro_total = resultado['capital_final'] - resultado['capital_inicial']
+        retorno_total = (resultado['capital_final'] / resultado['capital_inicial'] - 1) * 100
+        
+        ops = resultado['operacoes']
+        total_ops = len(ops)
+        wins = sum(1 for o in ops if o['retorno'] > 0)
+        
+        take_profits = sum(1 for o in ops if o['motivo'] == 'TAKE PROFIT')
+        stop_losses = sum(1 for o in ops if o['motivo'] == 'STOP LOSS')
+        
+        print(f"  Retorno: {retorno_total:+.2f}% | Win Rate: {wins/total_ops*100:.1f}% | TP: {take_profits} | SL: {stop_losses}")
+        
+        resultados_ts.append({
+            'trailing_stop': ts,
+            'retorno_total': retorno_total,
+            'win_rate': wins/total_ops*100,
+            'take_profits': take_profits,
+            'stop_losses': stop_losses
+        })
+    
+    print("\nRESUMO TRAILING STOP:")
+    print(f"{'TS':<8} {'Retorno':<12} {'Win Rate':<12} {'TPs':<8} {'SLs':<8}")
+    print("-" * 50)
+    for r in resultados_ts:
+        print(f"{r['trailing_stop']*100:.0f}%{'':<6} {r['retorno_total']:+.2f}%{'':<8} {r['win_rate']:.1f}%{'':<8} {r['take_profits']:<8} {r['stop_losses']:<8}")
+    
+    melhor_ts = max(resultados_ts, key=lambda x: x['retorno_total'])
+    print(f"\nMELHOR TS: {melhor_ts['trailing_stop']*100:.0f}% -> {melhor_ts['retorno_total']:+.2f}%")
+    
+    # ============================================
+    # TESTE 3: VARIACAO RSL PERIODOS
+    # ============================================
+    print("\n" + "=" * 70)
+    print("TESTE 3: VARIACAO RSL PERIODOS (10, 14, 20, 30)")
+    print("=" * 70)
+    
+    resultados_rsl = []
+    for rsl in [10, 14, 20, 30]:
+        print(f"\nTestando RSL {rsl} periodos...")
+        resultado = simular_sistema(historico, 0.20, 0.08, rsl)
+        
+        lucro_total = resultado['capital_final'] - resultado['capital_inicial']
+        retorno_total = (resultado['capital_final'] / resultado['capital_inicial'] - 1) * 100
+        
+        ops = resultado['operacoes']
+        total_ops = len(ops)
+        wins = sum(1 for o in ops if o['retorno'] > 0)
+        
+        take_profits = sum(1 for o in ops if o['motivo'] == 'TAKE PROFIT')
+        stop_losses = sum(1 for o in ops if o['motivo'] == 'STOP LOSS')
+        
+        print(f"  Retorno: {retorno_total:+.2f}% | Win Rate: {wins/total_ops*100:.1f}% | TP: {take_profits} | SL: {stop_losses}")
+        
+        resultados_rsl.append({
+            'rsl_periodos': rsl,
+            'retorno_total': retorno_total,
+            'win_rate': wins/total_ops*100,
+            'take_profits': take_profits,
+            'stop_losses': stop_losses
+        })
+    
+    print("\nRESUMO RSL:")
+    print(f"{'RSL':<8} {'Retorno':<12} {'Win Rate':<12} {'TPs':<8} {'SLs':<8}")
+    print("-" * 50)
+    for r in resultados_rsl:
+        print(f"{r['rsl_periodos']:<8} {r['retorno_total']:+.2f}%{'':<8} {r['win_rate']:.1f}%{'':<8} {r['take_profits']:<8} {r['stop_losses']:<8}")
+    
+    melhor_rsl = max(resultados_rsl, key=lambda x: x['retorno_total'])
+    print(f"\nMELHOR RSL: {melhor_rsl['rsl_periodos']} periodos -> {melhor_rsl['retorno_total']:+.2f}%")
+    
+    # ============================================
+    # RESUMO FINAL
+    # ============================================
+    print("\n" + "=" * 70)
+    print("RESUMO FINAL - MELHORES PARAMETROS")
+    print("=" * 70)
+    print(f"Melhor Take Profit:  {melhor_tp['take_profit']*100:.0f}% -> {melhor_tp['retorno_total']:+.2f}%")
+    print(f"Melhor Trailing Stop: {melhor_ts['trailing_stop']*100:.0f}% -> {melhor_ts['retorno_total']:+.2f}%")
+    print(f"Melhor RSL:          {melhor_rsl['rsl_periodos']} periodos -> {melhor_rsl['retorno_total']:+.2f}%")
+    
+    # Teste combinacao otima
+    print("\n" + "=" * 70)
+    print("TESTE COMBINACAO OTIMA")
+    print("=" * 70)
+    print(f"Testando: TP {melhor_tp['take_profit']*100:.0f}% + TS {melhor_ts['trailing_stop']*100:.0f}% + RSL {melhor_rsl['rsl_periodos']}")
+    
+    resultado_otimo = simular_sistema(
+        historico, 
+        melhor_tp['take_profit'], 
+        melhor_ts['trailing_stop'], 
+        melhor_rsl['rsl_periodos']
+    )
+    
+    retorno_otimo = (resultado_otimo['capital_final'] / resultado_otimo['capital_inicial'] - 1) * 100
+    print(f"RESULTADO COMBINACAO OTIMA: {retorno_otimo:+.2f}%")
+    
+    # Salva todos os resultados
+    with open(OUTPUT_DIR / 'data' / 'backtest_variacao_indicadores.json', 'w', encoding='utf-8') as f:
+        json.dump({
+            'data_execucao': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'periodo': '2025-01-01 a 2026-06-30',
+            'stop_loss_fixo': 0.06,
+            'resultados_take_profit': resultados_tp,
+            'resultados_trailing_stop': resultados_ts,
+            'resultados_rsl': resultados_rsl,
+            'melhor_combinacao': {
+                'take_profit': melhor_tp['take_profit'],
+                'trailing_stop': melhor_ts['trailing_stop'],
+                'rsl_periodos': melhor_rsl['rsl_periodos'],
+                'retorno': retorno_otimo
+            }
+        }, f, indent=2, ensure_ascii=False)
+    
+    print(f"\nResultados salvos em: data/backtest_variacao_indicadores.json")
 
 if __name__ == "__main__":
     main()
